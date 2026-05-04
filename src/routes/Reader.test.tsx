@@ -17,8 +17,8 @@ const METADATA = {
 }
 
 const CHAPTER_1_JSONL =
-  '{"id":"p0","tokens":[{"s":"私","r":"わたし"},{"s":"は"},{"s":"本"},{"s":"を"},{"s":"読"},{"s":"みました"},{"s":"。"}]}\n' +
-  '{"id":"p1","tokens":[{"s":"猫"},{"s":"が"},{"s":"好き"},{"s":"です"},{"s":"。"}]}\n'
+  '{"id":"p0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}]}\n' +
+  '{"id":"p1","tokens":[{"s":"猫","r":"ねこ","v":"neko"},{"s":"が"},{"s":"好き","v":"suki"},{"s":"です"},{"s":"。"}]}\n'
 
 const CHAPTER_2_JSONL =
   '{"id":"p0","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"天気"},{"s":"です"},{"s":"。"}]}\n' +
@@ -64,12 +64,30 @@ function gotoReader(path: string) {
   window.history.pushState({}, '', path)
 }
 
+function surfaceText(p: Element): string {
+  const clone = p.cloneNode(true) as Element
+  for (const rt of clone.querySelectorAll('rt')) rt.remove()
+  return (clone.textContent ?? '').replace(/\s+/g, '')
+}
+
+async function findParagraphByText(text: string): Promise<HTMLElement> {
+  return await waitFor(() => {
+    const paragraphs = document.querySelectorAll('p[data-paragraph-id]')
+    for (const p of paragraphs) {
+      if (surfaceText(p) === text.replace(/\s+/g, '')) {
+        return p as HTMLElement
+      }
+    }
+    throw new Error(`No paragraph with combined text ${text}`)
+  })
+}
+
 describe('Reader', () => {
   it('renders all paragraphs of the chapter specified in the URL', async () => {
     gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
     render(<App />)
-    expect(await screen.findByText('私は本を読みました。')).toBeInTheDocument()
-    expect(await screen.findByText('猫が好きです。')).toBeInTheDocument()
+    expect(await findParagraphByText('私は本を読みました。')).toBeInTheDocument()
+    expect(await findParagraphByText('猫が好きです。')).toBeInTheDocument()
   })
 
   it('updates document.title to the chapter title', async () => {
@@ -82,7 +100,7 @@ describe('Reader', () => {
     const user = userEvent.setup()
     gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
     render(<App />)
-    await screen.findByText('私は本を読みました。')
+    await findParagraphByText('私は本を読みました。')
 
     expect(fetchMock.mock.calls.some(([u]) => String(u).endsWith('/01-test-chapter-2.jsonl'))).toBe(
       false,
@@ -90,8 +108,8 @@ describe('Reader', () => {
 
     await user.click(screen.getByRole('button', { name: /next/i }))
 
-    expect(await screen.findByText('今日はいい天気です。')).toBeInTheDocument()
-    expect(await screen.findByText('友達と会いました。')).toBeInTheDocument()
+    expect(await findParagraphByText('今日はいい天気です。')).toBeInTheDocument()
+    expect(await findParagraphByText('友達と会いました。')).toBeInTheDocument()
     expect(fetchMock.mock.calls.some(([u]) => String(u).endsWith('/01-test-chapter-2.jsonl'))).toBe(
       true,
     )
@@ -113,7 +131,58 @@ describe('Reader', () => {
     })
     gotoReader('/reader/tsundoku-test')
     render(<App />)
-    expect(await screen.findByText('今日はいい天気です。')).toBeInTheDocument()
+    expect(await findParagraphByText('今日はいい天気です。')).toBeInTheDocument()
+  })
+
+  it('renders tappable tokens (with v) as buttons with the surface text', async () => {
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    expect(await screen.findByRole('button', { name: '私' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '本' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: '読' })).toBeInTheDocument()
+    // dimmed tokens (no v) are not buttons
+    expect(screen.queryByRole('button', { name: 'は' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'みました' })).not.toBeInTheDocument()
+  })
+
+  it('renders <ruby> for tokens with r when furigana is enabled (default)', async () => {
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    const watashi = await screen.findByRole('button', { name: '私' })
+    const ruby = watashi.querySelector('ruby')
+    expect(ruby).not.toBeNull()
+    expect(ruby?.querySelector('rt')?.textContent).toBe('わたし')
+    expect(ruby?.querySelector('rb')?.textContent).toBe('私')
+  })
+
+  it('hides <ruby> for all tokens when furigana toggle is off', async () => {
+    const user = userEvent.setup()
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    await screen.findByRole('button', { name: '私' })
+    await user.click(screen.getByRole('button', { name: /furigana/i }))
+    await waitFor(() => {
+      expect(document.querySelector('ruby')).toBeNull()
+    })
+  })
+
+  it('restores furigana toggle preference from localStorage on load', async () => {
+    localStorage.setItem('tsundoku.furigana', 'off')
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    await screen.findByRole('button', { name: '私' })
+    expect(document.querySelector('ruby')).toBeNull()
+  })
+
+  it('persists furigana toggle to localStorage when changed', async () => {
+    const user = userEvent.setup()
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    await screen.findByRole('button', { name: '私' })
+    await user.click(screen.getByRole('button', { name: /furigana/i }))
+    await waitFor(() => {
+      expect(localStorage.getItem('tsundoku.furigana')).toBe('off')
+    })
   })
 
   it('disables Next on the last chapter', async () => {
