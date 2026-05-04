@@ -1,31 +1,32 @@
 import '@testing-library/jest-dom'
 
-class MemoryStorage implements Storage {
-  private store = new Map<string, string>()
-  get length() {
-    return this.store.size
+// Node 25 ships a built-in `localStorage` global that requires
+// `--localstorage-file=<path>` to function; without it, methods throw
+// "is not a function". Replace with an in-memory shim for tests.
+{
+  const store = new Map<string, string>()
+  const shim: Storage = {
+    get length() {
+      return store.size
+    },
+    clear() {
+      store.clear()
+    },
+    getItem(key) {
+      return store.has(key) ? (store.get(key) as string) : null
+    },
+    key(index) {
+      return Array.from(store.keys())[index] ?? null
+    },
+    removeItem(key) {
+      store.delete(key)
+    },
+    setItem(key, value) {
+      store.set(String(key), String(value))
+    },
   }
-  clear() {
-    this.store.clear()
-  }
-  getItem(key: string) {
-    return this.store.has(key) ? (this.store.get(key) as string) : null
-  }
-  key(index: number) {
-    return Array.from(this.store.keys())[index] ?? null
-  }
-  removeItem(key: string) {
-    this.store.delete(key)
-  }
-  setItem(key: string, value: string) {
-    this.store.set(key, String(value))
-  }
-}
-
-if (typeof localStorage === 'undefined' || typeof localStorage.setItem !== 'function') {
   Object.defineProperty(globalThis, 'localStorage', {
-    value: new MemoryStorage(),
     configurable: true,
-    writable: true,
+    value: shim,
   })
 }

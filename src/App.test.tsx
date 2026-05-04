@@ -26,6 +26,9 @@ beforeEach(() => {
         chapters: [{ id: '00-test-chapter-1', title: 'Ch 1' }],
       })
     }
+    if (url.endsWith('/00-test-chapter-1.jsonl')) {
+      return new Response('{"id":"p0","tokens":[{"s":"私"}]}\n', { status: 200 })
+    }
     return new Response('not found', { status: 404 })
   })
   vi.stubGlobal('fetch', fetchMock)
