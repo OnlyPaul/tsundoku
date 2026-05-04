@@ -1,14 +1,6 @@
 import { expect, test } from '@playwright/test'
 
 test.describe('furigana toggle', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.addInitScript(() => {
-      try {
-        localStorage.clear()
-      } catch {}
-    })
-  })
-
   test('toggle hides/shows furigana and persists across reload', async ({ page }) => {
     await page.goto('/reader/tsundoku-test')
 

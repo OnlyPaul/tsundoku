@@ -2,11 +2,6 @@ import { expect, test } from '@playwright/test'
 
 test.describe('bookmark restore', () => {
   test.beforeEach(async ({ page }) => {
-    await page.addInitScript(() => {
-      try {
-        localStorage.clear()
-      } catch {}
-    })
     await page.setViewportSize({ width: 375, height: 480 })
   })
 

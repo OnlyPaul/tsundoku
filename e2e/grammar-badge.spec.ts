@@ -12,8 +12,8 @@ test.describe('grammar badge', () => {
 
     const sheet = page.getByRole('dialog')
     await expect(sheet).toBeVisible()
-    await expect(sheet.getByText(/ながら/)).toBeVisible()
-    await expect(sheet.getByText(/simultaneously|while/i)).toBeVisible()
+    await expect(sheet.getByRole('heading', { name: /ながら/ })).toBeVisible()
+    await expect(sheet.getByText(/simultaneously/)).toBeVisible()
 
     await page.keyboard.press('Escape')
     await expect(sheet).toBeHidden()
