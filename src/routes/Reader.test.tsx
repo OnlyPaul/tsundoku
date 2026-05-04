@@ -17,12 +17,15 @@ const METADATA = {
 }
 
 const CHAPTER_1_JSONL =
-  '{"id":"p0","tokens":[{"s":"私","r":"わたし"},{"s":"は"},{"s":"本"},{"s":"を"},{"s":"読"},{"s":"みました"},{"s":"。"}]}\n' +
+  '{"id":"p0","tokens":[{"s":"私","r":"わたし"},{"s":"は"},{"s":"本"},{"s":"を"},{"s":"読"},{"s":"みました"},{"s":"。"}],"grammar":["g-dakara"]}\n' +
   '{"id":"p1","tokens":[{"s":"猫"},{"s":"が"},{"s":"好き"},{"s":"です"},{"s":"。"}]}\n'
 
 const CHAPTER_2_JSONL =
-  '{"id":"p0","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"天気"},{"s":"です"},{"s":"。"}]}\n' +
-  '{"id":"p1","tokens":[{"s":"友達"},{"s":"と"},{"s":"会"},{"s":"いました"},{"s":"。"}]}\n'
+  '{"id":"p0","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"天気"},{"s":"です"},{"s":"。"}],"grammar":[]}\n' +
+  '{"id":"p1","tokens":[{"s":"友達"},{"s":"と"},{"s":"会"},{"s":"いました"},{"s":"。"}],"grammar":["g-dakara"]}\n'
+
+const GRAMMAR_JSONL =
+  '{"id":"g-dakara","pattern":"〜だから","title":"Because (casual reason)","jlpt":"N5","formation":"[plain form] + だから","explanation":"Used to express a reason or cause in casual speech.","examples_in_book":[{"chapter":"00-test-chapter-1","paragraph":"p0"}],"see_also":[]}\n'
 
 let fetchMock: ReturnType<typeof vi.fn>
 
@@ -45,6 +48,7 @@ beforeEach(() => {
     if (url.endsWith('/books/tsundoku-test/metadata.json')) return jsonResponse(METADATA)
     if (url.endsWith('/00-test-chapter-1.jsonl')) return chapterResponse(CHAPTER_1_JSONL)
     if (url.endsWith('/01-test-chapter-2.jsonl')) return chapterResponse(CHAPTER_2_JSONL)
+    if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
     return new Response('not found', { status: 404 })
   })
   vi.stubGlobal('fetch', fetchMock)
@@ -122,5 +126,69 @@ describe('Reader', () => {
     const next = await screen.findByRole('button', { name: /next/i })
     expect(next).toBeDisabled()
     expect(screen.getByRole('button', { name: /previous/i })).not.toBeDisabled()
+  })
+
+  describe('grammar badge', () => {
+    it('renders a grammar badge for paragraphs with non-empty grammar', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await screen.findByText('私は本を読みました。')
+      expect(
+        screen.getByRole('button', { name: /grammar notes for paragraph p0/i }),
+      ).toBeInTheDocument()
+    })
+
+    it('does not render a grammar badge when paragraph grammar is undefined', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await screen.findByText('猫が好きです。')
+      expect(
+        screen.queryByRole('button', { name: /grammar notes for paragraph p1/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not render a grammar badge when paragraph grammar is an empty array', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=01-test-chapter-2&paragraph=p0')
+      render(<App />)
+      await screen.findByText('今日はいい天気です。')
+      expect(
+        screen.queryByRole('button', { name: /grammar notes for paragraph p0/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    it('opens a sheet with the pattern title and explanation when the badge is tapped', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      const badge = await screen.findByRole('button', { name: /grammar notes for paragraph p0/i })
+      await user.click(badge)
+      expect(await screen.findByText('Because (casual reason)')).toBeInTheDocument()
+      expect(
+        screen.getByText('Used to express a reason or cause in casual speech.'),
+      ).toBeInTheDocument()
+    })
+
+    it('fetches grammar at most once per book session even when multiple badges are tapped', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await user.click(
+        await screen.findByRole('button', { name: /grammar notes for paragraph p0/i }),
+      )
+      await screen.findByText('Because (casual reason)')
+
+      await user.click(screen.getByRole('button', { name: /close/i }))
+      await user.click(screen.getByRole('button', { name: /next/i }))
+      await screen.findByText('友達と会いました。')
+      await user.click(
+        await screen.findByRole('button', { name: /grammar notes for paragraph p1/i }),
+      )
+      await screen.findAllByText('Because (casual reason)')
+
+      const grammarFetchCount = fetchMock.mock.calls.filter(([u]) =>
+        String(u).endsWith('/grammar.jsonl'),
+      ).length
+      expect(grammarFetchCount).toBe(1)
+    })
   })
 })
