@@ -29,7 +29,13 @@ const GRAMMAR_JSONL =
 
 const VOCAB_JSONL =
   '{"id":"watashi","lemma":"私","reading":"わたし","pos":"pronoun","jlpt":"N5","meanings":["I","me"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}\n' +
+  '{"id":"hon","lemma":"本","reading":"ほん","pos":"noun","jlpt":"N5","meanings":["book"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}\n' +
   '{"id":"yomu","lemma":"読む","reading":"よむ","pos":"verb","jlpt":"N5","meanings":["to read"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}\n'
+
+const KANJI_JSONL =
+  '{"kanji":"私","onyomi":["シ"],"kunyomi":["わたし","わたくし"],"meanings":["I","private"],"jlpt":"N5","stroke_count":7,"frequency":89,"example_words_in_book":["watashi"]}\n' +
+  '{"kanji":"読","onyomi":["ドク"],"kunyomi":["よ.む"],"meanings":["read"],"jlpt":"N5","stroke_count":14,"frequency":315,"example_words_in_book":["yomu"]}\n' +
+  '{"kanji":"本","onyomi":["ホン"],"kunyomi":["もと"],"meanings":["book","origin"],"jlpt":"N5","stroke_count":5,"frequency":10,"example_words_in_book":["hon"]}\n'
 
 let fetchMock: ReturnType<typeof vi.fn>
 
@@ -54,6 +60,7 @@ beforeEach(() => {
     if (url.endsWith('/01-test-chapter-2.jsonl')) return chapterResponse(CHAPTER_2_JSONL)
     if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
     if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+    if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
     return new Response('not found', { status: 404 })
   })
   vi.stubGlobal('fetch', fetchMock)
@@ -291,6 +298,59 @@ describe('Reader', () => {
         String(u).endsWith('/grammar.jsonl'),
       ).length
       expect(grammarFetchCount).toBe(1)
+    })
+  })
+
+  describe('vocab popup kanji tab', () => {
+    it('does not fetch kanji.jsonl until the user opens a Kanji tab', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '私' })
+
+      expect(fetchMock.mock.calls.some(([u]) => String(u).endsWith('/kanji.jsonl'))).toBe(false)
+
+      await user.click(screen.getByRole('button', { name: '私' }))
+      await user.click(await screen.findByRole('tab', { name: /kanji/i }))
+
+      await waitFor(() => {
+        expect(fetchMock.mock.calls.some(([u]) => String(u).endsWith('/kanji.jsonl'))).toBe(true)
+      })
+    })
+
+    it('fetches kanji.jsonl only once even when multiple Kanji tabs are opened', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '私' })
+
+      await user.click(screen.getByRole('button', { name: '私' }))
+      await user.click(await screen.findByRole('tab', { name: /kanji/i }))
+      await waitFor(() => {
+        expect(fetchMock.mock.calls.some(([u]) => String(u).endsWith('/kanji.jsonl'))).toBe(true)
+      })
+      // close
+      await user.keyboard('{Escape}')
+
+      await user.click(screen.getByRole('button', { name: '本' }))
+      await user.click(await screen.findByRole('tab', { name: /kanji/i }))
+
+      const kanjiFetchCount = fetchMock.mock.calls.filter(([u]) =>
+        String(u).endsWith('/kanji.jsonl'),
+      ).length
+      expect(kanjiFetchCount).toBe(1)
+    })
+
+    it('renders a kanji card with onyomi/kunyomi/meanings from the fixture', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: '本' }))
+      await user.click(await screen.findByRole('tab', { name: /kanji/i }))
+
+      expect(await screen.findByText('ホン')).toBeInTheDocument()
+      expect(screen.getByText('もと')).toBeInTheDocument()
+      expect(screen.getByText('book, origin')).toBeInTheDocument()
     })
   })
 })
