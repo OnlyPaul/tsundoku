@@ -1,3 +1,4 @@
+import { TappableToken } from '@/components/TappableToken'
 import {
   Sheet,
   SheetContent,
@@ -5,9 +6,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-import { fetchChapter, fetchGrammar, fetchMetadata } from '@/lib/book-store'
+import { fetchChapter, fetchGrammar, fetchMetadata, fetchVocab } from '@/lib/book-store'
 import { getBookmark } from '@/lib/bookmarks'
-import type { BookMetadata, GrammarEntry, Paragraph, Token } from '@/lib/types'
+import type { BookMetadata, GrammarEntry, Paragraph, VocabEntry } from '@/lib/types'
 import { BookOpen } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
@@ -22,34 +23,6 @@ function readFuriganaPref(): boolean {
   }
 }
 
-function TokenSpan({ token, showFurigana }: { token: Token; showFurigana: boolean }) {
-  const inner =
-    token.r && showFurigana ? (
-      <ruby>
-        <rb>{token.s}</rb>
-        <rt>{token.r}</rt>
-      </ruby>
-    ) : (
-      token.s
-    )
-
-  if (token.v) {
-    return (
-      <button
-        type="button"
-        aria-label={token.s}
-        className="font-bold text-foreground hover:text-primary"
-        onClick={() => {
-          // Popup wired up in #8
-        }}
-      >
-        {inner}
-      </button>
-    )
-  }
-  return <span className="opacity-50">{inner}</span>
-}
-
 export default function Reader() {
   const { slug } = useParams<{ slug: string }>()
   const [params, setParams] = useSearchParams()
@@ -58,6 +31,7 @@ export default function Reader() {
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
   const [paragraphs, setParagraphs] = useState<Paragraph[] | null>(null)
+  const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
   const [showFurigana, setShowFurigana] = useState<boolean>(() => readFuriganaPref())
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<Paragraph | null>(null)
@@ -69,6 +43,21 @@ export default function Reader() {
       // ignore
     }
   }, [showFurigana])
+
+  useEffect(() => {
+    if (!slug) return
+    let cancelled = false
+    fetchVocab(slug)
+      .then((v) => {
+        if (!cancelled) setVocab(v)
+      })
+      .catch(() => {
+        if (!cancelled) setVocab(new Map())
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
 
   useEffect(() => {
     if (!slug) return
@@ -132,7 +121,12 @@ export default function Reader() {
       {paragraphs?.map((p) => (
         <p key={p.id} data-paragraph-id={p.id} className="mt-4 leading-loose">
           {p.tokens.map((t, i) => (
-            <TokenSpan key={`${p.id}-${i}`} token={t} showFurigana={showFurigana} />
+            <TappableToken
+              key={`${p.id}-${i}`}
+              token={t}
+              vocab={vocab}
+              showFurigana={showFurigana}
+            />
           ))}
           {p.grammar && p.grammar.length > 0 ? (
             <>

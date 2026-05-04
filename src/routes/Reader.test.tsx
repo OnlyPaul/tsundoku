@@ -27,6 +27,10 @@ const CHAPTER_2_JSONL =
 const GRAMMAR_JSONL =
   '{"id":"g-dakara","pattern":"〜だから","title":"Because (casual reason)","jlpt":"N5","formation":"[plain form] + だから","explanation":"Used to express a reason or cause in casual speech.","examples_in_book":[{"chapter":"00-test-chapter-1","paragraph":"p0"}],"see_also":[]}\n'
 
+const VOCAB_JSONL =
+  '{"id":"watashi","lemma":"私","reading":"わたし","pos":"pronoun","jlpt":"N5","meanings":["I","me"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}\n' +
+  '{"id":"yomu","lemma":"読む","reading":"よむ","pos":"verb","jlpt":"N5","meanings":["to read"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}\n'
+
 let fetchMock: ReturnType<typeof vi.fn>
 
 function jsonResponse(body: unknown) {
@@ -49,6 +53,7 @@ beforeEach(() => {
     if (url.endsWith('/00-test-chapter-1.jsonl')) return chapterResponse(CHAPTER_1_JSONL)
     if (url.endsWith('/01-test-chapter-2.jsonl')) return chapterResponse(CHAPTER_2_JSONL)
     if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+    if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
     return new Response('not found', { status: 404 })
   })
   vi.stubGlobal('fetch', fetchMock)
@@ -187,6 +192,34 @@ describe('Reader', () => {
     await waitFor(() => {
       expect(localStorage.getItem('tsundoku.furigana')).toBe('off')
     })
+  })
+
+  it('opens a vocab popover with reading, meaning, JLPT, and POS when a vocab token is tapped', async () => {
+    const user = userEvent.setup()
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    const watashi = await screen.findByRole('button', { name: '私' })
+    await user.click(watashi)
+    expect(await screen.findByText('I')).toBeInTheDocument()
+    expect(screen.getByText('N5')).toBeInTheDocument()
+    expect(screen.getByText('pronoun')).toBeInTheDocument()
+  })
+
+  it('shows the lemma in the popover header for a conjugated token', async () => {
+    const user = userEvent.setup()
+    gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+    render(<App />)
+    const conjugated = await screen.findByRole('button', { name: '読' })
+    await user.click(conjugated)
+    const heading = await screen.findByRole('heading')
+    expect(heading).toHaveTextContent('読む')
+  })
+
+  it('does not open a popover for tokens without a v field', async () => {
+    gotoReader('/reader/tsundoku-test?chapter=01-test-chapter-2&paragraph=p0')
+    render(<App />)
+    await findParagraphByText('今日はいい天気です。')
+    expect(screen.queryByRole('button', { name: '今日' })).not.toBeInTheDocument()
   })
 
   it('disables Next on the last chapter', async () => {
