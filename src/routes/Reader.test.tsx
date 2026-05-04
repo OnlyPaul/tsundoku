@@ -325,6 +325,32 @@ describe('Reader', () => {
       })
     })
 
+    it('saves the most-visible paragraph when multiple are 50%+ visible', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      const p0 = await findParagraphByText('私は本を読みました。')
+      const p1 = await findParagraphByText('猫が好きです。')
+
+      fireIntersection([
+        { target: p0, isIntersecting: true, intersectionRatio: 0.55 },
+        { target: p1, isIntersecting: true, intersectionRatio: 0.85 },
+      ])
+
+      await waitFor(() => {
+        expect(getBookmark('tsundoku-test')).toEqual({
+          chapterId: '00-test-chapter-1',
+          paragraphId: 'p1',
+        })
+      })
+    })
+
+    it('sets history.scrollRestoration to manual to prevent the browser from racing the restore', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await findParagraphByText('私は本を読みました。')
+      expect(window.history.scrollRestoration).toBe('manual')
+    })
+
     it("does not overwrite another book's bookmark", async () => {
       setBookmark('other-book', { chapterId: 'ch-x', paragraphId: 'p-x' })
 

@@ -103,13 +103,21 @@ export default function Reader() {
   }, [chapterTitle])
 
   useEffect(() => {
+    const prev = window.history.scrollRestoration
+    window.history.scrollRestoration = 'manual'
+    return () => {
+      window.history.scrollRestoration = prev
+    }
+  }, [])
+
+  useEffect(() => {
     if (!slug || !chapterId || !paragraphs) return
     const key = `${slug}::${chapterId}`
     if (restoredForRef.current === key) return
     const saved = getBookmark(slug)
     if (saved && saved.chapterId === chapterId) {
       const target = paragraphRefs.current.get(saved.paragraphId)
-      if (target) target.scrollIntoView({ block: 'start' })
+      if (target) target.scrollIntoView({ block: 'center' })
     }
     restoredForRef.current = key
   }, [slug, chapterId, paragraphs])
@@ -117,15 +125,20 @@ export default function Reader() {
   useEffect(() => {
     if (!slug || !chapterId || !paragraphs) return
     if (typeof IntersectionObserver === 'undefined') return
+    if (restoredForRef.current !== `${slug}::${chapterId}`) return
 
     const observer = new IntersectionObserver(
       (entries) => {
+        let best: { pid: string; ratio: number } | null = null
         for (const entry of entries) {
           if (!entry.isIntersecting || entry.intersectionRatio < 0.5) continue
           const pid = (entry.target as HTMLElement).dataset.paragraphId
           if (!pid) continue
-          setBookmark(slug, { chapterId, paragraphId: pid })
+          if (!best || entry.intersectionRatio > best.ratio) {
+            best = { pid, ratio: entry.intersectionRatio }
+          }
         }
+        if (best) setBookmark(slug, { chapterId, paragraphId: best.pid })
       },
       { threshold: [0.5] },
     )
