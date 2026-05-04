@@ -179,6 +179,16 @@ Chapter list is in spine reading order.
 
 Read the existing array (or treat as `[]` if missing/empty). Add `SLUG` if not already present. Sort alphabetically. Write back.
 
+### 5e. Format generated JSON
+
+Run the project's formatter so generated files match repo style and don't fail CI:
+
+```bash
+./node_modules/.bin/biome check --write books/$SLUG/metadata.json books/index.json
+```
+
+(JSONL files are not formatted by Biome; only `metadata.json` and `index.json` need this pass.)
+
 ---
 
 ## 6. Self-check
