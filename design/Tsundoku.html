@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tsundoku — Japanese reader prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho:wght@400;500;600&family=Klee+One:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #efe9dc; font-family: 'Source Serif 4', Georgia, serif; color: #1F1B16; }
+  * { box-sizing: border-box; }
+  body { overscroll-behavior: none; }
+  ruby { ruby-position: over; }
+  rt { user-select: none; }
+  /* Hide scrollbars inside artboards (canvas helper does this for .dc-card *) */
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" src="data.jsx"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="ios-frame.jsx"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="reader.jsx"></script>
+<script type="text/babel" src="screens.jsx"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useRef } = React;
+
+// ─────────────────────────────────────────────────────────────
+// Tablet frame — minimal iPad-style bezel
+// ─────────────────────────────────────────────────────────────
+function TabletFrame({ width = 1024, height = 720, children }) {
+  return (
+    <div style={{
+      width, height,
+      borderRadius: 26,
+      padding: 14,
+      background: '#1a1612',
+      boxShadow: '0 0 0 1px rgba(0,0,0,0.5), 0 18px 50px rgba(31,27,22,0.25)',
+      position: 'relative',
+    }}>
+      <div style={{
+        width: '100%', height: '100%',
+        borderRadius: 14,
+        overflow: 'hidden',
+        background: '#F5EFE4',
+        position: 'relative',
+      }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Phone screen wrapper — uses IOSDevice + handles screen routing
+// ─────────────────────────────────────────────────────────────
+function PhoneApp({ initialScreen = 'home', tweaks, setTweak, openPopupOnLoad = false, openGrammarOnLoad = false }) {
+  const [screen, setScreen] = useState(initialScreen);
+  const [book, setBook] = useState(BOOKS[0]);
+  const rootRef = useRef(null);
+
+  // Demo: auto-open popup or grammar after mount for the showcase artboards.
+  // Scope queries to this instance's own DOM so each artboard acts independently.
+  useEffect(() => {
+    if (screen !== 'reader') return;
+    const root = rootRef.current;
+    if (!root) return;
+    if (openPopupOnLoad) {
+      const t = setTimeout(() => {
+        const p = root.querySelector('[data-pid="p003"]');
+        if (p) {
+          const tappable = p.querySelector('[data-tappable="1"]');
+          if (tappable) tappable.click();
+        }
+      }, 350);
+      return () => clearTimeout(t);
+    }
+    if (openGrammarOnLoad) {
+      const t = setTimeout(() => {
+        const btn = root.querySelector('[data-pid="p004"] button');
+        if (btn) btn.click();
+      }, 350);
+      return () => clearTimeout(t);
+    }
+  }, [screen, openPopupOnLoad, openGrammarOnLoad]);
+
+  return (
+    <div ref={rootRef} style={{ display: 'inline-block' }}>
+    <IOSDevice width={390} height={844}>
+      {screen === 'home' && (
+        <HomeScreen
+          books={BOOKS}
+          mode="phone"
+          onOpen={(b) => { setBook(b); setScreen('reader'); }}
+        />
+      )}
+      {screen === 'reader' && (
+        <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+          <ReaderScreen
+            book={book}
+            chapter={book.chapter_data?.ch01 || CHAPTER_1}
+            mode="phone"
+            furigana={tweaks.furigana}
+            fontSize={tweaks.fontSize}
+            lineHeight={1.95}
+            jpFont={tweaks.jpFont}
+            vocabMap={VOCAB}
+            kanjiMap={KANJI}
+            grammarMap={GRAMMAR}
+            initialBookmark={book.bookmark}
+            onBack={() => setScreen('home')}
+            onSettings={() => setScreen('settings')}
+          />
+        </div>
+      )}
+      {screen === 'settings' && (
+        <SettingsScreen
+          mode="phone"
+          tweaks={tweaks}
+          setTweak={setTweak}
+          onClose={() => setScreen('reader')}
+        />
+      )}
+    </IOSDevice>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Tablet app — same router but in tablet frame
+// ─────────────────────────────────────────────────────────────
+function TabletApp({ initialScreen = 'reader', tweaks, setTweak, openPopupOnLoad = true, scopeId = 'tablet' }) {
+  const [screen, setScreen] = useState(initialScreen);
+  const [book, setBook] = useState(BOOKS[0]);
+
+  useEffect(() => {
+    if (screen !== 'reader' || !openPopupOnLoad) return;
+    const t = setTimeout(() => {
+      const root = document.querySelector(`[data-scope="${scopeId}"]`);
+      if (!root) return;
+      const p = root.querySelector('[data-pid="p003"]');
+      if (!p) return;
+      const tappable = p.querySelector('[data-tappable="1"]');
+      if (tappable) tappable.click();
+    }, 350);
+    return () => clearTimeout(t);
+  }, [screen, openPopupOnLoad, scopeId]);
+
+  return (
+    <div data-scope={scopeId} style={{ width: '100%', height: '100%' }}>
+      <TabletFrame width={1024} height={720}>
+        {screen === 'home' && (
+          <HomeScreen
+            books={BOOKS}
+            mode="tablet"
+            onOpen={(b) => { setBook(b); setScreen('reader'); }}
+          />
+        )}
+        {screen === 'reader' && (
+          <ReaderScreen
+            book={book}
+            chapter={book.chapter_data?.ch01 || CHAPTER_1}
+            mode="tablet"
+            furigana={tweaks.furigana}
+            fontSize={tweaks.fontSize + 2}
+            lineHeight={2.0}
+            jpFont={tweaks.jpFont}
+            vocabMap={VOCAB}
+            kanjiMap={KANJI}
+            grammarMap={GRAMMAR}
+            initialBookmark={book.bookmark}
+            onBack={() => setScreen('home')}
+            onSettings={() => setScreen('home')}
+          />
+        )}
+      </TabletFrame>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Root — DesignCanvas with all artboards, plus shared Tweaks
+// ─────────────────────────────────────────────────────────────
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "furigana": true,
+  "fontSize": 15,
+  "jpFont": "Noto Serif JP"
+}/*EDITMODE-END*/;
+
+function App() {
+  const [tweaks, setTweaks] = useTweaks(TWEAK_DEFAULTS);
+  const setTweak = (k, v) => {
+    if (typeof k === 'object') setTweaks(k);
+    else setTweaks({ [k]: v });
+  };
+
+  return (
+    <>
+      <DesignCanvas>
+        <DCSection id="phone" title="Phone — iOS PWA" subtitle="Primary form factor. Tap a word to surface vocab; long-flow shows grammar.">
+          <DCArtboard id="p-home" label="01 · Library" width={420} height={874}>
+            <PhoneApp initialScreen="home" tweaks={tweaks} setTweak={setTweak} />
+          </DCArtboard>
+          <DCArtboard id="p-reader" label="02 · Reader" width={420} height={874}>
+            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} />
+          </DCArtboard>
+          <DCArtboard id="p-vocab" label="03 · Vocab popup (sheet)" width={420} height={874}>
+            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openPopupOnLoad />
+          </DCArtboard>
+          <DCArtboard id="p-grammar" label="04 · Grammar sheet" width={420} height={874}>
+            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openGrammarOnLoad />
+          </DCArtboard>
+          <DCArtboard id="p-settings" label="05 · Settings" width={420} height={874}>
+            <PhoneApp initialScreen="settings" tweaks={tweaks} setTweak={setTweak} />
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="tablet" title="Tablet — iPad" subtitle="Wider line length, popover anchored to the tapped word.">
+          <DCArtboard id="t-home" label="01 · Library" width={1052} height={748}>
+            <TabletApp initialScreen="home" tweaks={tweaks} setTweak={setTweak} openPopupOnLoad={false} scopeId="t-home" />
+          </DCArtboard>
+          <DCArtboard id="t-reader" label="02 · Reader + popover" width={1052} height={748}>
+            <TabletApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openPopupOnLoad={true} scopeId="t-reader" />
+          </DCArtboard>
+        </DCSection>
+
+        <DCPostIt top={140} left={20} rotate={-3} width={210}>
+          Paper aesthetic — warm cream <b>#F5EFE4</b>, ink <b>#1F1B16</b>.
+          Vermillion seals for grammar, indigo accent for taps.
+        </DCPostIt>
+        <DCPostIt top={520} left={20} rotate={2} width={220}>
+          Tap any <b>bold</b> word in the reader. Particles &amp; inflections are
+          dimmed and inert — focus stays on content words.
+        </DCPostIt>
+      </DesignCanvas>
+
+      {/* Tweaks panel (toolbar toggle) */}
+      <TweaksPanel title="Tweaks" defaultOpen={false}>
+        <TweakSection title="Reading">
+          <TweakToggle label="Furigana"
+            value={tweaks.furigana}
+            onChange={(v) => setTweak('furigana', v)} />
+          <TweakSlider label="Font size" min={14} max={26} step={1}
+            value={tweaks.fontSize}
+            onChange={(v) => setTweak('fontSize', v)} />
+          <TweakSelect label="Japanese font"
+            value={tweaks.jpFont}
+            options={[
+              { value: 'Noto Serif JP', label: 'Noto Serif JP' },
+              { value: 'Shippori Mincho', label: 'Shippori Mincho' },
+              { value: 'Klee One', label: 'Klee One' },
+              { value: 'Noto Sans JP', label: 'Noto Sans JP' },
+            ]}
+            onChange={(v) => setTweak('jpFont', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+</body>
+</html>
