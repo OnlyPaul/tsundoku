@@ -1,6 +1,7 @@
-import type { Token, VocabEntry } from '@/lib/types'
+import type { KanjiEntry, Token, VocabEntry } from '@/lib/types'
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 import { VocabPopup } from './VocabPopup'
 
 const KYOU: VocabEntry = {
@@ -56,5 +57,81 @@ describe('VocabPopup', () => {
     const token: Token = { s: '今日', r: 'きょう', v: 'kyou' }
     render(<VocabPopup token={token} entry={KYOU} />)
     expect(screen.getByRole('heading')).toHaveTextContent('今日')
+  })
+
+  it('shows a Kanji tab when the lemma contains kanji', () => {
+    const token: Token = { s: '今日', r: 'きょう', v: 'kyou' }
+    render(<VocabPopup token={token} entry={KYOU} />)
+    expect(screen.getByRole('tab', { name: /kanji/i })).toBeInTheDocument()
+  })
+
+  it('does not show tabs for a kana-only lemma', () => {
+    const KANA: VocabEntry = {
+      id: 'wa',
+      lemma: 'は',
+      reading: 'わ',
+      pos: 'particle',
+      jlpt: 'N5',
+      meanings: ['topic marker'],
+      frequency: 1,
+      first_seen: '00:p1',
+    }
+    const token: Token = { s: 'は', v: 'wa' }
+    render(<VocabPopup token={token} entry={KANA} />)
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument()
+  })
+
+  it('renders a kanji card per kanji char with onyomi/kunyomi/meanings when Kanji tab is opened', async () => {
+    const user = userEvent.setup()
+    const kanjiMap = new Map<string, KanjiEntry>([
+      [
+        '今',
+        {
+          kanji: '今',
+          onyomi: ['コン', 'キン'],
+          kunyomi: ['いま'],
+          meanings: ['now'],
+          jlpt: 'N5',
+          stroke_count: 4,
+          frequency: 49,
+          example_words_in_book: [],
+        },
+      ],
+      [
+        '日',
+        {
+          kanji: '日',
+          onyomi: ['ニチ', 'ジツ'],
+          kunyomi: ['ひ', 'か'],
+          meanings: ['day', 'sun'],
+          jlpt: 'N5',
+          stroke_count: 4,
+          frequency: 1,
+          example_words_in_book: [],
+        },
+      ],
+    ])
+    const token: Token = { s: '今日', r: 'きょう', v: 'kyou' }
+    render(<VocabPopup token={token} entry={KYOU} kanjiMap={kanjiMap} />)
+    await user.click(screen.getByRole('tab', { name: /kanji/i }))
+
+    expect(screen.getByText('コン、キン')).toBeInTheDocument()
+    expect(screen.getByText('いま')).toBeInTheDocument()
+    expect(screen.getByText('ニチ、ジツ')).toBeInTheDocument()
+    expect(screen.getByText('ひ、か')).toBeInTheDocument()
+    expect(screen.getByText('day, sun')).toBeInTheDocument()
+  })
+
+  it('calls onOpenKanjiTab the first time the Kanji tab is selected', async () => {
+    const user = userEvent.setup()
+    const onOpenKanjiTab = vi.fn()
+    const token: Token = { s: '今日', r: 'きょう', v: 'kyou' }
+    render(
+      <VocabPopup token={token} entry={KYOU} kanjiMap={null} onOpenKanjiTab={onOpenKanjiTab} />,
+    )
+    await user.click(screen.getByRole('tab', { name: /kanji/i }))
+    await user.click(screen.getByRole('tab', { name: /meanings/i }))
+    await user.click(screen.getByRole('tab', { name: /kanji/i }))
+    expect(onOpenKanjiTab).toHaveBeenCalled()
   })
 })

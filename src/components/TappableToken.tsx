@@ -1,14 +1,22 @@
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-import type { Token, VocabEntry } from '@/lib/types'
+import type { KanjiEntry, Token, VocabEntry } from '@/lib/types'
 import { VocabPopup } from './VocabPopup'
 
 interface TappableTokenProps {
   token: Token
   vocab: Map<string, VocabEntry> | null
+  kanjiMap?: Map<string, KanjiEntry> | null
+  onOpenKanjiTab?: () => void
   showFurigana?: boolean
 }
 
-export function TappableToken({ token, vocab, showFurigana = false }: TappableTokenProps) {
+export function TappableToken({
+  token,
+  vocab,
+  kanjiMap,
+  onOpenKanjiTab,
+  showFurigana = false,
+}: TappableTokenProps) {
   const inner =
     token.r && showFurigana ? (
       <ruby>
@@ -35,7 +43,12 @@ export function TappableToken({ token, vocab, showFurigana = false }: TappableTo
         </button>
       </PopoverTrigger>
       <PopoverContent>
-        <VocabPopup token={token} entry={entry} />
+        <VocabPopup
+          token={token}
+          entry={entry}
+          kanjiMap={kanjiMap}
+          onOpenKanjiTab={onOpenKanjiTab}
+        />
       </PopoverContent>
     </Popover>
   )

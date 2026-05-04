@@ -6,9 +6,9 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-import { fetchChapter, fetchGrammar, fetchMetadata, fetchVocab } from '@/lib/book-store'
+import { fetchChapter, fetchGrammar, fetchKanji, fetchMetadata, fetchVocab } from '@/lib/book-store'
 import { getBookmark } from '@/lib/bookmarks'
-import type { BookMetadata, GrammarEntry, Paragraph, VocabEntry } from '@/lib/types'
+import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/lib/types'
 import { BookOpen } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
@@ -32,6 +32,8 @@ export default function Reader() {
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
   const [paragraphs, setParagraphs] = useState<Paragraph[] | null>(null)
   const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
+  const [kanjiMap, setKanjiMap] = useState<Map<string, KanjiEntry> | null>(null)
+  const [kanjiRequested, setKanjiRequested] = useState(false)
   const [showFurigana, setShowFurigana] = useState<boolean>(() => readFuriganaPref())
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<Paragraph | null>(null)
@@ -45,6 +47,8 @@ export default function Reader() {
   }, [showFurigana])
 
   useEffect(() => {
+    setKanjiMap(null)
+    setKanjiRequested(false)
     if (!slug) return
     let cancelled = false
     fetchVocab(slug)
@@ -125,6 +129,14 @@ export default function Reader() {
               key={`${p.id}-${i}`}
               token={t}
               vocab={vocab}
+              kanjiMap={kanjiMap}
+              onOpenKanjiTab={() => {
+                if (kanjiRequested || !slug) return
+                setKanjiRequested(true)
+                fetchKanji(slug)
+                  .then(setKanjiMap)
+                  .catch(() => setKanjiMap(new Map()))
+              }}
               showFurigana={showFurigana}
             />
           ))}
