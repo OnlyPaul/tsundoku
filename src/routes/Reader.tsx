@@ -1,6 +1,7 @@
-import { fetchChapter, fetchMetadata } from '@/lib/book-store'
+import { TappableToken } from '@/components/TappableToken'
+import { fetchChapter, fetchMetadata, fetchVocab } from '@/lib/book-store'
 import { getBookmark } from '@/lib/bookmarks'
-import type { BookMetadata, Paragraph } from '@/lib/types'
+import type { BookMetadata, Paragraph, VocabEntry } from '@/lib/types'
 import { useEffect, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 
@@ -12,6 +13,22 @@ export default function Reader() {
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
   const [paragraphs, setParagraphs] = useState<Paragraph[] | null>(null)
+  const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
+
+  useEffect(() => {
+    if (!slug) return
+    let cancelled = false
+    fetchVocab(slug)
+      .then((v) => {
+        if (!cancelled) setVocab(v)
+      })
+      .catch(() => {
+        if (!cancelled) setVocab(new Map())
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
 
   useEffect(() => {
     if (!slug) return
@@ -50,7 +67,9 @@ export default function Reader() {
       </Link>
       {paragraphs?.map((p) => (
         <p key={p.id} className="mt-4 leading-loose">
-          {p.tokens.map((t) => t.s).join('')}
+          {p.tokens.map((t, i) => (
+            <TappableToken key={`${p.id}-${i}`} token={t} vocab={vocab} />
+          ))}
         </p>
       ))}
       {metadata && chapterId ? (
