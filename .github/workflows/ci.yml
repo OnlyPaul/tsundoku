@@ -44,6 +44,9 @@ jobs:
         env:
           VITE_BASE: /tsundoku/
 
+      - name: SPA 404 fallback
+        run: cp dist/index.html dist/404.html
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
