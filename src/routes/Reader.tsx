@@ -1,3 +1,4 @@
+import { TappableToken } from '@/components/TappableToken'
 import {
   Sheet,
   SheetContent,
@@ -5,11 +6,11 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-import { fetchChapter, fetchGrammar, fetchMetadata } from '@/lib/book-store'
-import { getBookmark } from '@/lib/bookmarks'
-import type { BookMetadata, GrammarEntry, Paragraph, Token } from '@/lib/types'
+import { fetchChapter, fetchGrammar, fetchKanji, fetchMetadata, fetchVocab } from '@/lib/book-store'
+import { getBookmark, setBookmark } from '@/lib/bookmarks'
+import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/lib/types'
 import { BookOpen } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 
 const FURIGANA_KEY = 'tsundoku.furigana'
@@ -22,34 +23,6 @@ function readFuriganaPref(): boolean {
   }
 }
 
-function TokenSpan({ token, showFurigana }: { token: Token; showFurigana: boolean }) {
-  const inner =
-    token.r && showFurigana ? (
-      <ruby>
-        <rb>{token.s}</rb>
-        <rt>{token.r}</rt>
-      </ruby>
-    ) : (
-      token.s
-    )
-
-  if (token.v) {
-    return (
-      <button
-        type="button"
-        aria-label={token.s}
-        className="font-bold text-foreground hover:text-primary"
-        onClick={() => {
-          // Popup wired up in #8
-        }}
-      >
-        {inner}
-      </button>
-    )
-  }
-  return <span className="opacity-50">{inner}</span>
-}
-
 export default function Reader() {
   const { slug } = useParams<{ slug: string }>()
   const [params, setParams] = useSearchParams()
@@ -58,9 +31,14 @@ export default function Reader() {
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
   const [paragraphs, setParagraphs] = useState<Paragraph[] | null>(null)
+  const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
+  const [kanjiMap, setKanjiMap] = useState<Map<string, KanjiEntry> | null>(null)
+  const [kanjiRequested, setKanjiRequested] = useState(false)
   const [showFurigana, setShowFurigana] = useState<boolean>(() => readFuriganaPref())
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<Paragraph | null>(null)
+  const paragraphRefs = useRef(new Map<string, HTMLElement>())
+  const restoredForRef = useRef<string | null>(null)
 
   useEffect(() => {
     try {
@@ -69,6 +47,23 @@ export default function Reader() {
       // ignore
     }
   }, [showFurigana])
+
+  useEffect(() => {
+    setKanjiMap(null)
+    setKanjiRequested(false)
+    if (!slug) return
+    let cancelled = false
+    fetchVocab(slug)
+      .then((v) => {
+        if (!cancelled) setVocab(v)
+      })
+      .catch(() => {
+        if (!cancelled) setVocab(new Map())
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [slug])
 
   useEffect(() => {
     if (!slug) return
@@ -100,6 +95,60 @@ export default function Reader() {
     if (chapterTitle) document.title = chapterTitle
   }, [chapterTitle])
 
+  useEffect(() => {
+    if (!slug || !chapterId || !paragraphs) return
+    const key = `${slug}::${chapterId}`
+    if (restoredForRef.current === key) return
+    const saved = getBookmark(slug)
+    if (saved && saved.chapterId === chapterId) {
+      const target = paragraphRefs.current.get(saved.paragraphId)
+      if (target) {
+        const rect = target.getBoundingClientRect()
+        const docTop = window.scrollY + rect.top
+        const offset = saved.offset ?? 0
+        window.scrollTo({ top: docTop + offset * rect.height, behavior: 'instant' })
+      }
+    }
+    restoredForRef.current = key
+  }, [slug, chapterId, paragraphs])
+
+  useEffect(() => {
+    if (!slug || !chapterId || !paragraphs) return
+    if (restoredForRef.current !== `${slug}::${chapterId}`) return
+
+    let frame: number | null = null
+    function save() {
+      frame = null
+      const anchorY = 0
+      let inside: { id: string; top: number; height: number } | null = null
+      let firstBelow: { id: string; top: number } | null = null
+      for (const [id, el] of paragraphRefs.current) {
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= anchorY && rect.bottom > anchorY) {
+          inside = { id, top: rect.top, height: rect.height }
+          break
+        }
+        if (rect.top > anchorY && (!firstBelow || rect.top < firstBelow.top)) {
+          firstBelow = { id, top: rect.top }
+        }
+      }
+      const chosen = inside ?? (firstBelow ? { ...firstBelow, height: 0 } : null)
+      if (!chosen || !slug || !chapterId) return
+      const offset =
+        chosen.height > 0 ? Math.min(1, Math.max(0, (anchorY - chosen.top) / chosen.height)) : 0
+      setBookmark(slug, { chapterId, paragraphId: chosen.id, offset })
+    }
+    function onScroll() {
+      if (frame !== null) return
+      frame = requestAnimationFrame(save)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame !== null) cancelAnimationFrame(frame)
+    }
+  }, [slug, chapterId, paragraphs])
+
   function openGrammarSheet(paragraph: Paragraph) {
     setOpenGrammarFor(paragraph)
     if (!grammarMap && slug) {
@@ -130,9 +179,30 @@ export default function Reader() {
         </button>
       </div>
       {paragraphs?.map((p) => (
-        <p key={p.id} data-paragraph-id={p.id} className="mt-4 leading-loose">
+        <p
+          key={p.id}
+          ref={(el) => {
+            if (el) paragraphRefs.current.set(p.id, el)
+            else paragraphRefs.current.delete(p.id)
+          }}
+          data-paragraph-id={p.id}
+          className="mt-4 leading-loose"
+        >
           {p.tokens.map((t, i) => (
-            <TokenSpan key={`${p.id}-${i}`} token={t} showFurigana={showFurigana} />
+            <TappableToken
+              key={`${p.id}-${i}`}
+              token={t}
+              vocab={vocab}
+              kanjiMap={kanjiMap}
+              onOpenKanjiTab={() => {
+                if (kanjiRequested || !slug) return
+                setKanjiRequested(true)
+                fetchKanji(slug)
+                  .then(setKanjiMap)
+                  .catch(() => setKanjiMap(new Map()))
+              }}
+              showFurigana={showFurigana}
+            />
           ))}
           {p.grammar && p.grammar.length > 0 ? (
             <>
