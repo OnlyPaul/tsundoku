@@ -1,6 +1,7 @@
 export interface Bookmark {
   chapterId: string
   paragraphId: string
+  offset?: number
 }
 
 const KEY_PREFIX = 'tsundoku:bookmark:'
