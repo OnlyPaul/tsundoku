@@ -11,6 +11,25 @@ describe('bookmarks', () => {
     expect(getBookmark('book-1')).toEqual({ chapterId: 'ch3', paragraphId: 'p7' })
   })
 
+  it('roundtrips an offset within the paragraph', () => {
+    setBookmark('book-1', { chapterId: 'ch3', paragraphId: 'p7', offset: 0.42 })
+    expect(getBookmark('book-1')).toEqual({
+      chapterId: 'ch3',
+      paragraphId: 'p7',
+      offset: 0.42,
+    })
+  })
+
+  it('reads back legacy bookmarks without offset (forward-compat)', () => {
+    localStorage.setItem(
+      'tsundoku:bookmark:legacy-book',
+      JSON.stringify({ chapterId: 'ch1', paragraphId: 'p2' }),
+    )
+    const bm = getBookmark('legacy-book')
+    expect(bm).toEqual({ chapterId: 'ch1', paragraphId: 'p2' })
+    expect(bm?.offset).toBeUndefined()
+  })
+
   it('returns null when no bookmark exists for a book', () => {
     expect(getBookmark('never-saved')).toBeNull()
   })

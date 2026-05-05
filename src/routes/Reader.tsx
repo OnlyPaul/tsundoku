@@ -96,48 +96,57 @@ export default function Reader() {
   }, [chapterTitle])
 
   useEffect(() => {
-    const prev = window.history.scrollRestoration
-    window.history.scrollRestoration = 'manual'
-    return () => {
-      window.history.scrollRestoration = prev
-    }
-  }, [])
-
-  useEffect(() => {
     if (!slug || !chapterId || !paragraphs) return
     const key = `${slug}::${chapterId}`
     if (restoredForRef.current === key) return
     const saved = getBookmark(slug)
     if (saved && saved.chapterId === chapterId) {
       const target = paragraphRefs.current.get(saved.paragraphId)
-      if (target) target.scrollIntoView({ block: 'center' })
+      if (target) {
+        const rect = target.getBoundingClientRect()
+        const docTop = window.scrollY + rect.top
+        const offset = saved.offset ?? 0
+        window.scrollTo({ top: docTop + offset * rect.height, behavior: 'instant' })
+      }
     }
     restoredForRef.current = key
   }, [slug, chapterId, paragraphs])
 
   useEffect(() => {
     if (!slug || !chapterId || !paragraphs) return
-    if (typeof IntersectionObserver === 'undefined') return
     if (restoredForRef.current !== `${slug}::${chapterId}`) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        let best: { pid: string; ratio: number } | null = null
-        for (const entry of entries) {
-          if (!entry.isIntersecting || entry.intersectionRatio < 0.5) continue
-          const pid = (entry.target as HTMLElement).dataset.paragraphId
-          if (!pid) continue
-          if (!best || entry.intersectionRatio > best.ratio) {
-            best = { pid, ratio: entry.intersectionRatio }
-          }
+    let frame: number | null = null
+    function save() {
+      frame = null
+      const anchorY = 0
+      let inside: { id: string; top: number; height: number } | null = null
+      let firstBelow: { id: string; top: number } | null = null
+      for (const [id, el] of paragraphRefs.current) {
+        const rect = el.getBoundingClientRect()
+        if (rect.top <= anchorY && rect.bottom > anchorY) {
+          inside = { id, top: rect.top, height: rect.height }
+          break
         }
-        if (best) setBookmark(slug, { chapterId, paragraphId: best.pid })
-      },
-      { threshold: [0.5] },
-    )
-
-    for (const el of paragraphRefs.current.values()) observer.observe(el)
-    return () => observer.disconnect()
+        if (rect.top > anchorY && (!firstBelow || rect.top < firstBelow.top)) {
+          firstBelow = { id, top: rect.top }
+        }
+      }
+      const chosen = inside ?? (firstBelow ? { ...firstBelow, height: 0 } : null)
+      if (!chosen || !slug || !chapterId) return
+      const offset =
+        chosen.height > 0 ? Math.min(1, Math.max(0, (anchorY - chosen.top) / chosen.height)) : 0
+      setBookmark(slug, { chapterId, paragraphId: chosen.id, offset })
+    }
+    function onScroll() {
+      if (frame !== null) return
+      frame = requestAnimationFrame(save)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (frame !== null) cancelAnimationFrame(frame)
+    }
   }, [slug, chapterId, paragraphs])
 
   function openGrammarSheet(paragraph: Paragraph) {
