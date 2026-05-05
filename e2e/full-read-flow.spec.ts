@@ -18,7 +18,7 @@ test.describe('full read flow', () => {
     const popup = page.getByRole('dialog')
     await expect(popup).toBeVisible()
     await expect(popup.getByText('わたし')).toBeVisible()
-    await expect(popup.getByText(/\bI\b|me/)).toBeVisible()
+    await expect(popup.getByText('I', { exact: true })).toBeVisible()
 
     await page.keyboard.press('Escape')
     await expect(popup).toBeHidden()
