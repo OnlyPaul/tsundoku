@@ -898,3 +898,153 @@
 {"kanji": "撤", "onyomi": ["テツ"], "kunyomi": [], "meanings": ["remove", "withdraw", "retreat"], "jlpt": "N1", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1295"]}
 {"kanji": "撫", "onyomi": ["ブ"], "kunyomi": ["な.でる"], "meanings": ["stroke", "pet", "caress"], "jlpt": null, "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1723"]}
 {"kanji": "擦", "onyomi": ["サツ"], "kunyomi": ["す.る", "す.れる", "こす.る"], "meanings": ["rub", "scrub", "scratch"], "jlpt": "N1", "stroke_count": 17, "frequency": 1, "example_words_in_book": ["v0991"]}
+{"kanji": "擲", "onyomi": ["テキ", "チャク"], "kunyomi": ["なげう.つ"], "meanings": ["fling", "throw"], "jlpt": null, "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v2789"]}
+{"kanji": "支", "onyomi": ["シ"], "kunyomi": ["ささ.える"], "meanings": ["support", "branch", "sustain"], "jlpt": "N3", "stroke_count": 4, "frequency": 1, "example_words_in_book": ["v0484"]}
+{"kanji": "改", "onyomi": ["カイ"], "kunyomi": ["あらた.める", "あらた.まる"], "meanings": ["reform", "renew", "revise"], "jlpt": "N2", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v2688"]}
+{"kanji": "敗", "onyomi": ["ハイ"], "kunyomi": ["やぶ.れる"], "meanings": ["failure", "defeat", "lose"], "jlpt": "N3", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v2112"]}
+{"kanji": "教", "onyomi": ["キョウ"], "kunyomi": ["おし.える", "おそ.わる"], "meanings": ["teach", "instruct"], "jlpt": "N5", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v0742"]}
+{"kanji": "敢", "onyomi": ["カン"], "kunyomi": ["あ.えて"], "meanings": ["daring", "bold", "venture"], "jlpt": "N1", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0046"]}
+{"kanji": "整", "onyomi": ["セイ"], "kunyomi": ["ととの.える", "ととの.う"], "meanings": ["put in order", "arrange", "adjust"], "jlpt": "N3", "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v1717"]}
+{"kanji": "斉", "onyomi": ["セイ"], "kunyomi": [], "meanings": ["equal", "similar", "uniform"], "jlpt": "N1", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1678"]}
+{"kanji": "斐", "onyomi": ["ヒ"], "kunyomi": [], "meanings": ["beautiful", "patterned"], "jlpt": null, "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v2055"]}
+{"kanji": "施", "onyomi": ["シ", "セ"], "kunyomi": ["ほどこ.す"], "meanings": ["carry out", "perform", "give"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0396"]}
+{"kanji": "既", "onyomi": ["キ"], "kunyomi": ["すで.に"], "meanings": ["already", "previously", "long ago"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v0164"]}
+{"kanji": "旦", "onyomi": ["タン", "ダン"], "kunyomi": [], "meanings": ["daybreak", "dawn", "morning"], "jlpt": "N1", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v1294"]}
+{"kanji": "昔", "onyomi": ["セキ", "シャク"], "kunyomi": ["むかし"], "meanings": ["long ago", "former times", "past"], "jlpt": "N4", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v0009"]}
+{"kanji": "映", "onyomi": ["エイ"], "kunyomi": ["うつ.る", "うつ.す", "は.える"], "meanings": ["reflect", "project", "shine"], "jlpt": "N3", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0965"]}
+{"kanji": "昨", "onyomi": ["サク"], "kunyomi": [], "meanings": ["yesterday", "previous"], "jlpt": "N4", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0540"]}
+{"kanji": "是", "onyomi": ["ゼ"], "kunyomi": [], "meanings": ["just so", "this", "right"], "jlpt": "N2", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v1918"]}
+{"kanji": "景", "onyomi": ["ケイ"], "kunyomi": [], "meanings": ["scenery", "view", "condition"], "jlpt": "N3", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v1813"]}
+{"kanji": "暇", "onyomi": ["カ"], "kunyomi": ["ひま", "いとま"], "meanings": ["leisure", "spare time", "rest"], "jlpt": "N3", "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v0698"]}
+{"kanji": "暴", "onyomi": ["ボウ", "バク"], "kunyomi": ["あば.く", "あば.れる"], "meanings": ["violence", "rage", "expose"], "jlpt": "N2", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v2225"]}
+{"kanji": "曰", "onyomi": ["エツ"], "kunyomi": ["いわ.く", "いわ.れ"], "meanings": ["say", "reason", "pretext"], "jlpt": null, "stroke_count": 4, "frequency": 1, "example_words_in_book": ["v2558"]}
+{"kanji": "期", "onyomi": ["キ", "ゴ"], "kunyomi": [], "meanings": ["period", "time", "term"], "jlpt": "N3", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0480"]}
+{"kanji": "朦", "onyomi": ["モウ", "ボウ"], "kunyomi": [], "meanings": ["dim", "hazy"], "jlpt": null, "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v1965"]}
+{"kanji": "朧", "onyomi": ["ロウ"], "kunyomi": ["おぼろ"], "meanings": ["hazy", "dim", "obscure"], "jlpt": null, "stroke_count": 20, "frequency": 1, "example_words_in_book": ["v1965"]}
+{"kanji": "末", "onyomi": ["マツ", "バツ"], "kunyomi": ["すえ"], "meanings": ["end", "tip", "close"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v2207"]}
+{"kanji": "材", "onyomi": ["ザイ"], "kunyomi": [], "meanings": ["material", "timber", "talent"], "jlpt": "N3", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v0809"]}
+{"kanji": "林", "onyomi": ["リン"], "kunyomi": ["はやし"], "meanings": ["woods", "forest"], "jlpt": "N4", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v0747"]}
+{"kanji": "架", "onyomi": ["カ"], "kunyomi": ["か.ける", "か.かる"], "meanings": ["erect", "bridge", "frame"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v1806"]}
+{"kanji": "柔", "onyomi": ["ジュウ", "ニュウ"], "kunyomi": ["やわ.らか", "やわ.らかい"], "meanings": ["soft", "gentle", "tender"], "jlpt": "N2", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v2104"]}
+{"kanji": "柳", "onyomi": ["リュウ"], "kunyomi": ["やなぎ"], "meanings": ["willow"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0316"]}
+{"kanji": "梟", "onyomi": ["キョウ"], "kunyomi": ["ふくろう"], "meanings": ["owl"], "jlpt": null, "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v0892"]}
+{"kanji": "棍", "onyomi": ["コン"], "kunyomi": [], "meanings": ["cudgel", "stick", "staff"], "jlpt": null, "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v1183"]}
+{"kanji": "棚", "onyomi": [], "kunyomi": ["たな"], "meanings": ["shelf", "rack", "frame"], "jlpt": "N2", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v2626"]}
+{"kanji": "椅", "onyomi": ["イ"], "kunyomi": [], "meanings": ["chair"], "jlpt": "N3", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0667"]}
+{"kanji": "歪", "onyomi": ["ワイ", "エイ"], "kunyomi": ["ゆが.む", "ゆが.める", "いびつ"], "meanings": ["warp", "distort", "strain"], "jlpt": null, "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0646"]}
+{"kanji": "歴", "onyomi": ["レキ", "レッキ"], "kunyomi": [], "meanings": ["history", "curriculum"], "jlpt": "N3", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v2183"]}
+{"kanji": "殴", "onyomi": ["オウ"], "kunyomi": ["なぐ.る"], "meanings": ["hit", "strike", "beat"], "jlpt": "N2", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v2685"]}
+{"kanji": "殿", "onyomi": ["デン", "テン"], "kunyomi": ["との", "どの"], "meanings": ["lord", "palace", "Mr."], "jlpt": "N1", "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v0027"]}
+{"kanji": "毛", "onyomi": ["モウ"], "kunyomi": ["け"], "meanings": ["fur", "hair", "feather"], "jlpt": "N4", "stroke_count": 4, "frequency": 1, "example_words_in_book": ["v0764"]}
+{"kanji": "永", "onyomi": ["エイ"], "kunyomi": ["なが.い"], "meanings": ["eternity", "long", "perpetual"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v1011"]}
+{"kanji": "求", "onyomi": ["キュウ", "グ"], "kunyomi": ["もと.める"], "meanings": ["request", "demand", "seek"], "jlpt": "N3", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v0196"]}
+{"kanji": "汚", "onyomi": ["オ"], "kunyomi": ["けが.す", "よご.す", "よご.れる", "きたな.い"], "meanings": ["dirty", "filthy", "pollute"], "jlpt": "N3", "stroke_count": 6, "frequency": 1, "example_words_in_book": ["v2511"]}
+{"kanji": "油", "onyomi": ["ユ"], "kunyomi": ["あぶら"], "meanings": ["oil", "fat"], "jlpt": "N3", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1170"]}
+{"kanji": "況", "onyomi": ["キョウ"], "kunyomi": ["いわ.んや", "まし.て"], "meanings": ["condition", "situation"], "jlpt": "N2", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1255"]}
+{"kanji": "波", "onyomi": ["ハ"], "kunyomi": ["なみ"], "meanings": ["waves", "billows", "Poland"], "jlpt": "N3", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v0190"]}
+{"kanji": "泣", "onyomi": ["キュウ"], "kunyomi": ["な.く"], "meanings": ["cry", "weep", "moan"], "jlpt": "N4", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1669"]}
+{"kanji": "注", "onyomi": ["チュウ"], "kunyomi": ["そそ.ぐ"], "meanings": ["pour", "irrigate", "annotate"], "jlpt": "N4", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v2360"]}
+{"kanji": "浅", "onyomi": ["セン"], "kunyomi": ["あさ.い"], "meanings": ["shallow", "superficial", "meager"], "jlpt": "N2", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v2239"]}
+{"kanji": "浴", "onyomi": ["ヨク"], "kunyomi": ["あ.びる", "あ.びせる"], "meanings": ["bathe", "be exposed to"], "jlpt": "N3", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2905"]}
+{"kanji": "涙", "onyomi": ["ルイ"], "kunyomi": ["なみだ"], "meanings": ["tears", "sympathy"], "jlpt": "N3", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2902"]}
+{"kanji": "淀", "onyomi": ["デン", "テン"], "kunyomi": ["よど.む", "よど", "よどみ"], "meanings": ["stagnate", "pool", "depression"], "jlpt": null, "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v1948"]}
+{"kanji": "清", "onyomi": ["セイ", "ショウ"], "kunyomi": ["きよ.い", "きよ.める", "きよ.まる"], "meanings": ["clean", "pure", "clear"], "jlpt": "N2", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v0658"]}
+{"kanji": "済", "onyomi": ["サイ"], "kunyomi": ["す.む", "す.ます"], "meanings": ["finish", "come to an end", "succor"], "jlpt": "N3", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v1066"]}
+{"kanji": "湛", "onyomi": ["タン"], "kunyomi": ["たた.える"], "meanings": ["fill (with water)", "overflowing"], "jlpt": null, "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v2161"]}
+{"kanji": "湧", "onyomi": ["ヨウ", "ユウ"], "kunyomi": ["わ.く"], "meanings": ["boil", "well up", "gush forth"], "jlpt": "N1", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v2099"]}
+{"kanji": "溜", "onyomi": ["リュウ"], "kunyomi": ["た.まる", "たま.る", "た.める", "たま.り"], "meanings": ["accumulate", "stagnate", "gather"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v0192"]}
+{"kanji": "溢", "onyomi": ["イツ"], "kunyomi": ["あふ.れる", "こぼ.れる"], "meanings": ["overflow", "spill", "brim with"], "jlpt": "N1", "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v0394"]}
+{"kanji": "滓", "onyomi": ["シ"], "kunyomi": ["かす", "おり"], "meanings": ["residue", "dregs", "sediment"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v2640"]}
+{"kanji": "滴", "onyomi": ["テキ"], "kunyomi": ["しずく", "したた.る"], "meanings": ["drip", "drop", "trickle"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1206"]}
+{"kanji": "漁", "onyomi": ["ギョ", "リョウ"], "kunyomi": ["すなど.る", "あさ.る"], "meanings": ["fishing", "fishery"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1442"]}
+{"kanji": "漆", "onyomi": ["シツ"], "kunyomi": ["うるし"], "meanings": ["lacquer"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1336"]}
+{"kanji": "漏", "onyomi": ["ロウ"], "kunyomi": ["も.る", "も.れる", "も.らす"], "meanings": ["leak", "escape", "time"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v2108"]}
+{"kanji": "演", "onyomi": ["エン"], "kunyomi": [], "meanings": ["perform", "act", "play"], "jlpt": "N3", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v2071"]}
+{"kanji": "潔", "onyomi": ["ケツ"], "kunyomi": ["いさぎよ.い"], "meanings": ["undefiled", "pure", "clean"], "jlpt": "N1", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v0658"]}
+{"kanji": "潜", "onyomi": ["セン"], "kunyomi": ["ひそ.む", "もぐ.る"], "meanings": ["submerge", "conceal", "hide"], "jlpt": "N2", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v2506"]}
+{"kanji": "澄", "onyomi": ["チョウ"], "kunyomi": ["す.む", "す.ます"], "meanings": ["clear", "clarify", "settle"], "jlpt": "N1", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1022"]}
+{"kanji": "濁", "onyomi": ["ダク", "ジョク"], "kunyomi": ["にご.る", "にご.す"], "meanings": ["cloudy", "impure", "muddy"], "jlpt": "N1", "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v0685"]}
+{"kanji": "濡", "onyomi": ["ジュ"], "kunyomi": ["ぬ.れる", "ぬ.らす"], "meanings": ["wet", "soak", "damp"], "jlpt": "N1", "stroke_count": 17, "frequency": 1, "example_words_in_book": ["v0846"]}
+{"kanji": "炎", "onyomi": ["エン"], "kunyomi": ["ほのお"], "meanings": ["flame", "blaze", "inflammation"], "jlpt": "N1", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1646"]}
+{"kanji": "焦", "onyomi": ["ショウ"], "kunyomi": ["こ.げる", "こ.がす", "あせ.る"], "meanings": ["scorch", "char", "impatient"], "jlpt": "N1", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v1887"]}
+{"kanji": "焼", "onyomi": ["ショウ"], "kunyomi": ["や.く", "や.ける"], "meanings": ["burn", "bake", "roast"], "jlpt": "N3", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0514"]}
+{"kanji": "煉", "onyomi": ["レン"], "kunyomi": ["ね.る"], "meanings": ["polish", "train", "knead", "refine"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v0692"]}
+{"kanji": "熱", "onyomi": ["ネツ"], "kunyomi": ["あつ.い"], "meanings": ["heat", "passion", "fever"], "jlpt": "N3", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1552"]}
+{"kanji": "爆", "onyomi": ["バク"], "kunyomi": [], "meanings": ["bomb", "explode", "burst"], "jlpt": "N2", "stroke_count": 19, "frequency": 1, "example_words_in_book": ["v1063"]}
+{"kanji": "牙", "onyomi": ["ガ", "ゲ"], "kunyomi": ["きば"], "meanings": ["fang", "tusk", "canine tooth"], "jlpt": "N1", "stroke_count": 4, "frequency": 1, "example_words_in_book": ["v0784"]}
+{"kanji": "牽", "onyomi": ["ケン"], "kunyomi": ["ひ.く"], "meanings": ["pull", "tug", "jerk"], "jlpt": null, "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v1507"]}
+{"kanji": "狂", "onyomi": ["キョウ"], "kunyomi": ["くる.う", "くる.おしい"], "meanings": ["lunatic", "mad", "crazy"], "jlpt": "N1", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v1825"]}
+{"kanji": "狙", "onyomi": ["ソ"], "kunyomi": ["ねら.う"], "meanings": ["aim at", "target", "sight"], "jlpt": "N2", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1479"]}
+{"kanji": "狩", "onyomi": ["シュ", "シュウ"], "kunyomi": ["か.る", "か.り"], "meanings": ["hunt", "gather"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0792"]}
+{"kanji": "狭", "onyomi": ["キョウ", "コウ"], "kunyomi": ["せま.い", "せば.める", "せば.まる", "さ"], "meanings": ["narrow", "cramped", "small"], "jlpt": "N3", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0880"]}
+{"kanji": "猛", "onyomi": ["モウ"], "kunyomi": ["たけ.し"], "meanings": ["fierce", "intense", "wild"], "jlpt": "N1", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v2128"]}
+{"kanji": "獲", "onyomi": ["カク"], "kunyomi": ["え.る"], "meanings": ["seize", "obtain", "catch"], "jlpt": "N1", "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v0819"]}
+{"kanji": "玉", "onyomi": ["ギョク"], "kunyomi": ["たま"], "meanings": ["jewel", "ball", "gem"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v0155"]}
+{"kanji": "珠", "onyomi": ["シュ"], "kunyomi": ["たま"], "meanings": ["pearl", "gem", "jewel"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v0155"]}
+{"kanji": "琢", "onyomi": ["タク"], "kunyomi": ["みが.く"], "meanings": ["polish", "grind", "refine"], "jlpt": null, "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v0134"]}
+{"kanji": "璧", "onyomi": ["ヘキ"], "kunyomi": [], "meanings": ["gem", "ball", "sphere"], "jlpt": null, "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v2330"]}
+{"kanji": "田", "onyomi": ["デン"], "kunyomi": ["た"], "meanings": ["rice field", "paddy"], "jlpt": "N4", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v2284"]}
+{"kanji": "甲", "onyomi": ["コウ", "カン"], "kunyomi": ["きのえ"], "meanings": ["armor", "high (voice)", "first class"], "jlpt": "N1", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v2055"]}
+{"kanji": "町", "onyomi": ["チョウ"], "kunyomi": ["まち"], "meanings": ["town", "village", "street"], "jlpt": "N5", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v2285"]}
+{"kanji": "畏", "onyomi": ["イ"], "kunyomi": ["おそ.れる", "かしこ.まる"], "meanings": ["fear", "revere", "awe"], "jlpt": null, "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v2301"]}
+{"kanji": "留", "onyomi": ["リュウ", "ル"], "kunyomi": ["と.める", "と.まる", "とど.める", "とど.まる"], "meanings": ["detain", "fasten", "stop"], "jlpt": "N3", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2163"]}
+{"kanji": "番", "onyomi": ["バン"], "kunyomi": ["つが.い"], "meanings": ["turn", "number in series", "watch"], "jlpt": "N4", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0705"]}
+{"kanji": "疑", "onyomi": ["ギ"], "kunyomi": ["うたが.う"], "meanings": ["doubt", "suspicion", "question"], "jlpt": "N3", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v2394"]}
+{"kanji": "疾", "onyomi": ["シツ"], "kunyomi": ["はや.い", "と.く"], "meanings": ["rapidly", "swiftly", "illness"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v1582"]}
+{"kanji": "病", "onyomi": ["ビョウ", "ヘイ"], "kunyomi": ["や.む", "やまい"], "meanings": ["illness", "sick"], "jlpt": "N4", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2829"]}
+{"kanji": "痕", "onyomi": ["コン"], "kunyomi": ["あと"], "meanings": ["mark", "print", "vestige"], "jlpt": "N1", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v1911"]}
+{"kanji": "療", "onyomi": ["リョウ"], "kunyomi": [], "meanings": ["heal", "cure", "treat"], "jlpt": "N2", "stroke_count": 17, "frequency": 1, "example_words_in_book": ["v1793"]}
+{"kanji": "癒", "onyomi": ["ユ"], "kunyomi": ["い.える", "い.やす"], "meanings": ["healing", "cure", "recover"], "jlpt": "N1", "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v0245"]}
+{"kanji": "癖", "onyomi": ["ヘキ"], "kunyomi": ["くせ"], "meanings": ["habit", "vice", "quirk"], "jlpt": "N3", "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v2082"]}
+{"kanji": "皮", "onyomi": ["ヒ"], "kunyomi": ["かわ"], "meanings": ["skin", "hide", "pelt"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v0764"]}
+{"kanji": "皺", "onyomi": ["シュウ"], "kunyomi": ["しわ"], "meanings": ["wrinkle", "crease", "fold"], "jlpt": null, "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v2552"]}
+{"kanji": "盗", "onyomi": ["トウ"], "kunyomi": ["ぬす.む"], "meanings": ["steal", "rob", "plunder"], "jlpt": "N3", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v0142"]}
+{"kanji": "盾", "onyomi": ["ジュン"], "kunyomi": ["たて"], "meanings": ["shield", "buckler"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v1934"]}
+{"kanji": "省", "onyomi": ["セイ", "ショウ"], "kunyomi": ["かえり.みる", "はぶ.く"], "meanings": ["focus", "government ministry", "reflect"], "jlpt": "N3", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v2128"]}
+{"kanji": "眉", "onyomi": ["ビ", "ミ"], "kunyomi": ["まゆ"], "meanings": ["eyebrow"], "jlpt": "N2", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v0680"]}
+{"kanji": "眩", "onyomi": ["ゲン", "カン"], "kunyomi": ["まぶ.しい", "くら.む", "くるめ.く"], "meanings": ["dazzling", "blinded", "dizzy"], "jlpt": null, "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v1922"]}
+{"kanji": "眸", "onyomi": ["ボウ"], "kunyomi": ["ひとみ"], "meanings": ["pupil (of eye)", "eye"], "jlpt": null, "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v2562"]}
+{"kanji": "睨", "onyomi": ["ゲイ", "ベイ"], "kunyomi": ["にら.む"], "meanings": ["glare at", "scowl", "watch"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v1373"]}
+{"kanji": "瞑", "onyomi": ["メイ", "ベイ", "ミョウ"], "kunyomi": ["くら.い", "つむ.る"], "meanings": ["close eyes", "dark"], "jlpt": null, "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1025"]}
+{"kanji": "瞳", "onyomi": ["ドウ", "トウ"], "kunyomi": ["ひとみ"], "meanings": ["pupil (of eye)", "eye"], "jlpt": "N1", "stroke_count": 17, "frequency": 1, "example_words_in_book": ["v0684"]}
+{"kanji": "矢", "onyomi": ["シ"], "kunyomi": ["や"], "meanings": ["arrow"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v1366"]}
+{"kanji": "碧", "onyomi": ["ヘキ"], "kunyomi": ["みどり", "あお"], "meanings": ["blue-green", "jade"], "jlpt": null, "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v0500"]}
+{"kanji": "磋", "onyomi": ["サ"], "kunyomi": ["みが.く"], "meanings": ["polish", "grind"], "jlpt": null, "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v0134"]}
+{"kanji": "礎", "onyomi": ["ソ"], "kunyomi": ["いしずえ"], "meanings": ["cornerstone", "foundation stone"], "jlpt": "N1", "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v0327"]}
+{"kanji": "示", "onyomi": ["ジ", "シ"], "kunyomi": ["しめ.す"], "meanings": ["show", "indicate", "point out"], "jlpt": "N3", "stroke_count": 5, "frequency": 1, "example_words_in_book": ["v1169"]}
+{"kanji": "祈", "onyomi": ["キ"], "kunyomi": ["いの.る"], "meanings": ["pray", "wish"], "jlpt": "N3", "stroke_count": 8, "frequency": 1, "example_words_in_book": ["v1026"]}
+{"kanji": "禁", "onyomi": ["キン"], "kunyomi": [], "meanings": ["prohibit", "forbid", "suppress"], "jlpt": "N3", "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v2311"]}
+{"kanji": "秀", "onyomi": ["シュウ"], "kunyomi": ["ひい.でる"], "meanings": ["excel", "excellence", "beauty"], "jlpt": "N1", "stroke_count": 7, "frequency": 1, "example_words_in_book": ["v2039"]}
+{"kanji": "秒", "onyomi": ["ビョウ"], "kunyomi": [], "meanings": ["second (of time)"], "jlpt": "N3", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v1464"]}
+{"kanji": "秘", "onyomi": ["ヒ"], "kunyomi": ["ひ.める"], "meanings": ["secret", "hide", "conceal"], "jlpt": "N3", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2030"]}
+{"kanji": "称", "onyomi": ["ショウ"], "kunyomi": ["とな.える"], "meanings": ["call", "name", "recite"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v1492"]}
+{"kanji": "稟", "onyomi": ["リン", "ヒン"], "kunyomi": [], "meanings": ["endowment", "natural disposition"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v2298"]}
+{"kanji": "窓", "onyomi": ["ソウ"], "kunyomi": ["まど"], "meanings": ["window"], "jlpt": "N3", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v1118"]}
+{"kanji": "窩", "onyomi": ["カ"], "kunyomi": [], "meanings": ["cavity", "hole", "den"], "jlpt": null, "stroke_count": 13, "frequency": 1, "example_words_in_book": ["v2158"]}
+{"kanji": "窺", "onyomi": ["キ"], "kunyomi": ["うかが.う"], "meanings": ["peep", "peek", "spy out"], "jlpt": null, "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v0076"]}
+{"kanji": "竜", "onyomi": ["リュウ", "リョウ"], "kunyomi": ["たつ"], "meanings": ["dragon"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2221"]}
+{"kanji": "竦", "onyomi": ["ショウ"], "kunyomi": ["すく.む", "すく.める"], "meanings": ["shrug", "flinch", "cower"], "jlpt": null, "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v2018"]}
+{"kanji": "竹", "onyomi": ["チク"], "kunyomi": ["たけ"], "meanings": ["bamboo"], "jlpt": "N3", "stroke_count": 6, "frequency": 1, "example_words_in_book": ["v1356"]}
+{"kanji": "策", "onyomi": ["サク"], "kunyomi": [], "meanings": ["scheme", "plan", "policy"], "jlpt": "N1", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v1246"]}
+{"kanji": "算", "onyomi": ["サン"], "kunyomi": [], "meanings": ["calculate", "count", "number"], "jlpt": "N3", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v0462"]}
+{"kanji": "箱", "onyomi": ["ソウ"], "kunyomi": ["はこ"], "meanings": ["box", "case", "chest"], "jlpt": "N4", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v2637"]}
+{"kanji": "範", "onyomi": ["ハン"], "kunyomi": [], "meanings": ["pattern", "example", "model"], "jlpt": "N1", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v0840"]}
+{"kanji": "篭", "onyomi": ["ロウ"], "kunyomi": ["かご", "こも.る"], "meanings": ["basket", "seclude oneself"], "jlpt": null, "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v2614"]}
+{"kanji": "簡", "onyomi": ["カン"], "kunyomi": [], "meanings": ["simplicity", "brevity"], "jlpt": "N3", "stroke_count": 18, "frequency": 1, "example_words_in_book": ["v2532"]}
+{"kanji": "粋", "onyomi": ["スイ"], "kunyomi": ["いき"], "meanings": ["chic", "stylish", "essence"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2390"]}
+{"kanji": "粘", "onyomi": ["ネン"], "kunyomi": ["ねば.る"], "meanings": ["sticky", "glutinous", "persevere"], "jlpt": "N1", "stroke_count": 11, "frequency": 1, "example_words_in_book": ["v2327"]}
+{"kanji": "約", "onyomi": ["ヤク"], "kunyomi": [], "meanings": ["promise", "approximately", "about"], "jlpt": "N3", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v2059"]}
+{"kanji": "紅", "onyomi": ["コウ", "ク"], "kunyomi": ["べに", "くれない"], "meanings": ["crimson", "red", "deep red"], "jlpt": "N1", "stroke_count": 9, "frequency": 1, "example_words_in_book": ["v1265"]}
+{"kanji": "納", "onyomi": ["ノウ", "ナッ", "ナ", "ナン", "トウ"], "kunyomi": ["おさ.める", "おさ.まる"], "meanings": ["settlement", "obtain", "pay"], "jlpt": "N3", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v0573"]}
+{"kanji": "純", "onyomi": ["ジュン"], "kunyomi": [], "meanings": ["pure", "genuine", "net (gain)"], "jlpt": "N2", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2390"]}
+{"kanji": "紛", "onyomi": ["フン"], "kunyomi": ["まぎ.れる", "まぎ.らす", "まぎ.らわす", "まぎ.らわしい"], "meanings": ["distract", "misdirect", "confuse"], "jlpt": "N1", "stroke_count": 10, "frequency": 1, "example_words_in_book": ["v2810"]}
+{"kanji": "絞", "onyomi": ["コウ"], "kunyomi": ["しぼ.る", "し.める", "し.まる"], "meanings": ["strangle", "wring", "squeeze"], "jlpt": "N1", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v1715"]}
+{"kanji": "統", "onyomi": ["トウ"], "kunyomi": ["す.べる"], "meanings": ["overall", "unite", "rule", "control"], "jlpt": "N2", "stroke_count": 12, "frequency": 1, "example_words_in_book": ["v0602"]}
+{"kanji": "綱", "onyomi": ["コウ"], "kunyomi": ["つな"], "meanings": ["hawser", "rope", "cable"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v0458"]}
+{"kanji": "綺", "onyomi": ["キ"], "kunyomi": [], "meanings": ["beautifully woven", "figured cloth"], "jlpt": null, "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1764"]}
+{"kanji": "総", "onyomi": ["ソウ"], "kunyomi": ["す.べて", "ふさ"], "meanings": ["general", "whole", "full"], "jlpt": "N2", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1492"]}
+{"kanji": "緑", "onyomi": ["リョク", "ロク"], "kunyomi": ["みどり"], "meanings": ["green"], "jlpt": "N3", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v1932"]}
+{"kanji": "緒", "onyomi": ["ショ", "チョ"], "kunyomi": ["お"], "meanings": ["beginning", "end (of thread)", "strap"], "jlpt": "N1", "stroke_count": 14, "frequency": 1, "example_words_in_book": ["v0018"]}
+{"kanji": "締", "onyomi": ["テイ"], "kunyomi": ["し.まる", "し.める"], "meanings": ["tighten", "tie", "shut"], "jlpt": "N3", "stroke_count": 15, "frequency": 1, "example_words_in_book": ["v1901"]}
+{"kanji": "緯", "onyomi": ["イ"], "kunyomi": [], "meanings": ["horizontal", "woof", "left and right"], "jlpt": "N1", "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v2747"]}
+{"kanji": "縦", "onyomi": ["ジュウ"], "kunyomi": ["たて"], "meanings": ["vertical", "length", "height"], "jlpt": "N1", "stroke_count": 16, "frequency": 1, "example_words_in_book": ["v1625"]}
