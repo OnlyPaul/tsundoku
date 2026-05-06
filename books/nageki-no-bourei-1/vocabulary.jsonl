@@ -1,11 +1,11 @@
 {"id": "v0001", "lemma": "全て", "reading": "すべて", "pos": "noun", "jlpt": "N3", "meanings": ["all", "everything", "entirely"], "frequency": 13, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0002", "lemma": "始まり", "reading": "はじまり", "pos": "noun", "jlpt": "N4", "meanings": ["beginning", "start", "origin"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0003", "lemma": "忘れる", "reading": "わすれる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to forget"], "frequency": 8, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0004", "lemma": "する", "reading": "する", "pos": "verb-suru", "jlpt": "N5", "meanings": ["to do", "to make"], "frequency": 337, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0004", "lemma": "する", "reading": "する", "pos": "verb-suru", "jlpt": "N5", "meanings": ["to do", "to make"], "frequency": 342, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0005", "lemma": "あの", "reading": "あの", "pos": "pre-noun", "jlpt": "N5", "meanings": ["that (over there)"], "frequency": 11, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0006", "lemma": "一言", "reading": "ひとこと", "pos": "noun", "jlpt": "N3", "meanings": ["a single word", "brief comment"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0007", "lemma": "トレジャーハンター", "reading": "トレジャーハンター", "pos": "noun", "jlpt": null, "meanings": ["treasure hunter"], "frequency": 12, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0008", "lemma": "なる", "reading": "なる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to become"], "frequency": 88, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0007", "lemma": "トレジャーハンター", "reading": "トレジャーハンター", "pos": "noun", "jlpt": null, "meanings": ["treasure hunter"], "frequency": 13, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0008", "lemma": "なる", "reading": "なる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to become"], "frequency": 91, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0009", "lemma": "昔", "reading": "むかし", "pos": "noun", "jlpt": "N4", "meanings": ["long ago", "past", "former times"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0010", "lemma": "話", "reading": "はなし", "pos": "noun", "jlpt": "N5", "meanings": ["talk", "story", "conversation"], "frequency": 16, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0011", "lemma": "まだ", "reading": "まだ", "pos": "adverb", "jlpt": "N5", "meanings": ["still", "not yet"], "frequency": 12, "first_seen": "00-nageki-no-bourei-1"}
@@ -17,24 +17,24 @@
 {"id": "v0017", "lemma": "いつも", "reading": "いつも", "pos": "adverb", "jlpt": "N5", "meanings": ["always", "usually", "habitually"], "frequency": 15, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0018", "lemma": "一緒", "reading": "いっしょ", "pos": "noun", "jlpt": "N5", "meanings": ["together", "at the same time"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0019", "lemma": "遊ぶ", "reading": "あそぶ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to play", "to enjoy oneself"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0020", "lemma": "友人", "reading": "ゆうじん", "pos": "noun", "jlpt": "N3", "meanings": ["friend"], "frequency": 7, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0020", "lemma": "友人", "reading": "ゆうじん", "pos": "noun", "jlpt": "N3", "meanings": ["friend"], "frequency": 8, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0021", "lemma": "グループ", "reading": "グループ", "pos": "noun", "jlpt": "N4", "meanings": ["group"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0022", "lemma": "一人", "reading": "ひとり", "pos": "noun", "jlpt": "N5", "meanings": ["one person", "alone"], "frequency": 18, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0023", "lemma": "幼馴染", "reading": "おさななじみ", "pos": "noun", "jlpt": "N1", "meanings": ["childhood friend"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0024", "lemma": "言う", "reading": "いう", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to say", "to call (it)"], "frequency": 69, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0025", "lemma": "世界", "reading": "せかい", "pos": "noun", "jlpt": "N5", "meanings": ["world"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0026", "lemma": "各地", "reading": "かくち", "pos": "noun", "jlpt": "N3", "meanings": ["various places", "every region"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0023", "lemma": "幼馴染", "reading": "おさななじみ", "pos": "noun", "jlpt": "N1", "meanings": ["childhood friend"], "frequency": 7, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0024", "lemma": "言う", "reading": "いう", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to say", "to call (it)"], "frequency": 70, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0025", "lemma": "世界", "reading": "せかい", "pos": "noun", "jlpt": "N5", "meanings": ["world"], "frequency": 6, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0026", "lemma": "各地", "reading": "かくち", "pos": "noun", "jlpt": "N3", "meanings": ["various places", "every region"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0027", "lemma": "宝物殿", "reading": "ほうもつでん", "pos": "noun", "jlpt": null, "meanings": ["treasure vault", "treasure hall"], "frequency": 50, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0028", "lemma": "回る", "reading": "まわる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to go around", "to circle", "to make rounds"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0029", "lemma": "富", "reading": "とみ", "pos": "noun", "jlpt": "N1", "meanings": ["wealth", "fortune", "riches"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0030", "lemma": "栄光", "reading": "えいこう", "pos": "noun", "jlpt": "N1", "meanings": ["glory", "honor"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0031", "lemma": "手", "reading": "て", "pos": "noun", "jlpt": "N5", "meanings": ["hand"], "frequency": 15, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0032", "lemma": "入れる", "reading": "いれる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to put in", "to insert", "to obtain"], "frequency": 16, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0033", "lemma": "目指す", "reading": "めざす", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to aim for", "to have an eye on"], "frequency": 8, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0033", "lemma": "目指す", "reading": "めざす", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to aim for", "to have an eye on"], "frequency": 10, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0034", "lemma": "ただ", "reading": "ただ", "pos": "adverb", "jlpt": "N3", "meanings": ["just", "only", "merely"], "frequency": 13, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0035", "lemma": "一つ", "reading": "ひとつ", "pos": "noun", "jlpt": "N5", "meanings": ["one (thing)", "single"], "frequency": 12, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0036", "lemma": "最強", "reading": "さいきょう", "pos": "noun", "jlpt": null, "meanings": ["strongest", "mightiest"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0037", "lemma": "英雄", "reading": "えいゆう", "pos": "noun", "jlpt": "N1", "meanings": ["hero", "great person"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0036", "lemma": "最強", "reading": "さいきょう", "pos": "noun", "jlpt": null, "meanings": ["strongest", "mightiest"], "frequency": 6, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0037", "lemma": "英雄", "reading": "えいゆう", "pos": "noun", "jlpt": "N1", "meanings": ["hero", "great person"], "frequency": 7, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0038", "lemma": "俺達", "reading": "おれたち", "pos": "pronoun", "jlpt": "N3", "meanings": ["we", "us (rough male)"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0039", "lemma": "この", "reading": "この", "pos": "pre-noun", "jlpt": "N5", "meanings": ["this"], "frequency": 26, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0040", "lemma": "六人", "reading": "ろくにん", "pos": "noun", "jlpt": "N5", "meanings": ["six people"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
@@ -42,7 +42,7 @@
 {"id": "v0042", "lemma": "無鉄砲", "reading": "むてっぽう", "pos": "na-adj", "jlpt": "N1", "meanings": ["reckless", "headlong", "rash"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0043", "lemma": "腕っ節", "reading": "うでっぷし", "pos": "noun", "jlpt": null, "meanings": ["physical strength", "brawn"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0044", "lemma": "強い", "reading": "つよい", "pos": "i-adj", "jlpt": "N5", "meanings": ["strong", "powerful"], "frequency": 35, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0045", "lemma": "しかし", "reading": "しかし", "pos": "conjunction", "jlpt": "N4", "meanings": ["however", "but"], "frequency": 22, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0045", "lemma": "しかし", "reading": "しかし", "pos": "conjunction", "jlpt": "N4", "meanings": ["however", "but"], "frequency": 25, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0046", "lemma": "勇敢", "reading": "ゆうかん", "pos": "na-adj", "jlpt": "N2", "meanings": ["brave", "heroic", "valiant"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0047", "lemma": "男", "reading": "おとこ", "pos": "noun", "jlpt": "N5", "meanings": ["man", "male"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0048", "lemma": "友達", "reading": "ともだち", "pos": "noun", "jlpt": "N5", "meanings": ["friend"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
@@ -56,8 +56,8 @@
 {"id": "v0056", "lemma": "速い", "reading": "はやい", "pos": "i-adj", "jlpt": "N5", "meanings": ["fast", "quick"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0057", "lemma": "器用", "reading": "きよう", "pos": "na-adj", "jlpt": "N1", "meanings": ["dexterous", "skillful", "adroit"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0058", "lemma": "賛同", "reading": "さんどう", "pos": "noun", "jlpt": "N1", "meanings": ["approval", "endorsement", "agreement"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0059", "lemma": "本", "reading": "ほん", "pos": "noun", "jlpt": "N5", "meanings": ["book"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0060", "lemma": "読む", "reading": "よむ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to read"], "frequency": 8, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0059", "lemma": "本", "reading": "ほん", "pos": "noun", "jlpt": "N5", "meanings": ["book"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0060", "lemma": "読む", "reading": "よむ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to read"], "frequency": 10, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0061", "lemma": "大好き", "reading": "だいすき", "pos": "na-adj", "jlpt": "N5", "meanings": ["loving very much", "favorite"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0062", "lemma": "おずおず", "reading": "おずおず", "pos": "adverb", "jlpt": null, "meanings": ["timidly", "hesitantly"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0063", "lemma": "それ", "reading": "それ", "pos": "pronoun", "jlpt": "N5", "meanings": ["that", "it"], "frequency": 21, "first_seen": "00-nageki-no-bourei-1"}
@@ -74,7 +74,7 @@
 {"id": "v0074", "lemma": "僕", "reading": "ぼく", "pos": "pronoun", "jlpt": "N5", "meanings": ["I", "me (male)"], "frequency": 171, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0075", "lemma": "顔", "reading": "かお", "pos": "noun", "jlpt": "N5", "meanings": ["face"], "frequency": 20, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0076", "lemma": "窺う", "reading": "うかがう", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to peek", "to watch for", "to glimpse"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0077", "lemma": "また", "reading": "また", "pos": "adverb", "jlpt": "N4", "meanings": ["again", "also", "too"], "frequency": 10, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0077", "lemma": "また", "reading": "また", "pos": "adverb", "jlpt": "N4", "meanings": ["again", "also", "too"], "frequency": 11, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0078", "lemma": "賛成", "reading": "さんせい", "pos": "noun", "jlpt": "N4", "meanings": ["agreement", "approval", "support"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0079", "lemma": "遺跡", "reading": "いせき", "pos": "noun", "jlpt": "N1", "meanings": ["ruins", "historic remains"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0080", "lemma": "巡る", "reading": "めぐる", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to go around", "to tour", "to revolve"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
@@ -99,31 +99,31 @@
 {"id": "v0099", "lemma": "魔物", "reading": "まもの", "pos": "noun", "jlpt": null, "meanings": ["monster", "demon", "evil spirit"], "frequency": 11, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0100", "lemma": "幻影", "reading": "げんえい", "pos": "noun", "jlpt": "N1", "meanings": ["phantom", "illusion", "apparition"], "frequency": 51, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0101", "lemma": "倒れる", "reading": "たおれる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to fall over", "to collapse", "to be defeated"], "frequency": 6, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0102", "lemma": "ハンター", "reading": "ハンター", "pos": "noun", "jlpt": null, "meanings": ["hunter"], "frequency": 70, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0102", "lemma": "ハンター", "reading": "ハンター", "pos": "noun", "jlpt": null, "meanings": ["hunter"], "frequency": 71, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0103", "lemma": "いくらでも", "reading": "いくらでも", "pos": "expression", "jlpt": "N3", "meanings": ["any amount", "as much as one wants"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0104", "lemma": "そんな", "reading": "そんな", "pos": "pre-noun", "jlpt": "N4", "meanings": ["such", "that kind of"], "frequency": 19, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0105", "lemma": "きっかけ", "reading": "きっかけ", "pos": "noun", "jlpt": "N3", "meanings": ["chance", "trigger", "occasion"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0106", "lemma": "ある", "reading": "ある", "pos": "pre-noun", "jlpt": "N3", "meanings": ["a certain", "some"], "frequency": 92, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0104", "lemma": "そんな", "reading": "そんな", "pos": "pre-noun", "jlpt": "N4", "meanings": ["such", "that kind of"], "frequency": 20, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0105", "lemma": "きっかけ", "reading": "きっかけ", "pos": "noun", "jlpt": "N3", "meanings": ["chance", "trigger", "occasion"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0106", "lemma": "ある", "reading": "ある", "pos": "pre-noun", "jlpt": "N3", "meanings": ["a certain", "some"], "frequency": 94, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0107", "lemma": "語る", "reading": "かたる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to talk", "to recount", "to narrate"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0108", "lemma": "冒険譚", "reading": "ぼうけんたん", "pos": "noun", "jlpt": null, "meanings": ["adventure tale", "tale of adventure"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0108", "lemma": "冒険譚", "reading": "ぼうけんたん", "pos": "noun", "jlpt": null, "meanings": ["adventure tale", "tale of adventure"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0109", "lemma": "中", "reading": "なか", "pos": "noun", "jlpt": "N5", "meanings": ["inside", "middle", "among"], "frequency": 46, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0110", "lemma": "残酷", "reading": "ざんこく", "pos": "na-adj", "jlpt": "N1", "meanings": ["cruel", "brutal", "atrocious"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0111", "lemma": "シーン", "reading": "シーン", "pos": "noun", "jlpt": null, "meanings": ["scene"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0112", "lemma": "いくつも", "reading": "いくつも", "pos": "expression", "jlpt": "N3", "meanings": ["many", "quite a few"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0113", "lemma": "だが", "reading": "だが", "pos": "conjunction", "jlpt": "N3", "meanings": ["but", "however"], "frequency": 7, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0114", "lemma": "その", "reading": "その", "pos": "pre-noun", "jlpt": "N5", "meanings": ["that"], "frequency": 52, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0114", "lemma": "その", "reading": "その", "pos": "pre-noun", "jlpt": "N5", "meanings": ["that"], "frequency": 53, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0115", "lemma": "程度", "reading": "ていど", "pos": "noun", "jlpt": "N3", "meanings": ["degree", "extent", "amount"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0116", "lemma": "冒険心", "reading": "ぼうけんしん", "pos": "noun", "jlpt": null, "meanings": ["adventurous spirit"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0117", "lemma": "付く", "reading": "つく", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to be attached", "to take hold", "to ignite"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0118", "lemma": "火", "reading": "ひ", "pos": "noun", "jlpt": "N5", "meanings": ["fire", "flame"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0119", "lemma": "消し止める", "reading": "けしとめる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to extinguish (a fire)", "to put out"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0120", "lemma": "事", "reading": "こと", "pos": "noun", "jlpt": "N4", "meanings": ["thing", "matter", "affair"], "frequency": 35, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0120", "lemma": "事", "reading": "こと", "pos": "noun", "jlpt": "N4", "meanings": ["thing", "matter", "affair"], "frequency": 37, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0121", "lemma": "できる", "reading": "できる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to be able to", "to be possible"], "frequency": 36, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0122", "lemma": "夢", "reading": "ゆめ", "pos": "noun", "jlpt": "N4", "meanings": ["dream"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0123", "lemma": "抱く", "reading": "いだく", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to embrace", "to harbor (feelings)", "to hold"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0124", "lemma": "日", "reading": "ひ", "pos": "noun", "jlpt": "N5", "meanings": ["day", "sun"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0125", "lemma": "冒険", "reading": "ぼうけん", "pos": "noun", "jlpt": "N3", "meanings": ["adventure"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0126", "lemma": "始まる", "reading": "はじまる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to begin", "to start"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0125", "lemma": "冒険", "reading": "ぼうけん", "pos": "noun", "jlpt": "N3", "meanings": ["adventure"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0126", "lemma": "始まる", "reading": "はじまる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to begin", "to start"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0127", "lemma": "まず", "reading": "まず", "pos": "adverb", "jlpt": "N4", "meanings": ["first of all", "to begin with"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0128", "lemma": "蓄える", "reading": "たくわえる", "pos": "verb-ichidan", "jlpt": "N1", "meanings": ["to store", "to accumulate", "to save up"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0129", "lemma": "互い", "reading": "たがい", "pos": "noun", "jlpt": "N3", "meanings": ["mutual", "reciprocal", "each other"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
@@ -137,24 +137,24 @@
 {"id": "v0137", "lemma": "剣士", "reading": "けんし", "pos": "noun", "jlpt": null, "meanings": ["swordsman"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0138", "lemma": "罠", "reading": "わな", "pos": "noun", "jlpt": "N1", "meanings": ["trap", "snare"], "frequency": 3, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0139", "lemma": "看破", "reading": "かんぱ", "pos": "noun", "jlpt": "N1", "meanings": ["seeing through", "detecting", "penetrating"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0140", "lemma": "パーティ", "reading": "パーティ", "pos": "noun", "jlpt": null, "meanings": ["party", "group"], "frequency": 34, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0140", "lemma": "パーティ", "reading": "パーティ", "pos": "noun", "jlpt": null, "meanings": ["party", "group"], "frequency": 35, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0141", "lemma": "導く", "reading": "みちびく", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to guide", "to lead", "to show the way"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0142", "lemma": "盗賊", "reading": "とうぞく", "pos": "noun", "jlpt": null, "meanings": ["thief", "robber", "bandit"], "frequency": 11, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0143", "lemma": "別に", "reading": "べつに", "pos": "adverb", "jlpt": "N3", "meanings": ["not particularly", "not really"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0144", "lemma": "泥棒", "reading": "どろぼう", "pos": "noun", "jlpt": "N3", "meanings": ["thief", "burglar"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0145", "lemma": "わけ", "reading": "わけ", "pos": "noun", "jlpt": "N3", "meanings": ["reason", "cause", "meaning"], "frequency": 10, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0146", "lemma": "一般的", "reading": "いっぱんてき", "pos": "na-adj", "jlpt": "N3", "meanings": ["general", "typical"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0147", "lemma": "そう", "reading": "そう", "pos": "adverb", "jlpt": "N5", "meanings": ["so", "like that"], "frequency": 15, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0147", "lemma": "そう", "reading": "そう", "pos": "adverb", "jlpt": "N5", "meanings": ["so", "like that"], "frequency": 16, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0148", "lemma": "呼ぶ", "reading": "よぶ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to call", "to invite", "to summon"], "frequency": 6, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0149", "lemma": "そして", "reading": "そして", "pos": "conjunction", "jlpt": "N4", "meanings": ["and then", "and"], "frequency": 17, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0149", "lemma": "そして", "reading": "そして", "pos": "conjunction", "jlpt": "N4", "meanings": ["and then", "and"], "frequency": 21, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0150", "lemma": "以外", "reading": "いがい", "pos": "noun", "jlpt": "N3", "meanings": ["other than", "besides", "except"], "frequency": 5, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0151", "lemma": "幸", "reading": "こう", "pos": "noun", "jlpt": "N1", "meanings": ["fortune", "good luck", "happiness"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0152", "lemma": "不幸", "reading": "ふこう", "pos": "noun", "jlpt": "N3", "meanings": ["misfortune", "unhappiness"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0153", "lemma": "友人達", "reading": "ゆうじんたち", "pos": "noun", "jlpt": null, "meanings": ["friends"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0154", "lemma": "必要", "reading": "ひつよう", "pos": "na-adj", "jlpt": "N4", "meanings": ["necessary", "needed"], "frequency": 8, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0155", "lemma": "珠玉", "reading": "しゅぎょく", "pos": "noun", "jlpt": "N1", "meanings": ["jewel", "gem", "masterpiece"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0156", "lemma": "才能", "reading": "さいのう", "pos": "noun", "jlpt": "N2", "meanings": ["talent", "ability", "gift"], "frequency": 12, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0157", "lemma": "持つ", "reading": "もつ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to hold", "to have", "to possess"], "frequency": 46, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0156", "lemma": "才能", "reading": "さいのう", "pos": "noun", "jlpt": "N2", "meanings": ["talent", "ability", "gift"], "frequency": 14, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0157", "lemma": "持つ", "reading": "もつ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to hold", "to have", "to possess"], "frequency": 47, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0158", "lemma": "片鱗", "reading": "へんりん", "pos": "noun", "jlpt": "N1", "meanings": ["glimpse", "fragment", "sign"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0159", "lemma": "前", "reading": "まえ", "pos": "noun", "jlpt": "N5", "meanings": ["before", "in front", "prior"], "frequency": 21, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0160", "lemma": "分ける", "reading": "わける", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to divide", "to separate", "to share"], "frequency": 2, "first_seen": "00-nageki-no-bourei-1"}
@@ -164,13 +164,13 @@
 {"id": "v0164", "lemma": "既に", "reading": "すでに", "pos": "adverb", "jlpt": "N2", "meanings": ["already", "previously"], "frequency": 6, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0165", "lemma": "明らか", "reading": "あきらか", "pos": "na-adj", "jlpt": "N2", "meanings": ["clear", "obvious", "evident"], "frequency": 4, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0166", "lemma": "たった", "reading": "たった", "pos": "adverb", "jlpt": "N3", "meanings": ["only", "just", "merely"], "frequency": 7, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0167", "lemma": "何", "reading": "なに", "pos": "pronoun", "jlpt": "N5", "meanings": ["what"], "frequency": 42, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0167", "lemma": "何", "reading": "なに", "pos": "pronoun", "jlpt": "N5", "meanings": ["what"], "frequency": 45, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0168", "lemma": "やる", "reading": "やる", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to do", "to perform", "to give"], "frequency": 22, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0169", "lemma": "人並み", "reading": "ひとなみ", "pos": "noun", "jlpt": "N1", "meanings": ["being average", "ordinary"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0170", "lemma": "以下", "reading": "いか", "pos": "noun", "jlpt": "N3", "meanings": ["less than", "below", "not exceeding"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0171", "lemma": "四人", "reading": "よにん", "pos": "noun", "jlpt": "N5", "meanings": ["four people"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0172", "lemma": "道", "reading": "みち", "pos": "noun", "jlpt": "N4", "meanings": ["road", "path", "way"], "frequency": 16, "first_seen": "00-nageki-no-bourei-1"}
-{"id": "v0173", "lemma": "見える", "reading": "みえる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to be seen", "to be visible", "to seem"], "frequency": 20, "first_seen": "00-nageki-no-bourei-1"}
+{"id": "v0173", "lemma": "見える", "reading": "みえる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to be seen", "to be visible", "to seem"], "frequency": 21, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0174", "lemma": "もう", "reading": "もう", "pos": "adverb", "jlpt": "N4", "meanings": ["already", "now", "more"], "frequency": 13, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0175", "lemma": "五年", "reading": "ごねん", "pos": "noun", "jlpt": "N5", "meanings": ["five years"], "frequency": 1, "first_seen": "00-nageki-no-bourei-1"}
 {"id": "v0176", "lemma": "無理", "reading": "むり", "pos": "na-adj", "jlpt": "N4", "meanings": ["impossible", "unreasonable"], "frequency": 9, "first_seen": "01-nageki-no-bourei-1"}
@@ -191,7 +191,7 @@
 {"id": "v0191", "lemma": "時", "reading": "とき", "pos": "noun", "jlpt": "N5", "meanings": ["time", "occasion"], "frequency": 27, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0192", "lemma": "溜まる", "reading": "たまる", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to accumulate", "to collect", "to pile up"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0193", "lemma": "マナ・マテリアル", "reading": "マナ・マテリアル", "pos": "noun", "jlpt": null, "meanings": ["mana material"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0194", "lemma": "生み出す", "reading": "うみだす", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to produce", "to give birth to", "to create"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0194", "lemma": "生み出す", "reading": "うみだす", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to produce", "to give birth to", "to create"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0195", "lemma": "生きる", "reading": "いきる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to live", "to exist"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0196", "lemma": "求める", "reading": "もとめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to seek", "to want", "to demand"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0197", "lemma": "生息", "reading": "せいそく", "pos": "noun", "jlpt": "N1", "meanings": ["inhabit", "living", "dwelling"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
@@ -203,7 +203,7 @@
 {"id": "v0203", "lemma": "限る", "reading": "かぎる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to limit", "to be limited to", "to be restricted to"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0204", "lemma": "聞く", "reading": "きく", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to hear", "to listen", "to ask"], "frequency": 11, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0205", "lemma": "過去", "reading": "かこ", "pos": "noun", "jlpt": "N3", "meanings": ["past", "former times"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0206", "lemma": "書く", "reading": "かく", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to write"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0206", "lemma": "書く", "reading": "かく", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to write"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0207", "lemma": "書物", "reading": "しょもつ", "pos": "noun", "jlpt": "N1", "meanings": ["book", "volume"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0208", "lemma": "何冊も", "reading": "なんさつも", "pos": "expression", "jlpt": null, "meanings": ["many volumes", "many books"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0209", "lemma": "知る", "reading": "しる", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to know", "to be aware of"], "frequency": 20, "first_seen": "01-nageki-no-bourei-1"}
@@ -216,14 +216,14 @@
 {"id": "v0216", "lemma": "容易い", "reading": "たやすい", "pos": "i-adj", "jlpt": "N1", "meanings": ["easy", "simple"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0217", "lemma": "砕く", "reading": "くだく", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to break", "to smash", "to shatter"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0218", "lemma": "何度", "reading": "なんど", "pos": "adverb", "jlpt": "N3", "meanings": ["how many times", "many times"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0219", "lemma": "ゲロ", "reading": "ゲロ", "pos": "noun", "jlpt": null, "meanings": ["vomit", "puke"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0220", "lemma": "吐く", "reading": "はく", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to vomit", "to throw up", "to spit out"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0219", "lemma": "ゲロ", "reading": "ゲロ", "pos": "noun", "jlpt": null, "meanings": ["vomit", "puke"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0220", "lemma": "吐く", "reading": "はく", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to vomit", "to throw up", "to spit out"], "frequency": 8, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0221", "lemma": "わかる", "reading": "わかる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to understand", "to know"], "frequency": 35, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0222", "lemma": "命懸け", "reading": "いのちがけ", "pos": "noun", "jlpt": "N1", "meanings": ["risking one's life", "life-or-death"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0223", "lemma": "繰り返す", "reading": "くりかえす", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to repeat", "to do over"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0224", "lemma": "生活", "reading": "せいかつ", "pos": "noun", "jlpt": "N4", "meanings": ["life", "living", "daily life"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0225", "lemma": "心身", "reading": "しんしん", "pos": "noun", "jlpt": "N1", "meanings": ["mind and body"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0226", "lemma": "深い", "reading": "ふかい", "pos": "i-adj", "jlpt": "N4", "meanings": ["deep", "profound"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0226", "lemma": "深い", "reading": "ふかい", "pos": "i-adj", "jlpt": "N4", "meanings": ["deep", "profound"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0227", "lemma": "消耗", "reading": "しょうもう", "pos": "noun", "jlpt": "N1", "meanings": ["exhaustion", "depletion", "wearing out"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0228", "lemma": "君", "reading": "きみ", "pos": "pronoun", "jlpt": "N4", "meanings": ["you (familiar)"], "frequency": 5, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0229", "lemma": "ついていく", "reading": "ついていく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to follow", "to keep up with"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
@@ -244,7 +244,7 @@
 {"id": "v0244", "lemma": "者", "reading": "もの", "pos": "noun", "jlpt": "N3", "meanings": ["person", "one (who)"], "frequency": 9, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0245", "lemma": "癒やす", "reading": "いやす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to heal", "to cure", "to soothe"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0246", "lemma": "護り", "reading": "まもり", "pos": "noun", "jlpt": null, "meanings": ["defense", "protection"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0247", "lemma": "担当", "reading": "たんとう", "pos": "noun", "jlpt": "N2", "meanings": ["being in charge", "taking responsibility"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0247", "lemma": "担当", "reading": "たんとう", "pos": "noun", "jlpt": "N2", "meanings": ["being in charge", "taking responsibility"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0248", "lemma": "回復役", "reading": "かいふくやく", "pos": "noun", "jlpt": null, "meanings": ["recovery role", "healer"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0249", "lemma": "守護騎士", "reading": "しゅごきし", "pos": "noun", "jlpt": null, "meanings": ["paladin", "guardian knight"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0250", "lemma": "技術", "reading": "ぎじゅつ", "pos": "noun", "jlpt": "N3", "meanings": ["technology", "technique", "skill"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
@@ -255,7 +255,7 @@
 {"id": "v0255", "lemma": "師", "reading": "し", "pos": "noun", "jlpt": "N1", "meanings": ["master", "teacher", "mentor"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0256", "lemma": "下", "reading": "もと", "pos": "noun", "jlpt": "N3", "meanings": ["under", "beneath", "tutelage"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0257", "lemma": "訪れる", "reading": "おとずれる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to visit", "to call on"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0258", "lemma": "自分", "reading": "じぶん", "pos": "pronoun", "jlpt": "N4", "meanings": ["oneself", "myself"], "frequency": 14, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0258", "lemma": "自分", "reading": "じぶん", "pos": "pronoun", "jlpt": "N4", "meanings": ["oneself", "myself"], "frequency": 15, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0259", "lemma": "適性", "reading": "てきせい", "pos": "noun", "jlpt": "N1", "meanings": ["aptitude", "suitability"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0260", "lemma": "模索", "reading": "もさく", "pos": "noun", "jlpt": "N1", "meanings": ["groping (for)", "exploring", "searching for"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0261", "lemma": "才", "reading": "さい", "pos": "noun", "jlpt": "N1", "meanings": ["talent", "ability"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
@@ -267,9 +267,9 @@
 {"id": "v0267", "lemma": "努力家", "reading": "どりょくか", "pos": "noun", "jlpt": null, "meanings": ["hard worker", "diligent person"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0268", "lemma": "誰", "reading": "だれ", "pos": "pronoun", "jlpt": "N5", "meanings": ["who"], "frequency": 10, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0269", "lemma": "見る", "reading": "みる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to see", "to look", "to watch"], "frequency": 56, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0270", "lemma": "人間", "reading": "にんげん", "pos": "noun", "jlpt": "N3", "meanings": ["human", "person"], "frequency": 14, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0270", "lemma": "人間", "reading": "にんげん", "pos": "noun", "jlpt": "N3", "meanings": ["human", "person"], "frequency": 15, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0271", "lemma": "一日", "reading": "いちにち", "pos": "noun", "jlpt": "N5", "meanings": ["one day"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0272", "lemma": "皆", "reading": "みな", "pos": "pronoun", "jlpt": "N4", "meanings": ["everyone", "all"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0272", "lemma": "皆", "reading": "みな", "pos": "pronoun", "jlpt": "N4", "meanings": ["everyone", "all"], "frequency": 5, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0273", "lemma": "二十四時間", "reading": "にじゅうよじかん", "pos": "noun", "jlpt": null, "meanings": ["twenty-four hours"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0274", "lemma": "ない", "reading": "ない", "pos": "i-adj", "jlpt": "N5", "meanings": ["nonexistent", "not being"], "frequency": 12, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0275", "lemma": "以上", "reading": "いじょう", "pos": "noun", "jlpt": "N3", "meanings": ["above", "more than", "since", "because"], "frequency": 10, "first_seen": "01-nageki-no-bourei-1"}
@@ -277,7 +277,7 @@
 {"id": "v0277", "lemma": "追いつく", "reading": "おいつく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to catch up with", "to overtake"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0278", "lemma": "あり得る", "reading": "ありえる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to be possible", "can happen"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0279", "lemma": "通常", "reading": "つうじょう", "pos": "noun", "jlpt": "N2", "meanings": ["normal", "usual", "ordinary"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0280", "lemma": "五人", "reading": "ごにん", "pos": "noun", "jlpt": "N5", "meanings": ["five people"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0280", "lemma": "五人", "reading": "ごにん", "pos": "noun", "jlpt": "N5", "meanings": ["five people"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0281", "lemma": "組む", "reading": "くむ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to assemble", "to form (a group)", "to put together"], "frequency": 12, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0282", "lemma": "代わり", "reading": "かわり", "pos": "noun", "jlpt": "N3", "meanings": ["substitute", "replacement"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0283", "lemma": "二人", "reading": "ふたり", "pos": "noun", "jlpt": "N5", "meanings": ["two people"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
@@ -320,7 +320,7 @@
 {"id": "v0320", "lemma": "ダメ", "reading": "ダメ", "pos": "na-adj", "jlpt": "N4", "meanings": ["no good", "useless"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0321", "lemma": "足止め", "reading": "あしどめ", "pos": "noun", "jlpt": "N1", "meanings": ["being stranded", "being detained", "ban on going out"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0322", "lemma": "食う", "reading": "くう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to eat", "to receive (something undesirable)"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0323", "lemma": "おかげ", "reading": "おかげ", "pos": "noun", "jlpt": "N3", "meanings": ["thanks to", "owing to"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0323", "lemma": "おかげ", "reading": "おかげ", "pos": "noun", "jlpt": "N3", "meanings": ["thanks to", "owing to"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0324", "lemma": "覚める", "reading": "さめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to wake up", "to come to one's senses"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0325", "lemma": "俺", "reading": "おれ", "pos": "pronoun", "jlpt": "N3", "meanings": ["I", "me (rough male)"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0326", "lemma": "ちょっと", "reading": "ちょっと", "pos": "adverb", "jlpt": "N5", "meanings": ["a little", "somewhat"], "frequency": 10, "first_seen": "01-nageki-no-bourei-1"}
@@ -342,7 +342,7 @@
 {"id": "v0342", "lemma": "高める", "reading": "たかめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to raise", "to enhance", "to increase"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0343", "lemma": "案", "reading": "あん", "pos": "noun", "jlpt": "N3", "meanings": ["plan", "idea", "proposal"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0344", "lemma": "出す", "reading": "だす", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to put out", "to bring out", "to issue"], "frequency": 11, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0345", "lemma": "思う", "reading": "おもう", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to think", "to feel"], "frequency": 24, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0345", "lemma": "思う", "reading": "おもう", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to think", "to feel"], "frequency": 26, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0346", "lemma": "こいつら", "reading": "こいつら", "pos": "pronoun", "jlpt": null, "meanings": ["these guys"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0347", "lemma": "何もかも", "reading": "なにもかも", "pos": "expression", "jlpt": "N2", "meanings": ["everything", "anything and everything"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0348", "lemma": "解決", "reading": "かいけつ", "pos": "noun", "jlpt": "N3", "meanings": ["solution", "resolution", "settlement"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
@@ -355,22 +355,22 @@
 {"id": "v0355", "lemma": "思いつく", "reading": "おもいつく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to come up with", "to occur to one"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0356", "lemma": "クラン", "reading": "クラン", "pos": "noun", "jlpt": null, "meanings": ["clan"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0357", "lemma": "建てる", "reading": "たてる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to build", "to construct", "to establish"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0358", "lemma": "普通", "reading": "ふつう", "pos": "noun", "jlpt": "N4", "meanings": ["normal", "usual"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0358", "lemma": "普通", "reading": "ふつう", "pos": "noun", "jlpt": "N4", "meanings": ["normal", "usual"], "frequency": 8, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0359", "lemma": "死ぬ", "reading": "しぬ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to die"], "frequency": 21, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0360", "lemma": "遭う", "reading": "あう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to meet (with misfortune)", "to encounter"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0361", "lemma": "有望", "reading": "ゆうぼう", "pos": "na-adj", "jlpt": "N1", "meanings": ["promising", "hopeful"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0362", "lemma": "共に", "reading": "ともに", "pos": "adverb", "jlpt": "N2", "meanings": ["together with", "along with"], "frequency": 4, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0362", "lemma": "共に", "reading": "ともに", "pos": "adverb", "jlpt": "N2", "meanings": ["together with", "along with"], "frequency": 5, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0363", "lemma": "新", "reading": "しん", "pos": "noun", "jlpt": null, "meanings": ["new"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0364", "lemma": "新た", "reading": "あらた", "pos": "na-adj", "jlpt": "N2", "meanings": ["new", "fresh"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0365", "lemma": "風", "reading": "かぜ", "pos": "noun", "jlpt": "N5", "meanings": ["wind", "style"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0366", "lemma": "新たなる", "reading": "あらたなる", "pos": "expression", "jlpt": null, "meanings": ["new (literary)"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0367", "lemma": "一歩", "reading": "いっぽ", "pos": "noun", "jlpt": "N2", "meanings": ["one step"], "frequency": 6, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0368", "lemma": "踏み出す", "reading": "ふみだす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to step forward", "to take the first step"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0369", "lemma": "こうして", "reading": "こうして", "pos": "conjunction", "jlpt": "N3", "meanings": ["thus", "in this way"], "frequency": 2, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0369", "lemma": "こうして", "reading": "こうして", "pos": "conjunction", "jlpt": "N3", "meanings": ["thus", "in this way"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0370", "lemma": "始まりの足跡", "reading": "はじまりのあしあと", "pos": "noun", "jlpt": null, "meanings": ["First Step (clan name)"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0371", "lemma": "立ち上げる", "reading": "たちあげる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to start up", "to launch", "to found"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0372", "lemma": "運営", "reading": "うんえい", "pos": "noun", "jlpt": "N2", "meanings": ["management", "administration", "operation"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
-{"id": "v0373", "lemma": "理由", "reading": "りゆう", "pos": "noun", "jlpt": "N4", "meanings": ["reason", "cause"], "frequency": 8, "first_seen": "01-nageki-no-bourei-1"}
+{"id": "v0373", "lemma": "理由", "reading": "りゆう", "pos": "noun", "jlpt": "N4", "meanings": ["reason", "cause"], "frequency": 9, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0374", "lemma": "探索", "reading": "たんさく", "pos": "noun", "jlpt": "N1", "meanings": ["search", "exploration", "investigation"], "frequency": 7, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0375", "lemma": "成功", "reading": "せいこう", "pos": "noun", "jlpt": "N3", "meanings": ["success"], "frequency": 3, "first_seen": "01-nageki-no-bourei-1"}
 {"id": "v0376", "lemma": "三年", "reading": "さんねん", "pos": "noun", "jlpt": "N5", "meanings": ["three years"], "frequency": 1, "first_seen": "01-nageki-no-bourei-1"}
@@ -477,7 +477,7 @@
 {"id": "v0477", "lemma": "師匠", "reading": "ししょう", "pos": "noun", "jlpt": "N2", "meanings": ["master", "teacher"], "frequency": 13, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0478", "lemma": "マスター", "reading": "マスター", "pos": "noun", "jlpt": "N3", "meanings": ["master"], "frequency": 65, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0479", "lemma": "刻む", "reading": "きざむ", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to carve", "to engrave"], "frequency": 3, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0480", "lemma": "期待", "reading": "きたい", "pos": "noun", "jlpt": "N3", "meanings": ["expectation", "hope"], "frequency": 4, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0480", "lemma": "期待", "reading": "きたい", "pos": "noun", "jlpt": "N3", "meanings": ["expectation", "hope"], "frequency": 5, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0481", "lemma": "新鋭", "reading": "しんえい", "pos": "noun", "jlpt": "N1", "meanings": ["young and energetic", "newcomer"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0482", "lemma": "ますたぁ", "reading": "ますたぁ", "pos": "noun", "jlpt": "N3", "meanings": ["master (affectionate spelling)"], "frequency": 26, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0483", "lemma": "パシリ", "reading": "パシリ", "pos": "noun", "jlpt": "N1", "meanings": ["errand-runner", "gofer"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
@@ -532,7 +532,7 @@
 {"id": "v0532", "lemma": "気配", "reading": "けはい", "pos": "noun", "jlpt": "N2", "meanings": ["sign", "indication", "presence"], "frequency": 4, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0533", "lemma": "消す", "reading": "けす", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to extinguish", "to erase"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0534", "lemma": "至近", "reading": "しきん", "pos": "noun", "jlpt": "N1", "meanings": ["close range", "very near"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0535", "lemma": "気づく", "reading": "きづく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to notice", "to realize"], "frequency": 19, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0535", "lemma": "気づく", "reading": "きづく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to notice", "to realize"], "frequency": 20, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0536", "lemma": "突然", "reading": "とつぜん", "pos": "adverb", "jlpt": "N3", "meanings": ["suddenly"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0537", "lemma": "動揺", "reading": "どうよう", "pos": "noun", "jlpt": "N1", "meanings": ["agitation"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0538", "lemma": "震える", "reading": "ふるえる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to tremble", "to shake"], "frequency": 4, "first_seen": "02-nageki-no-bourei-1"}
@@ -562,7 +562,7 @@
 {"id": "v0562", "lemma": "同年代", "reading": "どうねんだい", "pos": "noun", "jlpt": "N2", "meanings": ["same age", "same generation"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0563", "lemma": "仲間達", "reading": "なかまたち", "pos": "noun", "jlpt": "N3", "meanings": ["companions", "comrades"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0564", "lemma": "酒", "reading": "さけ", "pos": "noun", "jlpt": "N5", "meanings": ["alcohol", "sake"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0565", "lemma": "飲む", "reading": "のむ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to drink"], "frequency": 3, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0565", "lemma": "飲む", "reading": "のむ", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to drink"], "frequency": 4, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0566", "lemma": "割って入る", "reading": "わってはいる", "pos": "expression", "jlpt": "N1", "meanings": ["to break in", "to interrupt"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0567", "lemma": "用件", "reading": "ようけん", "pos": "noun", "jlpt": "N1", "meanings": ["business", "matter"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0568", "lemma": "正直", "reading": "しょうじき", "pos": "na-adj", "jlpt": "N3", "meanings": ["honest", "frank"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
@@ -607,7 +607,7 @@
 {"id": "v0607", "lemma": "一割", "reading": "いちわり", "pos": "noun", "jlpt": "N3", "meanings": ["ten percent"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0608", "lemma": "満たす", "reading": "みたす", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to fill", "to satisfy"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0609", "lemma": "らしい", "reading": "らしい", "pos": "expression", "jlpt": "N4", "meanings": ["it seems", "apparently"], "frequency": 8, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0610", "lemma": "酷い", "reading": "ひどい", "pos": "i-adj", "jlpt": "N4", "meanings": ["terrible", "awful"], "frequency": 7, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0610", "lemma": "酷い", "reading": "ひどい", "pos": "i-adj", "jlpt": "N4", "meanings": ["terrible", "awful"], "frequency": 8, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0611", "lemma": "ストレス", "reading": "ストレス", "pos": "noun", "jlpt": "N3", "meanings": ["stress"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0612", "lemma": "場合", "reading": "ばあい", "pos": "noun", "jlpt": "N4", "meanings": ["case", "situation"], "frequency": 3, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0613", "lemma": "背中", "reading": "せなか", "pos": "noun", "jlpt": "N4", "meanings": ["back (of body)"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
@@ -667,7 +667,7 @@
 {"id": "v0667", "lemma": "椅子", "reading": "いす", "pos": "noun", "jlpt": "N5", "meanings": ["chair"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0668", "lemma": "並ぶ", "reading": "ならぶ", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to line up"], "frequency": 7, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0669", "lemma": "酔う", "reading": "よう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to be drunk"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0670", "lemma": "騒ぐ", "reading": "さわぐ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to make noise"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0670", "lemma": "騒ぐ", "reading": "さわぐ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to make noise"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0671", "lemma": "場所", "reading": "ばしょ", "pos": "noun", "jlpt": "N5", "meanings": ["place"], "frequency": 4, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0672", "lemma": "後", "reading": "あと", "pos": "noun", "jlpt": "N4", "meanings": ["after", "later"], "frequency": 5, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0673", "lemma": "打ち上げ", "reading": "うちあげ", "pos": "noun", "jlpt": "N2", "meanings": ["celebration party", "wrap-up"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
@@ -706,7 +706,7 @@
 {"id": "v0706", "lemma": "誘う", "reading": "さそう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to invite", "to ask out"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0707", "lemma": "ついてくる", "reading": "ついてくる", "pos": "verb-kuru", "jlpt": "N3", "meanings": ["to follow", "to come along"], "frequency": 3, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0708", "lemma": "気", "reading": "き", "pos": "noun", "jlpt": "N3", "meanings": ["spirit", "feeling", "intention"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0709", "lemma": "出る", "reading": "でる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to go out", "to leave"], "frequency": 14, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0709", "lemma": "出る", "reading": "でる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to go out", "to leave"], "frequency": 15, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0710", "lemma": "出会う", "reading": "であう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to meet", "to encounter"], "frequency": 5, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0711", "lemma": "報告", "reading": "ほうこく", "pos": "noun", "jlpt": "N3", "meanings": ["report", "information"], "frequency": 1, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0712", "lemma": "構う", "reading": "かまう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to mind", "to care"], "frequency": 6, "first_seen": "02-nageki-no-bourei-1"}
@@ -740,7 +740,7 @@
 {"id": "v0740", "lemma": "震わせる", "reading": "ふるわせる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to shake", "to make tremble"], "frequency": 2, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0741", "lemma": "任せる", "reading": "まかせる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to entrust", "to leave to"], "frequency": 3, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0742", "lemma": "教える", "reading": "おしえる", "pos": "verb-ichidan", "jlpt": "N5", "meanings": ["to teach", "to tell"], "frequency": 8, "first_seen": "02-nageki-no-bourei-1"}
-{"id": "v0743", "lemma": "私", "reading": "わたし", "pos": "noun", "jlpt": "N5", "meanings": ["I (formal)"], "frequency": 11, "first_seen": "02-nageki-no-bourei-1"}
+{"id": "v0743", "lemma": "私", "reading": "わたし", "pos": "noun", "jlpt": "N5", "meanings": ["I (formal)"], "frequency": 14, "first_seen": "02-nageki-no-bourei-1"}
 {"id": "v0744", "lemma": "北西", "reading": "ほくせい", "pos": "noun", "jlpt": "N3", "meanings": ["northwest"], "frequency": 1, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0745", "lemma": "広がる", "reading": "ひろがる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to spread out", "to extend"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0746", "lemma": "大", "reading": "だい", "pos": "prefix", "jlpt": "N4", "meanings": ["big", "great"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
@@ -814,7 +814,7 @@
 {"id": "v0814", "lemma": "匹敵", "reading": "ひってき", "pos": "verb-suru", "jlpt": null, "meanings": ["being a match for", "comparable to"], "frequency": 1, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0815", "lemma": "故に", "reading": "ゆえに", "pos": "conjunction", "jlpt": "N1", "meanings": ["therefore", "consequently"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0816", "lemma": "餌食", "reading": "えじき", "pos": "noun", "jlpt": null, "meanings": ["prey", "victim"], "frequency": 1, "first_seen": "03-nageki-no-bourei-1"}
-{"id": "v0817", "lemma": "達", "reading": "たち", "pos": "suffix", "jlpt": "N4", "meanings": ["pluralizing suffix"], "frequency": 42, "first_seen": "03-nageki-no-bourei-1"}
+{"id": "v0817", "lemma": "達", "reading": "たち", "pos": "suffix", "jlpt": "N4", "meanings": ["pluralizing suffix"], "frequency": 44, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0818", "lemma": "格好", "reading": "かっこう", "pos": "noun", "jlpt": "N2", "meanings": ["ideal", "suitable"], "frequency": 6, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0819", "lemma": "獲物", "reading": "えもの", "pos": "noun", "jlpt": null, "meanings": ["prey", "game", "catch"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0820", "lemma": "生物", "reading": "せいぶつ", "pos": "noun", "jlpt": "N2", "meanings": ["living thing", "creature"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
@@ -847,8 +847,8 @@
 {"id": "v0847", "lemma": "出現", "reading": "しゅつげん", "pos": "verb-suru", "jlpt": "N1", "meanings": ["appearance", "to appear"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0848", "lemma": "噂", "reading": "うわさ", "pos": "noun", "jlpt": "N3", "meanings": ["rumor", "gossip"], "frequency": 2, "first_seen": "03-nageki-no-bourei-1"}
 {"id": "v0849", "lemma": "年", "reading": "ねん", "pos": "noun", "jlpt": "N5", "meanings": ["year"], "frequency": 3, "first_seen": "03-nageki-no-bourei-1"}
-{"id": "v0850", "lemma": "こと", "reading": "こと", "pos": "noun", "jlpt": "N4", "meanings": ["thing", "matter"], "frequency": 20, "first_seen": "03-nageki-no-bourei-1"}
-{"id": "v0851", "lemma": "いい", "reading": "いい", "pos": "i-adj", "jlpt": "N5", "meanings": ["good", "nice"], "frequency": 44, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0850", "lemma": "こと", "reading": "こと", "pos": "noun", "jlpt": "N4", "meanings": ["thing", "matter"], "frequency": 23, "first_seen": "03-nageki-no-bourei-1"}
+{"id": "v0851", "lemma": "いい", "reading": "いい", "pos": "i-adj", "jlpt": "N5", "meanings": ["good", "nice"], "frequency": 45, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0852", "lemma": "強力", "reading": "きょうりょく", "pos": "na-adj", "jlpt": "N3", "meanings": ["powerful", "strong", "mighty"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0853", "lemma": "集める", "reading": "あつめる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to gather", "to collect"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0854", "lemma": "いける", "reading": "いける", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to be able to go", "to manage", "to be doable"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -858,7 +858,7 @@
 {"id": "v0858", "lemma": "良い", "reading": "よい", "pos": "i-adj", "jlpt": "N5", "meanings": ["good", "fine"], "frequency": 8, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0859", "lemma": "本体", "reading": "ほんたい", "pos": "noun", "jlpt": "N2", "meanings": ["main body", "main unit", "the person/self itself"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0860", "lemma": "走馬灯", "reading": "そうまとう", "pos": "noun", "jlpt": null, "meanings": ["revolving lantern", "one's life flashing before one's eyes"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v0861", "lemma": "かつて", "reading": "かつて", "pos": "adverb", "jlpt": "N2", "meanings": ["once", "formerly", "in the past"], "frequency": 7, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0861", "lemma": "かつて", "reading": "かつて", "pos": "adverb", "jlpt": "N2", "meanings": ["once", "formerly", "in the past"], "frequency": 8, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0862", "lemma": "会話", "reading": "かいわ", "pos": "noun", "jlpt": "N4", "meanings": ["conversation"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0863", "lemma": "脳裏", "reading": "のうり", "pos": "noun", "jlpt": "N1", "meanings": ["one's mind", "the back of one's mind"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0864", "lemma": "過る", "reading": "よぎる", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to cross", "to pass through one's mind", "to flit across"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -867,7 +867,7 @@
 {"id": "v0867", "lemma": "召す", "reading": "めす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to call", "to summon", "to be taken (to heaven, i.e. to die)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0868", "lemma": "速度", "reading": "そくど", "pos": "noun", "jlpt": "N3", "meanings": ["speed", "velocity"], "frequency": 7, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0869", "lemma": "本能", "reading": "ほんのう", "pos": "noun", "jlpt": "N1", "meanings": ["instinct"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v0870", "lemma": "諦める", "reading": "あきらめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to give up", "to abandon (hope)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0870", "lemma": "諦める", "reading": "あきらめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to give up", "to abandon (hope)"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0871", "lemma": "もともと", "reading": "もともと", "pos": "adverb", "jlpt": "N3", "meanings": ["originally", "by nature", "from the start"], "frequency": 6, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0872", "lemma": "魔獣", "reading": "まじゅう", "pos": "noun", "jlpt": null, "meanings": ["magic beast", "demon beast"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0873", "lemma": "思える", "reading": "おもえる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to seem", "to appear", "to be thought"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -949,7 +949,7 @@
 {"id": "v0949", "lemma": "通過", "reading": "つうか", "pos": "noun", "jlpt": "N2", "meanings": ["passing through", "passing by", "passage"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0950", "lemma": "二足歩行", "reading": "にそくほこう", "pos": "noun", "jlpt": null, "meanings": ["bipedal walking", "walking on two legs"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0951", "lemma": "剣", "reading": "けん", "pos": "noun", "jlpt": "N2", "meanings": ["sword", "blade"], "frequency": 9, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v0952", "lemma": "ティノ", "reading": "ティノ", "pos": "noun", "jlpt": null, "meanings": ["Tino (character name)"], "frequency": 184, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0952", "lemma": "ティノ", "reading": "ティノ", "pos": "noun", "jlpt": null, "meanings": ["Tino (character name)"], "frequency": 185, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0953", "lemma": "消え去る", "reading": "きえさる", "pos": "verb-godan", "jlpt": null, "meanings": ["to vanish", "to disappear completely"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0954", "lemma": "死体", "reading": "したい", "pos": "noun", "jlpt": "N2", "meanings": ["corpse", "dead body"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0955", "lemma": "長い", "reading": "ながい", "pos": "i-adj", "jlpt": "N5", "meanings": ["long"], "frequency": 7, "first_seen": "04-nageki-no-bourei-1"}
@@ -970,7 +970,7 @@
 {"id": "v0970", "lemma": "お笑い種", "reading": "おわらいぐさ", "pos": "noun", "jlpt": null, "meanings": ["laughingstock", "joke", "object of ridicule"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0971", "lemma": "責任感", "reading": "せきにんかん", "pos": "noun", "jlpt": "N2", "meanings": ["sense of responsibility"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0972", "lemma": "放り投げる", "reading": "ほうりなげる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to throw away", "to abandon", "to fling aside"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v0973", "lemma": "リィズ", "reading": "リィズ", "pos": "noun", "jlpt": null, "meanings": ["Lize (character name)"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0973", "lemma": "リィズ", "reading": "リィズ", "pos": "noun", "jlpt": null, "meanings": ["Lize (character name)"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0974", "lemma": "トリッキー", "reading": "トリッキー", "pos": "na-adj", "jlpt": null, "meanings": ["tricky", "unpredictable"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0975", "lemma": "もしかしたら", "reading": "もしかしたら", "pos": "expression", "jlpt": "N3", "meanings": ["perhaps", "maybe", "possibly"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0976", "lemma": "痛み", "reading": "いたみ", "pos": "noun", "jlpt": "N3", "meanings": ["pain", "ache", "soreness"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -979,7 +979,7 @@
 {"id": "v0979", "lemma": "方向", "reading": "ほうこう", "pos": "noun", "jlpt": "N3", "meanings": ["direction", "way", "course"], "frequency": 6, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0980", "lemma": "ふいに", "reading": "ふいに", "pos": "adverb", "jlpt": "N2", "meanings": ["suddenly", "abruptly", "unexpectedly"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0981", "lemma": "ミサイル", "reading": "ミサイル", "pos": "noun", "jlpt": "N1", "meanings": ["missile"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v0982", "lemma": "すぐに", "reading": "すぐに", "pos": "adverb", "jlpt": "N4", "meanings": ["immediately", "at once", "right away"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v0982", "lemma": "すぐに", "reading": "すぐに", "pos": "adverb", "jlpt": "N4", "meanings": ["immediately", "at once", "right away"], "frequency": 6, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0983", "lemma": "側頭部", "reading": "そくとうぶ", "pos": "noun", "jlpt": null, "meanings": ["side of the head", "temporal region"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0984", "lemma": "ぶつかる", "reading": "ぶつかる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to collide with", "to bump into", "to crash into"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v0985", "lemma": "反動", "reading": "はんどう", "pos": "noun", "jlpt": "N1", "meanings": ["recoil", "reaction", "backlash"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1010,7 +1010,7 @@
 {"id": "v1010", "lemma": "馬鹿", "reading": "ばか", "pos": "noun", "jlpt": "N3", "meanings": ["idiot", "fool", "stupidity"], "frequency": 8, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1011", "lemma": "未来永劫", "reading": "みらいえいごう", "pos": "expression", "jlpt": null, "meanings": ["forever", "eternally", "for all eternity"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1012", "lemma": "語り継ぐ", "reading": "かたりつぐ", "pos": "verb-godan", "jlpt": null, "meanings": ["to pass down (a story)", "to hand down (a tale)", "to retell across generations"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1013", "lemma": "凄い", "reading": "すごい", "pos": "i-adj", "jlpt": "N4", "meanings": ["amazing", "terrible", "awful", "really"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1013", "lemma": "凄い", "reading": "すごい", "pos": "i-adj", "jlpt": "N4", "meanings": ["amazing", "terrible", "awful", "really"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1014", "lemma": "何でも", "reading": "なんでも", "pos": "expression", "jlpt": "N3", "meanings": ["anything", "even so", "at any rate"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1015", "lemma": "そこ", "reading": "そこ", "pos": "noun", "jlpt": "N5", "meanings": ["there", "that place"], "frequency": 14, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1016", "lemma": "駄目", "reading": "だめ", "pos": "na-adj", "jlpt": "N3", "meanings": ["no good", "useless", "hopeless"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -1137,14 +1137,14 @@
 {"id": "v1137", "lemma": "近く", "reading": "ちかく", "pos": "noun", "jlpt": "N4", "meanings": ["near", "nearby", "vicinity"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1138", "lemma": "ギルベルト", "reading": "ギルベルト", "pos": "noun", "jlpt": null, "meanings": ["Gilbert (character name)"], "frequency": 18, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1139", "lemma": "グレッグ", "reading": "グレッグ", "pos": "noun", "jlpt": null, "meanings": ["Greg (character name)"], "frequency": 13, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1140", "lemma": "様", "reading": "さま", "pos": "noun", "jlpt": "N4", "meanings": ["honorific suffix (Mr./Ms./Lord)", "appearance"], "frequency": 12, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1140", "lemma": "様", "reading": "さま", "pos": "noun", "jlpt": "N4", "meanings": ["honorific suffix (Mr./Ms./Lord)", "appearance"], "frequency": 14, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1141", "lemma": "絶え絶え", "reading": "たえだえ", "pos": "na-adj", "jlpt": null, "meanings": ["faint", "gasping", "barely surviving"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1142", "lemma": "唖然", "reading": "あぜん", "pos": "adverb", "jlpt": null, "meanings": ["dumbfounded", "speechless", "agape"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1143", "lemma": "全員", "reading": "ぜんいん", "pos": "noun", "jlpt": "N3", "meanings": ["all members", "everyone"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1144", "lemma": "見っけ", "reading": "みっけ", "pos": "expression", "jlpt": null, "meanings": ["found you", "spotted", "gotcha"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1145", "lemma": "いやいや", "reading": "いやいや", "pos": "expression", "jlpt": null, "meanings": ["no no", "reluctantly", "grudgingly"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1146", "lemma": "混乱", "reading": "こんらん", "pos": "noun", "jlpt": "N2", "meanings": ["confusion", "chaos", "disorder"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1147", "lemma": "軽い", "reading": "かるい", "pos": "i-adj", "jlpt": "N4", "meanings": ["light", "slight", "easy"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1147", "lemma": "軽い", "reading": "かるい", "pos": "i-adj", "jlpt": "N4", "meanings": ["light", "slight", "easy"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1148", "lemma": "かける", "reading": "かける", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to call out (to)", "to address", "to apply"], "frequency": 6, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1149", "lemma": "謝罪", "reading": "しゃざい", "pos": "noun", "jlpt": "N1", "meanings": ["apology"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1150", "lemma": "蒼白", "reading": "そうはく", "pos": "na-adj", "jlpt": null, "meanings": ["pale", "ashen", "ghastly white"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
@@ -1154,11 +1154,11 @@
 {"id": "v1154", "lemma": "負担", "reading": "ふたん", "pos": "noun", "jlpt": "N1", "meanings": ["burden", "load", "responsibility"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1155", "lemma": "掛ける", "reading": "かける", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to hang", "to put on", "to impose"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1156", "lemma": "とうとう", "reading": "とうとう", "pos": "adverb", "jlpt": "N3", "meanings": ["finally", "at last", "in the end"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1157", "lemma": "土下座", "reading": "どげざ", "pos": "noun", "jlpt": null, "meanings": ["prostrating oneself (in apology)", "kneeling on the ground in deep respect"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1157", "lemma": "土下座", "reading": "どげざ", "pos": "noun", "jlpt": null, "meanings": ["prostrating oneself (in apology)", "kneeling on the ground in deep respect"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1158", "lemma": "スキル", "reading": "スキル", "pos": "noun", "jlpt": null, "meanings": ["skill", "ability"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1159", "lemma": "後輩", "reading": "こうはい", "pos": "noun", "jlpt": "N3", "meanings": ["junior (at school/work)", "younger associate", "protégé"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1160", "lemma": "見せる", "reading": "みせる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to show", "to display"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1161", "lemma": "笑う", "reading": "わらう", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to laugh", "to smile"], "frequency": 7, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1161", "lemma": "笑う", "reading": "わらう", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to laugh", "to smile"], "frequency": 9, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1162", "lemma": "にやにや", "reading": "にやにや", "pos": "adverb", "jlpt": null, "meanings": ["grinning", "smirking"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1163", "lemma": "形相", "reading": "ぎょうそう", "pos": "noun", "jlpt": null, "meanings": ["facial expression (esp. fierce)", "look", "aspect"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1164", "lemma": "叫ぶ", "reading": "さけぶ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to shout", "to yell", "to cry out"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
@@ -1169,7 +1169,7 @@
 {"id": "v1169", "lemma": "示す", "reading": "しめす", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to show", "to indicate", "to demonstrate"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1170", "lemma": "油断", "reading": "ゆだん", "pos": "noun", "jlpt": "N2", "meanings": ["carelessness", "unpreparedness", "lack of caution"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1171", "lemma": "風上", "reading": "かざかみ", "pos": "noun", "jlpt": null, "meanings": ["windward", "upwind side"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1172", "lemma": "のんびり", "reading": "のんびり", "pos": "adverb", "jlpt": "N2", "meanings": ["leisurely", "easygoingly", "relaxedly"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1172", "lemma": "のんびり", "reading": "のんびり", "pos": "adverb", "jlpt": "N2", "meanings": ["leisurely", "easygoingly", "relaxedly"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1173", "lemma": "振り返る", "reading": "ふりかえる", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to turn around", "to look back", "to reflect on"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1174", "lemma": "頭パー", "reading": "あたまパー", "pos": "expression", "jlpt": null, "meanings": ["empty-headed", "airheaded", "brain not working"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1175", "lemma": "先程", "reading": "さきほど", "pos": "adverb", "jlpt": "N2", "meanings": ["earlier", "a few moments ago", "just now"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -1313,7 +1313,7 @@
 {"id": "v1313", "lemma": "投げつける", "reading": "なげつける", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to throw at", "to hurl at"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1314", "lemma": "どんな", "reading": "どんな", "pos": "adverb", "jlpt": "N4", "meanings": ["what kind of", "what sort of", "any"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1315", "lemma": "スライム", "reading": "スライム", "pos": "noun", "jlpt": null, "meanings": ["slime (creature)"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1316", "lemma": "物", "reading": "もの", "pos": "noun", "jlpt": "N5", "meanings": ["thing", "object"], "frequency": 27, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1316", "lemma": "物", "reading": "もの", "pos": "noun", "jlpt": "N5", "meanings": ["thing", "object"], "frequency": 28, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1317", "lemma": "命運", "reading": "めいうん", "pos": "noun", "jlpt": null, "meanings": ["fate", "destiny", "lot in life"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1318", "lemma": "託す", "reading": "たくす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to entrust", "to commit", "to leave to"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1319", "lemma": "状態", "reading": "じょうたい", "pos": "noun", "jlpt": "N3", "meanings": ["state", "condition", "situation"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -1326,7 +1326,7 @@
 {"id": "v1326", "lemma": "戦い", "reading": "たたかい", "pos": "noun", "jlpt": "N3", "meanings": ["battle", "fight", "struggle"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1327", "lemma": "自己責任", "reading": "じこせきにん", "pos": "noun", "jlpt": null, "meanings": ["self-responsibility", "personal responsibility"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1328", "lemma": "分", "reading": "ぶん", "pos": "noun", "jlpt": "N3", "meanings": ["portion", "share", "extent", "one's part"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1329", "lemma": "好き", "reading": "すき", "pos": "na-adj", "jlpt": "N5", "meanings": ["liking", "fondness", "preference"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1329", "lemma": "好き", "reading": "すき", "pos": "na-adj", "jlpt": "N5", "meanings": ["liking", "fondness", "preference"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1330", "lemma": "ふと", "reading": "ふと", "pos": "adverb", "jlpt": "N3", "meanings": ["suddenly", "casually", "by chance"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1331", "lemma": "どこ", "reading": "どこ", "pos": "noun", "jlpt": "N5", "meanings": ["where", "what place"], "frequency": 14, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1332", "lemma": "がたり", "reading": "がたり", "pos": "adverb", "jlpt": null, "meanings": ["with a clatter", "with a thud"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1396,7 +1396,7 @@
 {"id": "v1396", "lemma": "言い放つ", "reading": "いいはなつ", "pos": "verb-godan", "jlpt": null, "meanings": ["to declare", "to assert", "to proclaim"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1397", "lemma": "残念", "reading": "ざんねん", "pos": "na-adj", "jlpt": "N4", "meanings": ["regrettable", "disappointing", "too bad"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1398", "lemma": "十七個", "reading": "じゅうななこ", "pos": "noun", "jlpt": null, "meanings": ["seventeen (small objects)"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1399", "lemma": "特に", "reading": "とくに", "pos": "adverb", "jlpt": "N3", "meanings": ["especially", "particularly", "in particular"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1399", "lemma": "特に", "reading": "とくに", "pos": "adverb", "jlpt": "N3", "meanings": ["especially", "particularly", "in particular"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1400", "lemma": "身体能力", "reading": "しんたいのうりょく", "pos": "noun", "jlpt": null, "meanings": ["physical ability", "athletic ability"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1401", "lemma": "数多", "reading": "あまた", "pos": "adverb", "jlpt": null, "meanings": ["many", "numerous", "a great number"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1402", "lemma": "生命", "reading": "せいめい", "pos": "noun", "jlpt": "N2", "meanings": ["life", "existence", "living thing"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
@@ -1426,7 +1426,7 @@
 {"id": "v1426", "lemma": "一定", "reading": "いってい", "pos": "noun", "jlpt": "N2", "meanings": ["fixed", "constant", "certain"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1427", "lemma": "強度", "reading": "きょうど", "pos": "noun", "jlpt": "N1", "meanings": ["strength", "intensity", "durability"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1428", "lemma": "結界", "reading": "けっかい", "pos": "noun", "jlpt": null, "meanings": ["barrier (magical)", "sacred boundary", "ward"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1429", "lemma": "時間", "reading": "じかん", "pos": "noun", "jlpt": "N5", "meanings": ["time", "hour", "duration"], "frequency": 9, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1429", "lemma": "時間", "reading": "じかん", "pos": "noun", "jlpt": "N5", "meanings": ["time", "hour", "duration"], "frequency": 10, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1430", "lemma": "小難しい", "reading": "こむずかしい", "pos": "i-adj", "jlpt": null, "meanings": ["fairly difficult", "slightly complicated", "fussy"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1431", "lemma": "言い方", "reading": "いいかた", "pos": "noun", "jlpt": "N3", "meanings": ["way of saying", "manner of speaking"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1432", "lemma": "防ぐ", "reading": "ふせぐ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to defend", "to prevent", "to protect against"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1436,7 +1436,7 @@
 {"id": "v1436", "lemma": "種類", "reading": "しゅるい", "pos": "noun", "jlpt": "N3", "meanings": ["kind", "type", "sort", "variety"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1437", "lemma": "値段", "reading": "ねだん", "pos": "noun", "jlpt": "N3", "meanings": ["price", "cost"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1438", "lemma": "希少性", "reading": "きしょうせい", "pos": "noun", "jlpt": null, "meanings": ["rarity", "scarcity"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1439", "lemma": "関係", "reading": "かんけい", "pos": "noun", "jlpt": "N3", "meanings": ["relationship", "connection", "relevance"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1439", "lemma": "関係", "reading": "かんけい", "pos": "noun", "jlpt": "N3", "meanings": ["relationship", "connection", "relevance"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1440", "lemma": "めちゃくちゃ", "reading": "めちゃくちゃ", "pos": "adverb", "jlpt": "N2", "meanings": ["incredibly", "absurdly", "ridiculously"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1441", "lemma": "買う", "reading": "かう", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to buy", "to purchase"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1442", "lemma": "買い漁る", "reading": "かいあさる", "pos": "verb-godan", "jlpt": null, "meanings": ["to buy up", "to scour and buy", "to buy in bulk"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1444,7 +1444,7 @@
 {"id": "v1444", "lemma": "なんと", "reading": "なんと", "pos": "adverb", "jlpt": "N3", "meanings": ["amazingly", "to one's surprise", "what a..."], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1445", "lemma": "クラン本部", "reading": "クランほんぶ", "pos": "noun", "jlpt": null, "meanings": ["clan headquarters"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1446", "lemma": "ビル", "reading": "ビル", "pos": "noun", "jlpt": "N4", "meanings": ["building"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1447", "lemma": "二つ", "reading": "ふたつ", "pos": "noun", "jlpt": "N5", "meanings": ["two (general counter)"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1447", "lemma": "二つ", "reading": "ふたつ", "pos": "noun", "jlpt": "N5", "meanings": ["two (general counter)"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1448", "lemma": "三つ", "reading": "みっつ", "pos": "noun", "jlpt": "N5", "meanings": ["three (general counter)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1449", "lemma": "お値段", "reading": "おねだん", "pos": "noun", "jlpt": null, "meanings": ["price (polite)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1450", "lemma": "本来", "reading": "ほんらい", "pos": "adverb", "jlpt": "N2", "meanings": ["originally", "essentially", "by nature"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
@@ -1521,7 +1521,7 @@
 {"id": "v1521", "lemma": "三割", "reading": "さんわり", "pos": "noun", "jlpt": null, "meanings": ["30 percent", "three tenths"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1522", "lemma": "適当", "reading": "てきとう", "pos": "na-adj", "jlpt": "N2", "meanings": ["appropriate", "suitable", "random", "arbitrary"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1523", "lemma": "逃がす", "reading": "にがす", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to let escape", "to set free", "to fail to seize"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1524", "lemma": "作る", "reading": "つくる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to make", "to create", "to produce"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1524", "lemma": "作る", "reading": "つくる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to make", "to create", "to produce"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1525", "lemma": "最悪", "reading": "さいあく", "pos": "noun", "jlpt": "N2", "meanings": ["worst case", "extremely bad", "at worst"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1526", "lemma": "武器", "reading": "ぶき", "pos": "noun", "jlpt": "N2", "meanings": ["weapon", "arms"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1527", "lemma": "多少", "reading": "たしょう", "pos": "adverb", "jlpt": "N3", "meanings": ["somewhat", "more or less", "a little"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1628,7 +1628,7 @@
 {"id": "v1628", "lemma": "追い詰める", "reading": "おいつめる", "pos": "verb-ichidan", "jlpt": "N1", "meanings": ["to corner", "to drive into a corner", "to back into"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1629", "lemma": "術", "reading": "すべ", "pos": "noun", "jlpt": null, "meanings": ["way", "means", "method"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1630", "lemma": "追尾", "reading": "ついび", "pos": "noun", "jlpt": null, "meanings": ["tracking", "tailing", "homing"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1631", "lemma": "勘違い", "reading": "かんちがい", "pos": "noun", "jlpt": "N3", "meanings": ["misunderstanding", "wrong assumption", "mistake"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1631", "lemma": "勘違い", "reading": "かんちがい", "pos": "noun", "jlpt": "N3", "meanings": ["misunderstanding", "wrong assumption", "mistake"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1632", "lemma": "場", "reading": "ば", "pos": "noun", "jlpt": "N3", "meanings": ["place", "spot", "scene"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1633", "lemma": "伏せる", "reading": "ふせる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to lie down", "to lay flat", "to keep secret"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1634", "lemma": "亀", "reading": "かめ", "pos": "noun", "jlpt": "N2", "meanings": ["turtle", "tortoise"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
@@ -1639,7 +1639,7 @@
 {"id": "v1639", "lemma": "輝かせる", "reading": "かがやかせる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to make sparkle", "to make shine", "to brighten"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1640", "lemma": "素直", "reading": "すなお", "pos": "na-adj", "jlpt": "N3", "meanings": ["obedient", "honest", "frank", "docile"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1641", "lemma": "賞賛", "reading": "しょうさん", "pos": "noun", "jlpt": null, "meanings": ["praise", "admiration"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1642", "lemma": "嬉しい", "reading": "うれしい", "pos": "i-adj", "jlpt": "N4", "meanings": ["happy", "glad", "pleased"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1642", "lemma": "嬉しい", "reading": "うれしい", "pos": "i-adj", "jlpt": "N4", "meanings": ["happy", "glad", "pleased"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1643", "lemma": "おひねり", "reading": "おひねり", "pos": "noun", "jlpt": null, "meanings": ["tip (twisted in paper)", "gratuity (for a performer)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1644", "lemma": "ともかく", "reading": "ともかく", "pos": "adverb", "jlpt": "N3", "meanings": ["anyhow", "at any rate", "setting aside"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1645", "lemma": "骸骨", "reading": "がいこつ", "pos": "noun", "jlpt": null, "meanings": ["skeleton", "skull"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
@@ -1729,10 +1729,10 @@
 {"id": "v1729", "lemma": "平然", "reading": "へいぜん", "pos": "adverb", "jlpt": "N1", "meanings": ["calmly", "coolly", "composedly"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1730", "lemma": "危機的", "reading": "ききてき", "pos": "na-adj", "jlpt": null, "meanings": ["critical", "crisis (situation)", "perilous"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1731", "lemma": "拘らず", "reading": "かかわらず", "pos": "expression", "jlpt": "N3", "meanings": ["regardless of", "despite", "irrespective of"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1732", "lemma": "彼", "reading": "かれ", "pos": "noun", "jlpt": "N4", "meanings": ["he", "him", "boyfriend"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1732", "lemma": "彼", "reading": "かれ", "pos": "noun", "jlpt": "N4", "meanings": ["he", "him", "boyfriend"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1733", "lemma": "まさか", "reading": "まさか", "pos": "adverb", "jlpt": "N3", "meanings": ["surely not", "no way", "you don't say"], "frequency": 8, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1734", "lemma": "スピード", "reading": "スピード", "pos": "noun", "jlpt": "N3", "meanings": ["speed"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1735", "lemma": "クライ", "reading": "クライ", "pos": "noun", "jlpt": null, "meanings": ["Cry (character name, the protagonist)"], "frequency": 17, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1735", "lemma": "クライ", "reading": "クライ", "pos": "noun", "jlpt": null, "meanings": ["Cry (character name, the protagonist)"], "frequency": 20, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1736", "lemma": "怪我", "reading": "けが", "pos": "noun", "jlpt": "N3", "meanings": ["injury", "wound", "accident"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1737", "lemma": "気を遣う", "reading": "きをつかう", "pos": "expression", "jlpt": null, "meanings": ["to be considerate of", "to be attentive to", "to look out for"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1738", "lemma": "怒鳴る", "reading": "どなる", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to shout", "to yell", "to scream at"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1761,8 +1761,8 @@
 {"id": "v1761", "lemma": "全滅", "reading": "ぜんめつ", "pos": "noun", "jlpt": "N1", "meanings": ["annihilation", "total destruction", "wipe-out"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1762", "lemma": "口調", "reading": "くちょう", "pos": "noun", "jlpt": "N1", "meanings": ["tone (of voice)", "manner of speaking"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1763", "lemma": "余程", "reading": "よほど", "pos": "adverb", "jlpt": "N2", "meanings": ["very much", "considerably", "seriously"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1764", "lemma": "綺麗", "reading": "きれい", "pos": "na-adj", "jlpt": "N5", "meanings": ["pretty", "beautiful", "clean"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1765", "lemma": "髪", "reading": "かみ", "pos": "noun", "jlpt": "N4", "meanings": ["hair (on the head)"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1764", "lemma": "綺麗", "reading": "きれい", "pos": "na-adj", "jlpt": "N5", "meanings": ["pretty", "beautiful", "clean"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1765", "lemma": "髪", "reading": "かみ", "pos": "noun", "jlpt": "N4", "meanings": ["hair (on the head)"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1766", "lemma": "乱れる", "reading": "みだれる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to be disordered", "to be in disarray", "to be disheveled"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1767", "lemma": "顔色", "reading": "かおいろ", "pos": "noun", "jlpt": "N2", "meanings": ["complexion", "facial color", "look"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1768", "lemma": "何処か", "reading": "どこか", "pos": "noun", "jlpt": "N4", "meanings": ["somewhere", "someplace"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1812,7 +1812,7 @@
 {"id": "v1812", "lemma": "ござる", "reading": "ござる", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to be (polite)", "to exist (humble)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1813", "lemma": "光景", "reading": "こうけい", "pos": "noun", "jlpt": "N1", "meanings": ["scene", "sight", "spectacle"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1814", "lemma": "ほっと", "reading": "ほっと", "pos": "adverb", "jlpt": "N3", "meanings": ["with relief", "relaxed", "reassured"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1815", "lemma": "全部", "reading": "ぜんぶ", "pos": "noun", "jlpt": "N4", "meanings": ["all", "entire", "everything"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1815", "lemma": "全部", "reading": "ぜんぶ", "pos": "noun", "jlpt": "N4", "meanings": ["all", "entire", "everything"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1816", "lemma": "機嫌", "reading": "きげん", "pos": "noun", "jlpt": "N2", "meanings": ["mood", "humor", "temper"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1817", "lemma": "損ねる", "reading": "そこねる", "pos": "verb-ichidan", "jlpt": "N1", "meanings": ["to harm", "to spoil", "to fail to (auxiliary)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1818", "lemma": "ウルフナイト", "reading": "ウルフナイト", "pos": "noun", "jlpt": null, "meanings": ["wolf knight (named monster, English transliteration)"], "frequency": 15, "first_seen": "04-nageki-no-bourei-1"}
@@ -1825,7 +1825,7 @@
 {"id": "v1825", "lemma": "怒り狂う", "reading": "いかりくるう", "pos": "verb-godan", "jlpt": null, "meanings": ["to fly into a rage", "to be in a frenzy of anger"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1826", "lemma": "空っぽ", "reading": "からっぽ", "pos": "na-adj", "jlpt": "N2", "meanings": ["empty", "hollow"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1827", "lemma": "騙す", "reading": "だます", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to deceive", "to trick", "to fool"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1828", "lemma": "逃す", "reading": "のがす", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to let go", "to miss", "to lose (an opportunity)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1828", "lemma": "逃す", "reading": "のがす", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to let go", "to miss", "to lose (an opportunity)"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1829", "lemma": "これから", "reading": "これから", "pos": "expression", "jlpt": "N4", "meanings": ["from now on", "after this", "henceforth"], "frequency": 4, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1830", "lemma": "悍ましい", "reading": "おぞましい", "pos": "i-adj", "jlpt": null, "meanings": ["frightful", "horrible", "terrible"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1831", "lemma": "自分達", "reading": "じぶんたち", "pos": "noun", "jlpt": null, "meanings": ["ourselves", "themselves"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1918,7 +1918,7 @@
 {"id": "v1918", "lemma": "是非", "reading": "ぜひ", "pos": "adverb", "jlpt": "N3", "meanings": ["by all means", "at any cost", "absolutely"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1919", "lemma": "あやかる", "reading": "あやかる", "pos": "verb-godan", "jlpt": null, "meanings": ["to share in (good fortune)", "to follow (someone's example)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1920", "lemma": "誇らしげ", "reading": "ほこらしげ", "pos": "na-adj", "jlpt": null, "meanings": ["proudly", "with an air of pride"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1921", "lemma": "胸", "reading": "むね", "pos": "noun", "jlpt": "N3", "meanings": ["chest", "breast", "heart"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1921", "lemma": "胸", "reading": "むね", "pos": "noun", "jlpt": "N3", "meanings": ["chest", "breast", "heart"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1922", "lemma": "眩しい", "reading": "まぶしい", "pos": "i-adj", "jlpt": "N1", "meanings": ["dazzling", "radiant", "bright"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1923", "lemma": "常識的", "reading": "じょうしきてき", "pos": "na-adj", "jlpt": null, "meanings": ["sensible", "commonsensical"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1924", "lemma": "未来", "reading": "みらい", "pos": "noun", "jlpt": "N3", "meanings": ["future"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -1978,7 +1978,7 @@
 {"id": "v1978", "lemma": "食料", "reading": "しょくりょう", "pos": "noun", "jlpt": "N2", "meanings": ["food", "provisions", "foodstuffs"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1979", "lemma": "外", "reading": "そと", "pos": "noun", "jlpt": "N5", "meanings": ["outside", "exterior", "outdoors"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1980", "lemma": "キャンプ", "reading": "キャンプ", "pos": "noun", "jlpt": "N3", "meanings": ["camp", "camping"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v1981", "lemma": "うち", "reading": "うち", "pos": "noun", "jlpt": "N5", "meanings": ["my place", "our group", "inside"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v1981", "lemma": "うち", "reading": "うち", "pos": "noun", "jlpt": "N5", "meanings": ["my place", "our group", "inside"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1982", "lemma": "便利", "reading": "べんり", "pos": "na-adj", "jlpt": "N5", "meanings": ["convenient", "handy", "useful"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1983", "lemma": "節", "reading": "ふし", "pos": "noun", "jlpt": "N1", "meanings": ["sign", "indication", "point"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v1984", "lemma": "再確認", "reading": "さいかくにん", "pos": "noun", "jlpt": null, "meanings": ["reconfirmation", "double-check"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -2075,8 +2075,8 @@
 {"id": "v2075", "lemma": "どれ", "reading": "どれ", "pos": "noun", "jlpt": "N5", "meanings": ["which (of three or more)", "any (of them)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2076", "lemma": "とる", "reading": "とる", "pos": "verb-godan", "jlpt": "N5", "meanings": ["to take", "to pick up", "to grasp"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2077", "lemma": "パーフェクト", "reading": "パーフェクト", "pos": "na-adj", "jlpt": null, "meanings": ["perfect"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v2078", "lemma": "相応しい", "reading": "ふさわしい", "pos": "i-adj", "jlpt": "N1", "meanings": ["appropriate", "suitable", "fitting"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v2079", "lemma": "周り", "reading": "まわり", "pos": "noun", "jlpt": "N3", "meanings": ["surroundings", "circumference", "around"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v2078", "lemma": "相応しい", "reading": "ふさわしい", "pos": "i-adj", "jlpt": "N1", "meanings": ["appropriate", "suitable", "fitting"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v2079", "lemma": "周り", "reading": "まわり", "pos": "noun", "jlpt": "N3", "meanings": ["surroundings", "circumference", "around"], "frequency": 5, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2080", "lemma": "基準", "reading": "きじゅん", "pos": "noun", "jlpt": "N2", "meanings": ["standard", "criterion", "basis"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2081", "lemma": "極悪", "reading": "ごくあく", "pos": "na-adj", "jlpt": null, "meanings": ["extremely evil", "heinous", "devilish"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2082", "lemma": "癖", "reading": "くせ", "pos": "noun", "jlpt": "N2", "meanings": ["habit", "tendency", "quirk"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
@@ -2102,7 +2102,7 @@
 {"id": "v2102", "lemma": "塵芥", "reading": "ちりあくた", "pos": "noun", "jlpt": null, "meanings": ["dust and rubbish", "trifling matter", "worthless thing"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2103", "lemma": "跳ね上がる", "reading": "はねあがる", "pos": "verb-godan", "jlpt": null, "meanings": ["to leap up", "to skyrocket", "to spike"], "frequency": 3, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2104", "lemma": "柔らか", "reading": "やわらか", "pos": "na-adj", "jlpt": "N3", "meanings": ["soft", "tender", "gentle"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v2105", "lemma": "リーダー", "reading": "リーダー", "pos": "noun", "jlpt": "N3", "meanings": ["leader"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v2105", "lemma": "リーダー", "reading": "リーダー", "pos": "noun", "jlpt": "N3", "meanings": ["leader"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2106", "lemma": "従う", "reading": "したがう", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to obey", "to follow", "to accompany"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2107", "lemma": "本音", "reading": "ほんね", "pos": "noun", "jlpt": "N1", "meanings": ["true feelings", "real intention", "honest opinion"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2108", "lemma": "漏れる", "reading": "もれる", "pos": "verb-ichidan", "jlpt": "N1", "meanings": ["to leak out", "to slip out", "to come out"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
@@ -2172,7 +2172,7 @@
 {"id": "v2172", "lemma": "静寂の星", "reading": "せいじゃくのほし", "pos": "expression", "jlpt": null, "meanings": ["Star of Silence (named magic item: sword)"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2173", "lemma": "無造作", "reading": "むぞうさ", "pos": "na-adj", "jlpt": null, "meanings": ["nonchalant", "casual", "careless"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2174", "lemma": "投げ出す", "reading": "なげだす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to throw out", "to abandon", "to give up"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
-{"id": "v2175", "lemma": "よし", "reading": "よし", "pos": "noun", "jlpt": null, "meanings": ["means", "way", "reason"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
+{"id": "v2175", "lemma": "よし", "reading": "よし", "pos": "noun", "jlpt": null, "meanings": ["means", "way", "reason"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2176", "lemma": "プレートメイル", "reading": "プレートメイル", "pos": "noun", "jlpt": null, "meanings": ["plate mail", "plate armor"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2177", "lemma": "軽さ", "reading": "かるさ", "pos": "noun", "jlpt": null, "meanings": ["lightness", "light weight"], "frequency": 1, "first_seen": "04-nageki-no-bourei-1"}
 {"id": "v2178", "lemma": "重視", "reading": "じゅうし", "pos": "noun", "jlpt": "N2", "meanings": ["importance", "emphasis", "prioritizing"], "frequency": 2, "first_seen": "04-nageki-no-bourei-1"}
@@ -2243,7 +2243,7 @@
 {"id": "v2243", "lemma": "パーティメンバー", "reading": "パーティメンバー", "pos": "noun", "jlpt": null, "meanings": ["party member"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
 {"id": "v2244", "lemma": "劣る", "reading": "おとる", "pos": "verb-godan", "jlpt": null, "meanings": ["to be inferior", "to be worse", "to fall behind"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
 {"id": "v2245", "lemma": "舞い込む", "reading": "まいこむ", "pos": "verb-godan", "jlpt": null, "meanings": ["to come unexpectedly", "to flutter into", "to drop in"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
-{"id": "v2246", "lemma": "とある", "reading": "とある", "pos": "pre-noun", "jlpt": null, "meanings": ["a certain", "some"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
+{"id": "v2246", "lemma": "とある", "reading": "とある", "pos": "pre-noun", "jlpt": null, "meanings": ["a certain", "some"], "frequency": 2, "first_seen": "05-nageki-no-bourei-1"}
 {"id": "v2247", "lemma": "憂慮", "reading": "ゆうりょ", "pos": "noun", "jlpt": null, "meanings": ["worry", "apprehension", "concern"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
 {"id": "v2248", "lemma": "準備", "reading": "じゅんび", "pos": "noun", "jlpt": "N4", "meanings": ["preparation", "arrangements"], "frequency": 3, "first_seen": "05-nageki-no-bourei-1"}
 {"id": "v2249", "lemma": "怠る", "reading": "おこたる", "pos": "verb-godan", "jlpt": null, "meanings": ["to be negligent", "to neglect", "to be lazy"], "frequency": 1, "first_seen": "05-nageki-no-bourei-1"}
@@ -2335,11 +2335,11 @@
 {"id": "v2335", "lemma": "障壁", "reading": "しょうへき", "pos": "noun", "jlpt": null, "meanings": ["barrier", "wall"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2336", "lemma": "阻む", "reading": "はばむ", "pos": "verb-godan", "jlpt": null, "meanings": ["to obstruct", "to block", "to hinder"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2337", "lemma": "隔壁", "reading": "かくへき", "pos": "noun", "jlpt": null, "meanings": ["partition", "bulkhead", "barrier"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
-{"id": "v2338", "lemma": "破る", "reading": "やぶる", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to break", "to tear", "to defeat"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
+{"id": "v2338", "lemma": "破る", "reading": "やぶる", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to break", "to tear", "to defeat"], "frequency": 2, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2339", "lemma": "扉", "reading": "とびら", "pos": "noun", "jlpt": null, "meanings": ["door", "gate"], "frequency": 2, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2340", "lemma": "液状", "reading": "えきじょう", "pos": "noun", "jlpt": null, "meanings": ["liquid form", "liquid state"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2341", "lemma": "身体", "reading": "しんたい", "pos": "noun", "jlpt": "N2", "meanings": ["body", "physique"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
-{"id": "v2342", "lemma": "想像", "reading": "そうぞう", "pos": "noun", "jlpt": "N3", "meanings": ["imagination", "guess"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
+{"id": "v2342", "lemma": "想像", "reading": "そうぞう", "pos": "noun", "jlpt": "N3", "meanings": ["imagination", "guess"], "frequency": 2, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2343", "lemma": "最低最悪", "reading": "さいていさいあく", "pos": "expression", "jlpt": null, "meanings": ["worst of the worst", "absolutely terrible"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2344", "lemma": "産物", "reading": "さんぶつ", "pos": "noun", "jlpt": null, "meanings": ["product", "result", "outcome"], "frequency": 2, "first_seen": "07-nageki-no-bourei-1"}
 {"id": "v2345", "lemma": "第", "reading": "だい", "pos": "prefix", "jlpt": null, "meanings": ["ordinal prefix", "the ... (No.)"], "frequency": 1, "first_seen": "07-nageki-no-bourei-1"}
@@ -2348,10 +2348,10 @@
 {"id": "v2348", "lemma": "護衛", "reading": "ごえい", "pos": "noun", "jlpt": "N3", "meanings": ["bodyguard", "escort", "guard"], "frequency": 9, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2349", "lemma": "丸くする", "reading": "まるくする", "pos": "expression", "jlpt": null, "meanings": ["to make round", "to be wide-eyed (in surprise)"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2350", "lemma": "一環", "reading": "いっかん", "pos": "noun", "jlpt": "N1", "meanings": ["link", "part", "step (of)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2351", "lemma": "として", "reading": "として", "pos": "expression", "jlpt": "N3", "meanings": ["as", "in the role of"], "frequency": 6, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2351", "lemma": "として", "reading": "として", "pos": "expression", "jlpt": "N3", "meanings": ["as", "in the role of"], "frequency": 8, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2352", "lemma": "課す", "reading": "かす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to impose", "to assign", "to set as a task"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2353", "lemma": "申し訳ない", "reading": "もうしわけない", "pos": "i-adj", "jlpt": "N2", "meanings": ["sorry", "apologetic", "inexcusable"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2354", "lemma": "アンドリヒ", "reading": "アンドリヒ", "pos": "noun", "jlpt": null, "meanings": ["Andrich (character surname)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2354", "lemma": "アンドリヒ", "reading": "アンドリヒ", "pos": "noun", "jlpt": null, "meanings": ["Andrich (character surname)"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2355", "lemma": "真っ昼間", "reading": "まっぴるま", "pos": "noun", "jlpt": null, "meanings": ["broad daylight", "middle of the day"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2356", "lemma": "日中", "reading": "にっちゅう", "pos": "noun", "jlpt": "N2", "meanings": ["daytime", "during the day"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2357", "lemma": "相変わらず", "reading": "あいかわらず", "pos": "adverb", "jlpt": "N2", "meanings": ["as usual", "as ever", "still"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
@@ -2389,7 +2389,7 @@
 {"id": "v2389", "lemma": "絶影", "reading": "ぜつえい", "pos": "noun", "jlpt": null, "meanings": ["Vanishing Shadow (alias)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2390", "lemma": "純粋", "reading": "じゅんすい", "pos": "na-adj", "jlpt": "N2", "meanings": ["pure", "genuine"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2391", "lemma": "及ぶ", "reading": "およぶ", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to reach", "to match (negative: cannot match)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2392", "lemma": "何より", "reading": "なにより", "pos": "expression", "jlpt": "N2", "meanings": ["above all", "most of all"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2392", "lemma": "何より", "reading": "なにより", "pos": "expression", "jlpt": "N2", "meanings": ["above all", "most of all"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2393", "lemma": "治安", "reading": "ちあん", "pos": "noun", "jlpt": "N1", "meanings": ["public order", "public safety"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2394", "lemma": "疑問", "reading": "ぎもん", "pos": "noun", "jlpt": "N3", "meanings": ["question", "doubt"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2395", "lemma": "笑顔", "reading": "えがお", "pos": "noun", "jlpt": "N3", "meanings": ["smiling face", "smile"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2425,7 +2425,7 @@
 {"id": "v2425", "lemma": "仕込む", "reading": "しこむ", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to train", "to install", "to insert"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2426", "lemma": "ナイフ", "reading": "ナイフ", "pos": "noun", "jlpt": "N5", "meanings": ["knife"], "frequency": 3, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2427", "lemma": "ルック", "reading": "ルック", "pos": "noun", "jlpt": null, "meanings": ["look", "appearance"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2428", "lemma": "決して", "reading": "けっして", "pos": "adverb", "jlpt": "N3", "meanings": ["never", "by no means"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2428", "lemma": "決して", "reading": "けっして", "pos": "adverb", "jlpt": "N3", "meanings": ["never", "by no means"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2429", "lemma": "見栄え", "reading": "みばえ", "pos": "noun", "jlpt": null, "meanings": ["good appearance", "attractiveness"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2430", "lemma": "何分", "reading": "なにぶん", "pos": "adverb", "jlpt": "N1", "meanings": ["after all", "anyhow"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2431", "lemma": "地味", "reading": "じみ", "pos": "na-adj", "jlpt": "N3", "meanings": ["plain", "sober", "unflashy"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
@@ -2471,7 +2471,7 @@
 {"id": "v2471", "lemma": "相好", "reading": "そうごう", "pos": "noun", "jlpt": null, "meanings": ["countenance", "facial expression"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2472", "lemma": "あしらう", "reading": "あしらう", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to brush off", "to handle (lightly)", "to treat dismissively"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2473", "lemma": "っぽい", "reading": "っぽい", "pos": "suffix", "jlpt": "N3", "meanings": ["-like", "-ish"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2474", "lemma": "そんなに", "reading": "そんなに", "pos": "adverb", "jlpt": "N4", "meanings": ["so much", "like that"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2474", "lemma": "そんなに", "reading": "そんなに", "pos": "adverb", "jlpt": "N4", "meanings": ["so much", "like that"], "frequency": 3, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2475", "lemma": "褒める", "reading": "ほめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to praise", "to compliment"], "frequency": 4, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2476", "lemma": "十万", "reading": "じゅうまん", "pos": "noun", "jlpt": "N4", "meanings": ["one hundred thousand"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2477", "lemma": "ギール", "reading": "ギール", "pos": "noun", "jlpt": null, "meanings": ["gil (currency)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2624,13 +2624,13 @@
 {"id": "v2624", "lemma": "ただし", "reading": "ただし", "pos": "conjunction", "jlpt": "N2", "meanings": ["however", "provided that"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2625", "lemma": "雑然", "reading": "ざつぜん", "pos": "adverb", "jlpt": null, "meanings": ["disorderly", "cluttered"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2626", "lemma": "本棚", "reading": "ほんだな", "pos": "noun", "jlpt": "N3", "meanings": ["bookshelf"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2627", "lemma": "立派", "reading": "りっぱ", "pos": "na-adj", "jlpt": "N4", "meanings": ["splendid", "fine", "grand"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2627", "lemma": "立派", "reading": "りっぱ", "pos": "na-adj", "jlpt": "N4", "meanings": ["splendid", "fine", "grand"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2628", "lemma": "色褪せる", "reading": "いろあせる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to fade", "to lose color"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2629", "lemma": "装丁", "reading": "そうてい", "pos": "noun", "jlpt": null, "meanings": ["binding (of a book)", "cover"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2630", "lemma": "その辺", "reading": "そのへん", "pos": "expression", "jlpt": "N3", "meanings": ["thereabouts", "that area"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2631", "lemma": "積み上げる", "reading": "つみあげる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to pile up", "to stack"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2632", "lemma": "鉄製", "reading": "てつせい", "pos": "noun", "jlpt": null, "meanings": ["made of iron"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2633", "lemma": "出来る", "reading": "できる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to be able to"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2633", "lemma": "出来る", "reading": "できる", "pos": "verb-ichidan", "jlpt": "N4", "meanings": ["to be able to"], "frequency": 3, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2634", "lemma": "得体", "reading": "えたい", "pos": "noun", "jlpt": "N1", "meanings": ["nature", "character"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2635", "lemma": "知れる", "reading": "しれる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to be known", "to be discoverable"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2636", "lemma": "器具", "reading": "きぐ", "pos": "noun", "jlpt": "N2", "meanings": ["instrument", "tool", "apparatus"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2727,7 +2727,7 @@
 {"id": "v2727", "lemma": "吸う", "reading": "すう", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to suck", "to consume"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2728", "lemma": "囮", "reading": "おとり", "pos": "noun", "jlpt": null, "meanings": ["decoy", "lure"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2729", "lemma": "どうか", "reading": "どうか", "pos": "adverb", "jlpt": "N3", "meanings": ["somehow", "what kind of"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2730", "lemma": "説明", "reading": "せつめい", "pos": "noun", "jlpt": "N4", "meanings": ["explanation"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2730", "lemma": "説明", "reading": "せつめい", "pos": "noun", "jlpt": "N4", "meanings": ["explanation"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2731", "lemma": "訝しげ", "reading": "いぶかしげ", "pos": "na-adj", "jlpt": null, "meanings": ["dubious", "suspicious-looking"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2732", "lemma": "忙しい", "reading": "いそがしい", "pos": "i-adj", "jlpt": "N5", "meanings": ["busy"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2733", "lemma": "練習", "reading": "れんしゅう", "pos": "noun", "jlpt": "N5", "meanings": ["practice"], "frequency": 4, "first_seen": "08-nageki-no-bourei-1"}
@@ -2768,7 +2768,7 @@
 {"id": "v2768", "lemma": "瞬き", "reading": "まばたき", "pos": "noun", "jlpt": "N1", "meanings": ["blink", "blinking"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2769", "lemma": "拍手", "reading": "はくしゅ", "pos": "noun", "jlpt": "N3", "meanings": ["applause", "clapping"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2770", "lemma": "すごい", "reading": "すごい", "pos": "i-adj", "jlpt": "N3", "meanings": ["amazing", "incredible"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2771", "lemma": "ありがとうございます", "reading": "ありがとうございます", "pos": "expression", "jlpt": "N5", "meanings": ["thank you (polite)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2771", "lemma": "ありがとうございます", "reading": "ありがとうございます", "pos": "expression", "jlpt": "N5", "meanings": ["thank you (polite)"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2772", "lemma": "手にする", "reading": "てにする", "pos": "expression", "jlpt": "N2", "meanings": ["to take in hand", "to obtain"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2773", "lemma": "機会", "reading": "きかい", "pos": "noun", "jlpt": "N3", "meanings": ["opportunity", "chance"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2774", "lemma": "やっと", "reading": "やっと", "pos": "adverb", "jlpt": "N3", "meanings": ["barely", "at last"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2799,7 +2799,7 @@
 {"id": "v2799", "lemma": "あっさり", "reading": "あっさり", "pos": "adverb", "jlpt": "N2", "meanings": ["easily", "plainly", "simply"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2800", "lemma": "吸い込む", "reading": "すいこむ", "pos": "verb-godan", "jlpt": "N2", "meanings": ["to suck in", "to absorb"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2801", "lemma": "ぱちぱち", "reading": "ぱちぱち", "pos": "adverb", "jlpt": null, "meanings": ["clap-clap (sound of clapping)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2802", "lemma": "苦労", "reading": "くろう", "pos": "noun", "jlpt": "N3", "meanings": ["hardship", "struggle", "effort"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2802", "lemma": "苦労", "reading": "くろう", "pos": "noun", "jlpt": "N3", "meanings": ["hardship", "struggle", "effort"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2803", "lemma": "自然と", "reading": "しぜんと", "pos": "adverb", "jlpt": "N2", "meanings": ["naturally", "spontaneously"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2804", "lemma": "崩れる", "reading": "くずれる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to collapse", "to break"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2805", "lemma": "すまし顔", "reading": "すましがお", "pos": "noun", "jlpt": null, "meanings": ["composed face", "poker face"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2874,7 +2874,7 @@
 {"id": "v2874", "lemma": "地獄", "reading": "じごく", "pos": "noun", "jlpt": "N2", "meanings": ["hell"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2875", "lemma": "いやぁ", "reading": "いやぁ", "pos": "interjection", "jlpt": null, "meanings": ["well..."], "frequency": 3, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2876", "lemma": "買い物", "reading": "かいもの", "pos": "noun", "jlpt": "N5", "meanings": ["shopping", "purchase"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2877", "lemma": "眠る", "reading": "ねむる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to sleep"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2877", "lemma": "眠る", "reading": "ねむる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to sleep"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2878", "lemma": "宝具屋", "reading": "ほうぐや", "pos": "noun", "jlpt": null, "meanings": ["treasure-tool shop"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2879", "lemma": "ツンデレ", "reading": "ツンデレ", "pos": "na-adj", "jlpt": null, "meanings": ["tsundere (initially harsh, eventually soft)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2880", "lemma": "後にする", "reading": "あとにする", "pos": "expression", "jlpt": "N2", "meanings": ["to leave (a place)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2899,7 +2899,7 @@
 {"id": "v2899", "lemma": "補助的", "reading": "ほじょてき", "pos": "na-adj", "jlpt": null, "meanings": ["auxiliary", "supporting"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2900", "lemma": "ばかぁ", "reading": "ばかぁ", "pos": "noun", "jlpt": null, "meanings": ["idiot (drawn out)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2901", "lemma": "本心", "reading": "ほんしん", "pos": "noun", "jlpt": "N1", "meanings": ["true feelings", "real intention"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2902", "lemma": "涙", "reading": "なみだ", "pos": "noun", "jlpt": "N3", "meanings": ["tears"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2902", "lemma": "涙", "reading": "なみだ", "pos": "noun", "jlpt": "N3", "meanings": ["tears"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2903", "lemma": "混じり", "reading": "まじり", "pos": "suffix", "jlpt": "N1", "meanings": ["mixed with"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2904", "lemma": "罵声", "reading": "ばせい", "pos": "noun", "jlpt": null, "meanings": ["shout of abuse", "jeer"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2905", "lemma": "浴びせかける", "reading": "あびせかける", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to shower (with words)", "to hurl"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2912,7 +2912,7 @@
 {"id": "v2912", "lemma": "沈む", "reading": "しずむ", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to sink", "to set (of sun)"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2913", "lemma": "優等生", "reading": "ゆうとうせい", "pos": "noun", "jlpt": null, "meanings": ["honor student", "model student"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2914", "lemma": "頼る", "reading": "たよる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to rely on", "to depend on"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
-{"id": "v2915", "lemma": "気をつける", "reading": "きをつける", "pos": "expression", "jlpt": "N4", "meanings": ["to take care", "to be careful"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2915", "lemma": "気をつける", "reading": "きをつける", "pos": "expression", "jlpt": "N4", "meanings": ["to take care", "to be careful"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2916", "lemma": "しっかり", "reading": "しっかり", "pos": "adverb", "jlpt": "N3", "meanings": ["firmly", "properly"], "frequency": 2, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2917", "lemma": "謝る", "reading": "あやまる", "pos": "verb-godan", "jlpt": "N4", "meanings": ["to apologize"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2918", "lemma": "埋め合わせ", "reading": "うめあわせ", "pos": "noun", "jlpt": "N1", "meanings": ["compensation", "making up for"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
@@ -2922,3 +2922,109 @@
 {"id": "v2922", "lemma": "叩き込む", "reading": "たたきこむ", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to hammer in", "to thrust into"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2923", "lemma": "一戦", "reading": "いっせん", "pos": "noun", "jlpt": null, "meanings": ["a battle", "a fight"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
 {"id": "v2924", "lemma": "役に立つ", "reading": "やくにたつ", "pos": "expression", "jlpt": "N3", "meanings": ["to be useful", "to be of use"], "frequency": 1, "first_seen": "08-nageki-no-bourei-1"}
+{"id": "v2925", "lemma": "はじめまして", "reading": "はじめまして", "pos": "expression", "jlpt": "N5", "meanings": ["nice to meet you"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2926", "lemma": "方", "reading": "かた", "pos": "noun", "jlpt": "N4", "meanings": ["person (polite)"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2927", "lemma": "お会いする", "reading": "おあいする", "pos": "verb-suru", "jlpt": "N4", "meanings": ["to meet (humble)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2928", "lemma": "光栄", "reading": "こうえい", "pos": "na-adj", "jlpt": "N1", "meanings": ["honor", "privilege"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2929", "lemma": "槻影", "reading": "つきかげ", "pos": "noun", "jlpt": null, "meanings": ["Tsukikage (author name)"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2930", "lemma": "この度", "reading": "このたび", "pos": "expression", "jlpt": "N2", "meanings": ["this time", "on this occasion"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2931", "lemma": "拙作", "reading": "せっさく", "pos": "noun", "jlpt": null, "meanings": ["my humble work"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2932", "lemma": "手に取る", "reading": "てにとる", "pos": "expression", "jlpt": "N3", "meanings": ["to pick up", "to take in hand"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2933", "lemma": "頂く", "reading": "いただく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to receive (humble)"], "frequency": 6, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2934", "lemma": "本当に", "reading": "ほんとうに", "pos": "adverb", "jlpt": "N5", "meanings": ["really", "truly"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2935", "lemma": "モンハンワールド", "reading": "モンハンワールド", "pos": "noun", "jlpt": null, "meanings": ["Monster Hunter World (game)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2936", "lemma": "フィールド", "reading": "フィールド", "pos": "noun", "jlpt": null, "meanings": ["field"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2937", "lemma": "なんか", "reading": "なんか", "pos": "adverb", "jlpt": "N3", "meanings": ["something like", "somehow"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2938", "lemma": "ファンタジー", "reading": "ファンタジー", "pos": "noun", "jlpt": null, "meanings": ["fantasy"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2939", "lemma": "ふんわり", "reading": "ふんわり", "pos": "adverb", "jlpt": null, "meanings": ["softly", "vaguely", "fluffily"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2940", "lemma": "欲求", "reading": "よっきゅう", "pos": "noun", "jlpt": "N1", "meanings": ["desire", "urge"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2941", "lemma": "当作品", "reading": "とうさくひん", "pos": "noun", "jlpt": null, "meanings": ["this work"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2942", "lemma": "美しい", "reading": "うつくしい", "pos": "i-adj", "jlpt": "N3", "meanings": ["beautiful"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2943", "lemma": "旅する", "reading": "たびする", "pos": "verb-suru", "jlpt": "N3", "meanings": ["to travel"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2944", "lemma": "宝物", "reading": "たからもの", "pos": "noun", "jlpt": "N3", "meanings": ["treasure"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2945", "lemma": "王道的", "reading": "おうどうてき", "pos": "na-adj", "jlpt": null, "meanings": ["royal road-like", "classic", "orthodox"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2946", "lemma": "英雄譚", "reading": "えいゆうたん", "pos": "noun", "jlpt": null, "meanings": ["heroic tale", "epic"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2947", "lemma": "でも", "reading": "でも", "pos": "conjunction", "jlpt": "N5", "meanings": ["but", "however"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2948", "lemma": "スローライフ", "reading": "スローライフ", "pos": "noun", "jlpt": null, "meanings": ["slow life"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2949", "lemma": "コメディ", "reading": "コメディ", "pos": "noun", "jlpt": null, "meanings": ["comedy"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2950", "lemma": "仲間内", "reading": "なかまうち", "pos": "noun", "jlpt": null, "meanings": ["among friends", "inner circle"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2951", "lemma": "ワイワイ", "reading": "ワイワイ", "pos": "adverb", "jlpt": null, "meanings": ["noisily", "boisterously"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2952", "lemma": "混ぜる", "reading": "まぜる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to mix"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2953", "lemma": "先に", "reading": "さきに", "pos": "adverb", "jlpt": "N3", "meanings": ["first", "beforehand"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2954", "lemma": "あとがき", "reading": "あとがき", "pos": "noun", "jlpt": null, "meanings": ["afterword"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2955", "lemma": "ご覧になる", "reading": "ごらんになる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to see (honorific)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2956", "lemma": "ために", "reading": "ために", "pos": "expression", "jlpt": "N4", "meanings": ["for the sake of"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2957", "lemma": "本作品", "reading": "ほんさくひん", "pos": "noun", "jlpt": null, "meanings": ["this work"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2958", "lemma": "異世界", "reading": "いせかい", "pos": "noun", "jlpt": null, "meanings": ["another world", "isekai"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2959", "lemma": "主人公", "reading": "しゅじんこう", "pos": "noun", "jlpt": "N2", "meanings": ["protagonist", "main character"], "frequency": 6, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2960", "lemma": "夢破れる", "reading": "ゆめやぶれる", "pos": "verb-ichidan", "jlpt": null, "meanings": ["to have one's dreams shattered"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2961", "lemma": "青年", "reading": "せいねん", "pos": "noun", "jlpt": "N3", "meanings": ["youth", "young man"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2962", "lemma": "志す", "reading": "こころざす", "pos": "verb-godan", "jlpt": "N1", "meanings": ["to aspire to"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2963", "lemma": "見捨てる", "reading": "みすてる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to abandon", "to forsake"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2964", "lemma": "一緒に", "reading": "いっしょに", "pos": "adverb", "jlpt": "N5", "meanings": ["together"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2965", "lemma": "任命する", "reading": "にんめいする", "pos": "verb-suru", "jlpt": "N1", "meanings": ["to appoint"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2966", "lemma": "引っ張る", "reading": "ひっぱる", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to pull", "to drag"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2967", "lemma": "何故か", "reading": "なぜか", "pos": "adverb", "jlpt": "N3", "meanings": ["somehow", "for some reason"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2968", "lemma": "噂する", "reading": "うわさする", "pos": "verb-suru", "jlpt": "N2", "meanings": ["to gossip", "to rumor"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2969", "lemma": "ように", "reading": "ように", "pos": "expression", "jlpt": "N4", "meanings": ["in such a way that"], "frequency": 3, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2970", "lemma": "応える", "reading": "こたえる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to respond to", "to meet (expectations)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2971", "lemma": "あらすじ", "reading": "あらすじ", "pos": "noun", "jlpt": "N2", "meanings": ["synopsis", "summary"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2972", "lemma": "大変", "reading": "たいへん", "pos": "na-adj", "jlpt": "N4", "meanings": ["awful", "tough", "great"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2973", "lemma": "目に遭う", "reading": "めにあう", "pos": "expression", "jlpt": "N3", "meanings": ["to have a bad experience", "to go through"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2974", "lemma": "主に", "reading": "おもに", "pos": "adverb", "jlpt": "N2", "meanings": ["mainly"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2975", "lemma": "最弱", "reading": "さいじゃく", "pos": "noun", "jlpt": null, "meanings": ["weakest"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2976", "lemma": "特技", "reading": "とくぎ", "pos": "noun", "jlpt": "N2", "meanings": ["special skill"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2977", "lemma": "現実逃避", "reading": "げんじつとうひ", "pos": "noun", "jlpt": null, "meanings": ["escapism", "escape from reality"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2978", "lemma": "このような", "reading": "このような", "pos": "expression", "jlpt": "N3", "meanings": ["like this", "such"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2979", "lemma": "気軽に", "reading": "きがるに", "pos": "adverb", "jlpt": "N2", "meanings": ["casually", "lightheartedly"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2980", "lemma": "読んでいただく", "reading": "よんでいただく", "pos": "expression", "jlpt": "N3", "meanings": ["to have someone read (humble)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2981", "lemma": "作品", "reading": "さくひん", "pos": "noun", "jlpt": "N3", "meanings": ["work (of art/literature)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2982", "lemma": "一風変わる", "reading": "いっぷうかわる", "pos": "expression", "jlpt": null, "meanings": ["unusual", "out of the ordinary"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2983", "lemma": "作者", "reading": "さくしゃ", "pos": "noun", "jlpt": "N2", "meanings": ["author"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2984", "lemma": "非常に", "reading": "ひじょうに", "pos": "adverb", "jlpt": "N3", "meanings": ["extremely"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2985", "lemma": "最後に", "reading": "さいごに", "pos": "adverb", "jlpt": "N4", "meanings": ["finally", "lastly"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2986", "lemma": "謝辞", "reading": "しゃじ", "pos": "noun", "jlpt": null, "meanings": ["acknowledgments", "thanks"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2987", "lemma": "締める", "reading": "しめる", "pos": "verb-ichidan", "jlpt": "N3", "meanings": ["to close", "to wrap up"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2988", "lemma": "設定", "reading": "せってい", "pos": "noun", "jlpt": "N2", "meanings": ["setting", "configuration"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2989", "lemma": "長め", "reading": "ながめ", "pos": "noun", "jlpt": null, "meanings": ["longish", "on the long side"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2990", "lemma": "元に", "reading": "もとに", "pos": "expression", "jlpt": "N3", "meanings": ["based on"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2991", "lemma": "以上に", "reading": "いじょうに", "pos": "expression", "jlpt": "N3", "meanings": ["more than", "beyond"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2992", "lemma": "素晴らしい", "reading": "すばらしい", "pos": "i-adj", "jlpt": "N3", "meanings": ["wonderful", "splendid"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2993", "lemma": "イラスト", "reading": "イラスト", "pos": "noun", "jlpt": "N3", "meanings": ["illustration"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2994", "lemma": "イラストレーター", "reading": "イラストレーター", "pos": "noun", "jlpt": null, "meanings": ["illustrator"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2995", "lemma": "チーコ", "reading": "チーコ", "pos": "noun", "jlpt": null, "meanings": ["Chiiko (illustrator name)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2996", "lemma": "ありがとうございました", "reading": "ありがとうございました", "pos": "expression", "jlpt": "N5", "meanings": ["thank you (past polite)"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2997", "lemma": "お気に入り", "reading": "おきにいり", "pos": "noun", "jlpt": "N3", "meanings": ["favorite"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2998", "lemma": "これからも", "reading": "これからも", "pos": "expression", "jlpt": "N4", "meanings": ["from now on too"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v2999", "lemma": "指定する", "reading": "していする", "pos": "verb-suru", "jlpt": "N3", "meanings": ["to specify"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3000", "lemma": "どうぞ", "reading": "どうぞ", "pos": "adverb", "jlpt": "N5", "meanings": ["please", "go ahead"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3001", "lemma": "ご容赦ください", "reading": "ごようしゃください", "pos": "expression", "jlpt": "N1", "meanings": ["please excuse / forgive"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3002", "lemma": "編集", "reading": "へんしゅう", "pos": "noun", "jlpt": "N2", "meanings": ["editing", "editor"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3003", "lemma": "川口", "reading": "かわぐち", "pos": "noun", "jlpt": null, "meanings": ["Kawaguchi (surname)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3004", "lemma": "出版", "reading": "しゅっぱん", "pos": "noun", "jlpt": "N2", "meanings": ["publishing"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3005", "lemma": "際する", "reading": "さいする", "pos": "verb-suru", "jlpt": "N1", "meanings": ["on the occasion of"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3006", "lemma": "尽力", "reading": "じんりょく", "pos": "noun", "jlpt": "N1", "meanings": ["effort", "endeavor"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3007", "lemma": "いただく", "reading": "いただく", "pos": "verb-godan", "jlpt": "N3", "meanings": ["to receive (humble)"], "frequency": 2, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3008", "lemma": "ＧＣノベルズ", "reading": "ＧＣノベルズ", "pos": "noun", "jlpt": null, "meanings": ["GC Novels (imprint)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3009", "lemma": "編集部", "reading": "へんしゅうぶ", "pos": "noun", "jlpt": null, "meanings": ["editorial department"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3010", "lemma": "皆様", "reading": "みなさま", "pos": "noun", "jlpt": "N4", "meanings": ["everyone (very polite)"], "frequency": 4, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3011", "lemma": "各社", "reading": "かくしゃ", "pos": "noun", "jlpt": null, "meanings": ["each company"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3012", "lemma": "皆様方", "reading": "みなさまがた", "pos": "noun", "jlpt": null, "meanings": ["everyone (extremely polite)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3013", "lemma": "小説", "reading": "しょうせつ", "pos": "noun", "jlpt": "N3", "meanings": ["novel"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3014", "lemma": "お世話になる", "reading": "おせわになる", "pos": "expression", "jlpt": "N4", "meanings": ["to be indebted to", "thanks for your help"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3015", "lemma": "一冊", "reading": "いっさつ", "pos": "noun", "jlpt": "N4", "meanings": ["one volume"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3016", "lemma": "世", "reading": "よ", "pos": "noun", "jlpt": "N2", "meanings": ["world", "society"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3017", "lemma": "今後", "reading": "こんご", "pos": "noun", "jlpt": "N2", "meanings": ["from now on", "henceforth"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3018", "lemma": "よろしくお願い致します", "reading": "よろしくおねがいいたします", "pos": "expression", "jlpt": "N3", "meanings": ["I humbly ask for your favor"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3019", "lemma": "締切", "reading": "しめきり", "pos": "noun", "jlpt": "N2", "meanings": ["deadline"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3020", "lemma": "Ｗｅｂ版", "reading": "ウェブばん", "pos": "noun", "jlpt": null, "meanings": ["web version"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3021", "lemma": "連載", "reading": "れんさい", "pos": "noun", "jlpt": "N1", "meanings": ["serialization"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3022", "lemma": "時", "reading": "じ", "pos": "suffix", "jlpt": "N3", "meanings": ["time", "when"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3023", "lemma": "長らく", "reading": "ながらく", "pos": "adverb", "jlpt": "N2", "meanings": ["for a long time"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3024", "lemma": "応援", "reading": "おうえん", "pos": "noun", "jlpt": "N2", "meanings": ["support", "cheering"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3025", "lemma": "読者", "reading": "どくしゃ", "pos": "noun", "jlpt": "N2", "meanings": ["reader"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3026", "lemma": "書籍版", "reading": "しょせきばん", "pos": "noun", "jlpt": null, "meanings": ["book version", "print edition"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3027", "lemma": "感謝", "reading": "かんしゃ", "pos": "noun", "jlpt": "N3", "meanings": ["gratitude"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3028", "lemma": "申し上げる", "reading": "もうしあげる", "pos": "verb-ichidan", "jlpt": "N2", "meanings": ["to say (humble)"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3029", "lemma": "２０１８年", "reading": "にせんじゅうはちねん", "pos": "noun", "jlpt": null, "meanings": ["year 2018"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
+{"id": "v3030", "lemma": "７月", "reading": "しちがつ", "pos": "noun", "jlpt": "N5", "meanings": ["July"], "frequency": 1, "first_seen": "09-nageki-no-bourei-1"}
