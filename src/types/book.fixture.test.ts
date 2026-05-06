@@ -19,9 +19,9 @@ function readJsonl<T>(path: string): T[] {
 }
 
 describe('books/index.json', () => {
-  it('lists tsundoku-test', () => {
+  it('lists nageki-no-bourei-1', () => {
     const index = readJson<string[]>(join(BOOKS, 'index.json'))
-    expect(index).toContain('tsundoku-test')
+    expect(index).toContain('nageki-no-bourei-1')
   })
 })
 
