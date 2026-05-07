@@ -1,13 +1,48 @@
 {
   "id": "nageki-no-bourei-1",
-  "title": "嘆きの亡霊は引退したい",
-  "author": "Tsukikage",
+  "title": "嘆きの亡霊は引退したい～最弱ハンターによる最強パーティ育成術～ 1",
+  "author": "槻影",
   "cover": "cover.jpg",
   "chapters": [
-    { "id": "00-nageki-no-bourei-1", "title": "Chapter 00" },
-    { "id": "01-nageki-no-bourei-1", "title": "Chapter 01" },
-    { "id": "02-nageki-no-bourei-1", "title": "Chapter 02" },
-    { "id": "03-nageki-no-bourei-1", "title": "Chapter 03" },
-    { "id": "04-nageki-no-bourei-1", "title": "Chapter 04" }
+    {
+      "id": "00-nageki-no-bourei-1",
+      "title": "Prologue　夢とその結末"
+    },
+    {
+      "id": "01-nageki-no-bourei-1",
+      "title": "第一章　罰ゲームと対処法"
+    },
+    {
+      "id": "02-nageki-no-bourei-1",
+      "title": "第二章　闇鍋"
+    },
+    {
+      "id": "03-nageki-no-bourei-1",
+      "title": "第三章　白狼の巣"
+    },
+    {
+      "id": "04-nageki-no-bourei-1",
+      "title": "第四章　千変万化"
+    },
+    {
+      "id": "05-nageki-no-bourei-1",
+      "title": "第五章　嘆きの亡霊"
+    },
+    {
+      "id": "06-nageki-no-bourei-1",
+      "title": "Epilogue　嘆きの亡霊は引退したい"
+    },
+    {
+      "id": "07-nageki-no-bourei-1",
+      "title": "Interlude　最優"
+    },
+    {
+      "id": "08-nageki-no-bourei-1",
+      "title": "外伝　ティノのとある一日"
+    },
+    {
+      "id": "09-nageki-no-bourei-1",
+      "title": "あとがき"
+    }
   ]
 }

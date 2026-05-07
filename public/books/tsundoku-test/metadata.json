@@ -1,10 +1,10 @@
 {
   "id": "tsundoku-test",
-  "title": "Tsundoku テスト本",
+  "title": "Tsundoku Test Book",
   "author": "Test Author",
   "cover": "cover.jpg",
   "chapters": [
-    { "id": "00-test-chapter-1", "title": "第一章: 始まり" },
-    { "id": "01-test-chapter-2", "title": "第二章: 続き" }
+    { "id": "00-test-chapter-1", "title": "Chapter 1" },
+    { "id": "01-test-chapter-2", "title": "Chapter 2" }
   ]
 }

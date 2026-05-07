@@ -4,6 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "sync:books": "node scripts/sync-books-to-public.mjs",
+    "predev": "npm run sync:books",
+    "prebuild": "npm run sync:books",
+    "prepreview": "npm run sync:books",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",

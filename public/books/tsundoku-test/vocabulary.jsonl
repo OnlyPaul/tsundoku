@@ -1,12 +1,10 @@
-{"id":"v0001","lemma":"私","reading":"わたし","pos":"pronoun","jlpt":"N5","meanings":["I","me"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}
-{"id":"v0002","lemma":"本","reading":"ほん","pos":"noun","jlpt":"N5","meanings":["book"],"frequency":1,"first_seen":"00-test-chapter-1:p0"}
-{"id":"v0003","lemma":"読む","reading":"よむ","pos":"verb","jlpt":"N5","meanings":["to read"],"frequency":2,"first_seen":"00-test-chapter-1:p0"}
-{"id":"v0004","lemma":"猫","reading":"ねこ","pos":"noun","jlpt":"N5","meanings":["cat"],"frequency":1,"first_seen":"00-test-chapter-1:p1"}
-{"id":"v0005","lemma":"好き","reading":"すき","pos":"na-adjective","jlpt":"N5","meanings":["liked","favorite"],"frequency":1,"first_seen":"00-test-chapter-1:p1"}
-{"id":"v0006","lemma":"日本語","reading":"にほんご","pos":"noun","jlpt":"N5","meanings":["Japanese language"],"frequency":1,"first_seen":"00-test-chapter-1:p2"}
-{"id":"v0007","lemma":"勉強","reading":"べんきょう","pos":"noun","jlpt":"N5","meanings":["study"],"frequency":1,"first_seen":"00-test-chapter-1:p2"}
-{"id":"v0008","lemma":"漫画","reading":"まんが","pos":"noun","jlpt":"N5","meanings":["manga","comic"],"frequency":1,"first_seen":"00-test-chapter-1:p2"}
-{"id":"v0009","lemma":"今日","reading":"きょう","pos":"noun","jlpt":"N5","meanings":["today"],"frequency":1,"first_seen":"01-test-chapter-2:p0"}
-{"id":"v0010","lemma":"天気","reading":"てんき","pos":"noun","jlpt":"N5","meanings":["weather"],"frequency":1,"first_seen":"01-test-chapter-2:p0"}
-{"id":"v0011","lemma":"友達","reading":"ともだち","pos":"noun","jlpt":"N5","meanings":["friend"],"frequency":1,"first_seen":"01-test-chapter-2:p1"}
-{"id":"v0012","lemma":"会う","reading":"あう","pos":"verb","jlpt":"N5","meanings":["to meet"],"frequency":1,"first_seen":"01-test-chapter-2:p1"}
+{"id":"kyou","lemma":"今日","reading":"きょう","pos":"noun","jlpt":"N5","meanings":["today"],"frequency":1,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p1"}}
+{"id":"ii","lemma":"良い","reading":"よい","pos":"i-adjective","jlpt":"N5","meanings":["good","nice"],"frequency":1,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p1"}}
+{"id":"tenki","lemma":"天気","reading":"てんき","pos":"noun","jlpt":"N5","meanings":["weather"],"frequency":1,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p1"}}
+{"id":"hon","lemma":"本","reading":"ほん","pos":"noun","jlpt":"N5","meanings":["book"],"frequency":1,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p2"}}
+{"id":"yomu","lemma":"読む","reading":"よむ","pos":"godan-verb","jlpt":"N5","meanings":["to read"],"frequency":1,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p2"}}
+{"id":"gakusei","lemma":"学生","reading":"がくせい","pos":"noun","jlpt":"N5","meanings":["student"],"frequency":2,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p3"}}
+{"id":"benkyou","lemma":"勉強","reading":"べんきょう","pos":"noun","jlpt":"N5","meanings":["study"],"frequency":2,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p3"}}
+{"id":"suru","lemma":"する","reading":"する","pos":"irregular-verb","jlpt":"N5","meanings":["to do"],"frequency":2,"first_seen":{"chapter":"00-test-chapter-1","paragraph":"p3"}}
+{"id":"tomodachi","lemma":"友達","reading":"ともだち","pos":"noun","jlpt":"N5","meanings":["friend"],"frequency":1,"first_seen":{"chapter":"01-test-chapter-2","paragraph":"p1"}}
+{"id":"gakkou","lemma":"学校","reading":"がっこう","pos":"noun","jlpt":"N5","meanings":["school"],"frequency":1,"first_seen":{"chapter":"01-test-chapter-2","paragraph":"p2"}}
