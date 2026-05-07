@@ -186,7 +186,7 @@ export default function Reader() {
             else paragraphRefs.current.delete(p.id)
           }}
           data-paragraph-id={p.id}
-          className="mt-4 leading-loose"
+          className="mt-4 font-jp leading-loose"
         >
           {p.tokens.map((t, i) => (
             <TappableToken

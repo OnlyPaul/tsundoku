@@ -28,7 +28,7 @@ export function VocabPopup({ token, entry, kanjiMap, onOpenKanjiTab }: VocabPopu
   return (
     <div className="flex flex-col gap-2 text-sm">
       <div className="flex items-baseline justify-between gap-2">
-        <h3 className="text-lg font-semibold">{headWord}</h3>
+        <h3 className="font-jp text-lg font-semibold">{headWord}</h3>
         {entry.jlpt ? (
           <span className="rounded bg-secondary px-1.5 py-0.5 text-xs font-medium text-secondary-foreground">
             {entry.jlpt}
@@ -62,7 +62,7 @@ export function VocabPopup({ token, entry, kanjiMap, onOpenKanjiTab }: VocabPopu
       ) : null}
       {tab === 'meanings' ? (
         <>
-          <div className="text-muted-foreground">{entry.reading}</div>
+          <div className="font-jp text-muted-foreground">{entry.reading}</div>
           <div className="text-xs italic text-muted-foreground">{entry.pos}</div>
           <ul className="list-disc pl-5">
             {entry.meanings.map((m) => (
@@ -98,7 +98,7 @@ function KanjiCard({ char, entry }: { char: string; entry: KanjiEntry | undefine
   return (
     <article className="rounded border border-border p-2" data-testid={`kanji-card-${char}`}>
       <header className="flex items-baseline gap-2">
-        <span className="text-2xl font-semibold">{char}</span>
+        <span className="font-jp text-2xl font-semibold">{char}</span>
         {entry?.jlpt ? (
           <span className="rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground">
             {entry.jlpt}
@@ -110,13 +110,13 @@ function KanjiCard({ char, entry }: { char: string; entry: KanjiEntry | undefine
           {entry.onyomi.length > 0 ? (
             <div className="flex gap-2">
               <dt className="font-medium text-muted-foreground">On</dt>
-              <dd>{entry.onyomi.join('、')}</dd>
+              <dd className="font-jp">{entry.onyomi.join('、')}</dd>
             </div>
           ) : null}
           {entry.kunyomi.length > 0 ? (
             <div className="flex gap-2">
               <dt className="font-medium text-muted-foreground">Kun</dt>
-              <dd>{entry.kunyomi.join('、')}</dd>
+              <dd className="font-jp">{entry.kunyomi.join('、')}</dd>
             </div>
           ) : null}
           {entry.meanings.length > 0 ? (
