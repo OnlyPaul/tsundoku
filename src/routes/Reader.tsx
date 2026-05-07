@@ -1,3 +1,4 @@
+import { SettingsSheet } from '@/components/SettingsSheet'
 import { TappableToken } from '@/components/TappableToken'
 import {
   Sheet,
@@ -6,27 +7,34 @@ import {
   SheetHeader,
   SheetTitle,
 } from '@/components/ui/sheet'
-import { fetchChapter, fetchGrammar, fetchKanji, fetchMetadata, fetchVocab } from '@/lib/book-store'
+import {
+  fetchBookIndex,
+  fetchChapter,
+  fetchGrammar,
+  fetchKanji,
+  fetchMetadata,
+  fetchVocab,
+} from '@/lib/book-store'
 import { getBookmark, setBookmark } from '@/lib/bookmarks'
+import {
+  type JpFont,
+  getReaderPrefs,
+  setFontSize as persistFontSize,
+  setFurigana as persistFurigana,
+  setJpFont as persistJpFont,
+} from '@/lib/reader-prefs'
 import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/lib/types'
-import { BookOpen } from 'lucide-react'
+import { useMediaQuery } from '@/lib/use-media-query'
+import { ChevronLeft, Settings as SettingsIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
-
-const FURIGANA_KEY = 'tsundoku.furigana'
-
-function readFuriganaPref(): boolean {
-  try {
-    return localStorage.getItem(FURIGANA_KEY) !== 'off'
-  } catch {
-    return true
-  }
-}
+import { version as APP_VERSION } from '../../package.json'
 
 export default function Reader() {
   const { slug } = useParams<{ slug: string }>()
   const [params, setParams] = useSearchParams()
   const urlChapter = params.get('chapter')
+  const isWide = useMediaQuery('(min-width: 768px)')
   const [metadata, setMetadata] = useState<BookMetadata | null>(null)
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
@@ -34,19 +42,40 @@ export default function Reader() {
   const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
   const [kanjiMap, setKanjiMap] = useState<Map<string, KanjiEntry> | null>(null)
   const [kanjiRequested, setKanjiRequested] = useState(false)
-  const [showFurigana, setShowFurigana] = useState<boolean>(() => readFuriganaPref())
+  const initialPrefs = (() => getReaderPrefs())()
+  const [showFurigana, setShowFurigana] = useState<boolean>(initialPrefs.furigana)
+  const [fontSize, setFontSizeState] = useState<number>(initialPrefs.fontSize)
+  const [jpFont, setJpFontState] = useState<JpFont>(initialPrefs.jpFont)
+  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [libraryBookCount, setLibraryBookCount] = useState<number | null>(null)
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<Paragraph | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
   const restoredForRef = useRef<string | null>(null)
 
   useEffect(() => {
-    try {
-      localStorage.setItem(FURIGANA_KEY, showFurigana ? 'on' : 'off')
-    } catch {
-      // ignore
-    }
+    persistFurigana(showFurigana)
   }, [showFurigana])
+  useEffect(() => {
+    persistFontSize(fontSize)
+  }, [fontSize])
+  useEffect(() => {
+    persistJpFont(jpFont)
+  }, [jpFont])
+
+  useEffect(() => {
+    let cancelled = false
+    fetchBookIndex()
+      .then((slugs) => {
+        if (!cancelled) setLibraryBookCount(slugs.length)
+      })
+      .catch(() => {
+        if (!cancelled) setLibraryBookCount(null)
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
 
   useEffect(() => {
     setKanjiMap(null)
@@ -90,6 +119,8 @@ export default function Reader() {
 
   const chapterIndex = metadata?.chapters.findIndex((c) => c.id === chapterId) ?? -1
   const chapterTitle = metadata?.chapters[chapterIndex]?.title
+  const chapterCount = metadata?.chapters.length ?? 0
+  const chapterNumber = chapterIndex >= 0 ? chapterIndex + 1 : 1
 
   useEffect(() => {
     if (chapterTitle) document.title = chapterTitle
@@ -163,118 +194,177 @@ export default function Reader() {
           .filter((e): e is GrammarEntry => Boolean(e))
       : []
 
+  const proseStyle = { fontFamily: `"${jpFont}", serif`, fontSize: `${fontSize}px` }
+
   return (
-    <main className="min-h-screen p-8">
-      <div className="flex items-center justify-between">
-        <Link to="/" className="text-sm text-muted-foreground hover:text-primary">
-          ← Library
+    <main className="min-h-screen bg-background">
+      <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-border bg-background/90 px-4 py-3 backdrop-blur md:px-8">
+        <Link
+          to="/"
+          aria-label="Back to library"
+          className="flex items-center gap-1 text-sm text-muted-foreground hover:text-primary"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          <span className="hidden md:inline font-mono text-xs uppercase tracking-wider">
+            Library
+          </span>
         </Link>
+        <div className="min-w-0 flex-1 text-center">
+          <p className="line-clamp-1 font-jp text-base">{metadata?.title ?? ''}</p>
+          {chapterCount > 0 ? (
+            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+              Ch. {chapterNumber} / {chapterCount}
+            </p>
+          ) : null}
+        </div>
         <button
           type="button"
-          aria-pressed={showFurigana}
-          onClick={() => setShowFurigana((v) => !v)}
-          className="rounded border border-border px-3 py-1 text-sm"
+          aria-label="Reading settings"
+          onClick={() => setSettingsOpen(true)}
+          className="rounded p-1.5 text-muted-foreground hover:text-primary"
         >
-          Furigana: {showFurigana ? 'on' : 'off'}
+          <SettingsIcon className="h-5 w-5" />
         </button>
-      </div>
-      {paragraphs?.map((p) => (
-        <p
-          key={p.id}
-          ref={(el) => {
-            if (el) paragraphRefs.current.set(p.id, el)
-            else paragraphRefs.current.delete(p.id)
-          }}
-          data-paragraph-id={p.id}
-          className="mt-4 font-jp leading-loose"
-        >
-          {p.tokens.map((t, i) => (
-            <TappableToken
-              key={`${p.id}-${i}`}
-              token={t}
-              vocab={vocab}
-              kanjiMap={kanjiMap}
-              onOpenKanjiTab={() => {
-                if (kanjiRequested || !slug) return
-                setKanjiRequested(true)
-                fetchKanji(slug)
-                  .then(setKanjiMap)
-                  .catch(() => setKanjiMap(new Map()))
+      </header>
+
+      <article className="mx-auto max-w-prose px-6 pb-16 pt-8 md:px-10">
+        {chapterTitle ? (
+          <div className="mb-10 border-b border-border pb-6">
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              Chapter {chapterNumber}
+            </p>
+            <h2 className="mt-3 font-jp text-3xl font-medium leading-tight md:text-4xl">
+              {chapterTitle}
+            </h2>
+          </div>
+        ) : null}
+
+        {paragraphs?.map((p) => (
+          <p
+            key={p.id}
+            ref={(el) => {
+              if (el) paragraphRefs.current.set(p.id, el)
+              else paragraphRefs.current.delete(p.id)
+            }}
+            data-paragraph-id={p.id}
+            style={proseStyle}
+            className="mt-6 leading-loose"
+          >
+            {p.tokens.map((t, i) => (
+              <TappableToken
+                key={`${p.id}-${i}`}
+                token={t}
+                vocab={vocab}
+                kanjiMap={kanjiMap}
+                onOpenKanjiTab={() => {
+                  if (kanjiRequested || !slug) return
+                  setKanjiRequested(true)
+                  fetchKanji(slug)
+                    .then(setKanjiMap)
+                    .catch(() => setKanjiMap(new Map()))
+                }}
+                showFurigana={showFurigana}
+              />
+            ))}
+            {p.grammar && p.grammar.length > 0 ? (
+              <>
+                {' '}
+                <button
+                  type="button"
+                  onClick={() => openGrammarSheet(p)}
+                  aria-label={`Grammar notes for paragraph ${p.id}`}
+                  className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground align-middle shadow-sm hover:opacity-90"
+                  style={{ fontSize: '0.7rem' }}
+                >
+                  <span aria-hidden className="font-jp leading-none">
+                    文
+                  </span>
+                </button>
+              </>
+            ) : null}
+          </p>
+        ))}
+
+        {metadata && chapterId ? (
+          <nav className="mt-16 flex items-center justify-between border-t border-border pt-6 font-mono text-[11px] uppercase tracking-wider">
+            <button
+              type="button"
+              disabled={chapterIndex <= 0}
+              onClick={() => {
+                const prev = metadata.chapters[chapterIndex - 1]
+                if (prev) setParams({ chapter: prev.id, paragraph: 'p0' })
               }}
-              showFurigana={showFurigana}
-            />
-          ))}
-          {p.grammar && p.grammar.length > 0 ? (
-            <>
-              {' '}
-              <button
-                type="button"
-                onClick={() => openGrammarSheet(p)}
-                aria-label={`Grammar notes for paragraph ${p.id}`}
-                className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary/10 text-primary hover:bg-primary/20"
-              >
-                <BookOpen className="h-3 w-3" />
-              </button>
-            </>
-          ) : null}
-        </p>
-      ))}
-      {metadata && chapterId ? (
-        <nav className="mt-8 flex justify-between">
-          <button
-            type="button"
-            disabled={chapterIndex <= 0}
-            onClick={() => {
-              const prev = metadata.chapters[chapterIndex - 1]
-              if (prev) setParams({ chapter: prev.id, paragraph: 'p0' })
-            }}
-            className="rounded border border-border px-3 py-1 disabled:opacity-50"
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            disabled={chapterIndex < 0 || chapterIndex >= metadata.chapters.length - 1}
-            onClick={() => {
-              const next = metadata.chapters[chapterIndex + 1]
-              if (next) setParams({ chapter: next.id, paragraph: 'p0' })
-            }}
-            className="rounded border border-border px-3 py-1 disabled:opacity-50"
-          >
-            Next
-          </button>
-        </nav>
-      ) : null}
+              className="text-muted-foreground hover:text-primary disabled:opacity-40 disabled:hover:text-muted-foreground"
+            >
+              ← Previous
+            </button>
+            <span className="text-muted-foreground">
+              Chapter {chapterNumber} / {chapterCount}
+            </span>
+            <button
+              type="button"
+              disabled={chapterIndex < 0 || chapterIndex >= metadata.chapters.length - 1}
+              onClick={() => {
+                const next = metadata.chapters[chapterIndex + 1]
+                if (next) setParams({ chapter: next.id, paragraph: 'p0' })
+              }}
+              className="text-muted-foreground hover:text-primary disabled:opacity-40 disabled:hover:text-muted-foreground"
+            >
+              Next →
+            </button>
+          </nav>
+        ) : null}
+      </article>
+
+      <SettingsSheet
+        open={settingsOpen}
+        onOpenChange={setSettingsOpen}
+        furigana={showFurigana}
+        fontSize={fontSize}
+        jpFont={jpFont}
+        onFuriganaChange={setShowFurigana}
+        onFontSizeChange={setFontSizeState}
+        onJpFontChange={setJpFontState}
+        appVersion={APP_VERSION}
+        libraryBookCount={libraryBookCount}
+      />
+
       <Sheet
         open={openGrammarFor !== null}
         onOpenChange={(open) => {
           if (!open) setOpenGrammarFor(null)
         }}
       >
-        <SheetContent side="right" className="overflow-y-auto">
+        <SheetContent side={isWide ? 'right' : 'bottom'} className="overflow-y-auto bg-card">
           <SheetHeader>
-            <SheetTitle>Grammar notes</SheetTitle>
-            <SheetDescription>Patterns appearing in this paragraph</SheetDescription>
+            <SheetTitle className="font-jp text-2xl font-medium">Grammar notes</SheetTitle>
+            <SheetDescription className="font-mono text-[11px] uppercase tracking-wider">
+              Patterns appearing in this paragraph
+            </SheetDescription>
           </SheetHeader>
           <div className="mt-6 space-y-6">
             {openEntries.map((entry) => (
               <section key={entry.id} className="space-y-2">
                 <header className="flex items-baseline justify-between gap-2">
-                  <h3 className="text-base font-semibold">{entry.title}</h3>
+                  <h3 className="font-jp text-lg font-medium">{entry.title}</h3>
                   {entry.jlpt ? (
-                    <span className="rounded bg-muted px-2 py-0.5 text-xs text-muted-foreground">
+                    <span className="rounded bg-muted px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
                       {entry.jlpt}
                     </span>
                   ) : null}
                 </header>
                 <p className="text-sm">
-                  <span className="font-medium">Formation: </span>
+                  <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                    Formation:{' '}
+                  </span>
                   {entry.formation}
                 </p>
                 <p className="text-sm">{entry.explanation}</p>
                 {entry.examples_in_book.length > 0 && openGrammarFor ? (
                   <p className="text-sm text-muted-foreground">
-                    <span className="font-medium">In book: </span>
+                    <span className="font-mono text-[10px] uppercase tracking-wider">
+                      In book:{' '}
+                    </span>
                     {openGrammarFor.tokens.map((t) => t.s).join('')}
                   </p>
                 ) : null}

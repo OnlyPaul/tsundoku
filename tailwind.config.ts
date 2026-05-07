@@ -11,11 +11,6 @@ const config: Config = {
       screens: { '2xl': '1400px' },
     },
     extend: {
-      fontFamily: {
-        jp: ['"Noto Serif JP"', 'serif'],
-        prose: ['"Source Serif 4"', 'Georgia', 'serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
-      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -55,6 +50,11 @@ const config: Config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+      },
+      fontFamily: {
+        prose: ['"Source Serif 4"', 'Georgia', 'serif'],
+        jp: ['"Noto Serif JP"', '"Shippori Mincho"', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       keyframes: {
         'accordion-down': {
