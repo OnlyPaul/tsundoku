@@ -11,7 +11,7 @@ test.describe('full read flow', () => {
     await cards.first().click()
 
     await expect(page).toHaveURL(/\/reader\/[^/?]+/)
-    await expect(page.getByRole('link', { name: '← Library' })).toBeVisible()
-    await expect(page.getByRole('button', { name: /Furigana:/ })).toBeVisible()
+    await expect(page.getByRole('link', { name: /back to library/i })).toBeVisible()
+    await expect(page.getByRole('button', { name: /reading settings/i })).toBeVisible()
   })
 })

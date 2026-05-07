@@ -51,6 +51,11 @@ const config: Config = {
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
       },
+      fontFamily: {
+        prose: ['"Source Serif 4"', 'Georgia', 'serif'],
+        jp: ['"Noto Serif JP"', '"Shippori Mincho"', 'serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },

@@ -120,6 +120,9 @@ function gotoReader(path: string) {
 function surfaceText(p: Element): string {
   const clone = p.cloneNode(true) as Element
   for (const rt of clone.querySelectorAll('rt')) rt.remove()
+  // The vermillion grammar seal button lives inside the paragraph; its glyph
+  // is decorative and shouldn't count as paragraph surface text.
+  for (const seal of clone.querySelectorAll('button[aria-label^="Grammar notes"]')) seal.remove()
   return (clone.textContent ?? '').replace(/\s+/g, '')
 }
 
@@ -213,9 +216,13 @@ describe('Reader', () => {
     gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
     render(<App />)
     await screen.findByRole('button', { name: '私' })
-    await user.click(screen.getByRole('button', { name: /furigana/i }))
+    await user.click(screen.getByRole('button', { name: /reading settings/i }))
+    await user.click(await screen.findByRole('switch', { name: /furigana/i }))
     await waitFor(() => {
-      expect(document.querySelector('ruby')).toBeNull()
+      // The Settings preview block contains its own <ruby>; only the chapter
+      // prose should be checked.
+      const article = document.querySelector('article')
+      expect(article?.querySelector('ruby')).toBeNull()
     })
   })
 
@@ -232,7 +239,8 @@ describe('Reader', () => {
     gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
     render(<App />)
     await screen.findByRole('button', { name: '私' })
-    await user.click(screen.getByRole('button', { name: /furigana/i }))
+    await user.click(screen.getByRole('button', { name: /reading settings/i }))
+    await user.click(await screen.findByRole('switch', { name: /furigana/i }))
     await waitFor(() => {
       expect(localStorage.getItem('tsundoku.furigana')).toBe('off')
     })
@@ -255,7 +263,7 @@ describe('Reader', () => {
     render(<App />)
     const conjugated = await screen.findByRole('button', { name: '読' })
     await user.click(conjugated)
-    const heading = await screen.findByRole('heading')
+    const heading = await screen.findByRole('heading', { level: 3 })
     expect(heading).toHaveTextContent('読む')
   })
 

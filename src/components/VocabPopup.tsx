@@ -28,9 +28,9 @@ export function VocabPopup({ token, entry, kanjiMap, onOpenKanjiTab }: VocabPopu
   return (
     <div className="flex flex-col gap-2 text-sm">
       <div className="flex items-baseline justify-between gap-2">
-        <h3 className="text-lg font-semibold">{headWord}</h3>
+        <h3 className="font-jp text-2xl font-medium">{headWord}</h3>
         {entry.jlpt ? (
-          <span className="rounded bg-secondary px-1.5 py-0.5 text-xs font-medium text-secondary-foreground">
+          <span className="rounded bg-muted px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
             {entry.jlpt}
           </span>
         ) : null}
@@ -62,9 +62,11 @@ export function VocabPopup({ token, entry, kanjiMap, onOpenKanjiTab }: VocabPopu
       ) : null}
       {tab === 'meanings' ? (
         <>
-          <div className="text-muted-foreground">{entry.reading}</div>
-          <div className="text-xs italic text-muted-foreground">{entry.pos}</div>
-          <ul className="list-disc pl-5">
+          <div className="font-jp text-muted-foreground">{entry.reading}</div>
+          <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+            {entry.pos}
+          </div>
+          <ul className="space-y-0.5">
             {entry.meanings.map((m) => (
               <li key={m}>{m}</li>
             ))}
