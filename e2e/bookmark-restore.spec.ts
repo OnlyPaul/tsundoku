@@ -8,7 +8,7 @@ test.describe('bookmark restore', () => {
   test('reload returns reader to last-read paragraph', async ({ page }) => {
     await page.goto('/reader/tsundoku-test')
 
-    await expect(page.getByText('私').first()).toBeVisible()
+    await expect(page.getByText('今日').first()).toBeVisible()
 
     await page.evaluate(() => {
       const p1 = document.querySelector('[data-paragraph-id="p1"]') as HTMLElement | null
@@ -26,7 +26,7 @@ test.describe('bookmark restore', () => {
 
     await page.reload()
 
-    await expect(page.getByText('私').first()).toBeVisible()
+    await expect(page.getByText('今日').first()).toBeVisible()
 
     await expect.poll(async () => page.evaluate(() => window.scrollY)).toBeGreaterThan(0)
   })
