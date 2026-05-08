@@ -16,7 +16,7 @@ import {
   fetchVocab,
 } from '@/lib/book-store'
 import { getBookmark, setBookmark } from '@/lib/bookmarks'
-import type { NormalizedParagraph } from '@/lib/chapter-decoder'
+import type { ChapterFormat, NormalizedParagraph } from '@/lib/chapter-decoder'
 import {
   type JpFont,
   getReaderPrefs,
@@ -31,6 +31,35 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { version as APP_VERSION } from '../../package.json'
 
+interface AnchoredRect {
+  top: number
+  height: number
+}
+
+function findAnchoredTarget<T>(
+  entries: Iterable<[T, HTMLElement]>,
+  anchorY: number,
+): { key: T; rect: AnchoredRect } | null {
+  let inside: { key: T; rect: AnchoredRect } | null = null
+  let firstBelow: { key: T; rect: AnchoredRect } | null = null
+  for (const [key, el] of entries) {
+    const r = el.getBoundingClientRect()
+    if (r.top <= anchorY && r.bottom > anchorY) {
+      inside = { key, rect: { top: r.top, height: r.height } }
+      break
+    }
+    if (r.top > anchorY && (!firstBelow || r.top < firstBelow.rect.top)) {
+      firstBelow = { key, rect: { top: r.top, height: 0 } }
+    }
+  }
+  return inside ?? firstBelow
+}
+
+function fractionalOffset(rect: AnchoredRect, anchorY: number): number {
+  if (rect.height <= 0) return 0
+  return Math.min(1, Math.max(0, (anchorY - rect.top) / rect.height))
+}
+
 export default function Reader() {
   const { slug } = useParams<{ slug: string }>()
   const [params, setParams] = useSearchParams()
@@ -40,6 +69,7 @@ export default function Reader() {
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
   const [paragraphs, setParagraphs] = useState<NormalizedParagraph[] | null>(null)
+  const [chapterFormat, setChapterFormat] = useState<ChapterFormat | null>(null)
   const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
   const [kanjiMap, setKanjiMap] = useState<Map<string, KanjiEntry> | null>(null)
   const [kanjiRequested, setKanjiRequested] = useState(false)
@@ -52,6 +82,7 @@ export default function Reader() {
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<NormalizedParagraph | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
+  const sentenceRefs = useRef(new Map<string, { el: HTMLElement; paragraphId: string }>())
   const restoredForRef = useRef<string | null>(null)
 
   useEffect(() => {
@@ -110,8 +141,12 @@ export default function Reader() {
     if (!slug || !chapterId) return
     let cancelled = false
     setParagraphs(null)
+    setChapterFormat(null)
     fetchChapter(slug, chapterId).then((c) => {
-      if (!cancelled) setParagraphs(c.paragraphs)
+      if (!cancelled) {
+        setParagraphs(c.paragraphs)
+        setChapterFormat(c.format)
+      }
     })
     return () => {
       cancelled = true
@@ -133,7 +168,10 @@ export default function Reader() {
     if (restoredForRef.current === key) return
     const saved = getBookmark(slug)
     if (saved && saved.chapterId === chapterId) {
-      const target = paragraphRefs.current.get(saved.paragraphId)
+      const sentenceTarget = saved.sentenceId
+        ? sentenceRefs.current.get(saved.sentenceId)?.el
+        : undefined
+      const target = sentenceTarget ?? paragraphRefs.current.get(saved.paragraphId)
       if (target) {
         const rect = target.getBoundingClientRect()
         const docTop = window.scrollY + rect.top
@@ -151,24 +189,31 @@ export default function Reader() {
     let frame: number | null = null
     function save() {
       frame = null
+      if (!slug || !chapterId) return
       const anchorY = 0
-      let inside: { id: string; top: number; height: number } | null = null
-      let firstBelow: { id: string; top: number } | null = null
-      for (const [id, el] of paragraphRefs.current) {
-        const rect = el.getBoundingClientRect()
-        if (rect.top <= anchorY && rect.bottom > anchorY) {
-          inside = { id, top: rect.top, height: rect.height }
-          break
-        }
-        if (rect.top > anchorY && (!firstBelow || rect.top < firstBelow.top)) {
-          firstBelow = { id, top: rect.top }
-        }
+      if (chapterFormat === 'v2') {
+        const entries: Iterable<[{ sentenceId: string; paragraphId: string }, HTMLElement]> =
+          Array.from(sentenceRefs.current, ([sentenceId, { el, paragraphId }]) => [
+            { sentenceId, paragraphId },
+            el,
+          ])
+        const found = findAnchoredTarget(entries, anchorY)
+        if (!found) return
+        setBookmark(slug, {
+          chapterId,
+          paragraphId: found.key.paragraphId,
+          sentenceId: found.key.sentenceId,
+          offset: fractionalOffset(found.rect, anchorY),
+        })
+        return
       }
-      const chosen = inside ?? (firstBelow ? { ...firstBelow, height: 0 } : null)
-      if (!chosen || !slug || !chapterId) return
-      const offset =
-        chosen.height > 0 ? Math.min(1, Math.max(0, (anchorY - chosen.top) / chosen.height)) : 0
-      setBookmark(slug, { chapterId, paragraphId: chosen.id, offset })
+      const found = findAnchoredTarget(paragraphRefs.current, anchorY)
+      if (!found) return
+      setBookmark(slug, {
+        chapterId,
+        paragraphId: found.key,
+        offset: fractionalOffset(found.rect, anchorY),
+      })
     }
     function onScroll() {
       if (frame !== null) return
@@ -179,7 +224,7 @@ export default function Reader() {
       window.removeEventListener('scroll', onScroll)
       if (frame !== null) cancelAnimationFrame(frame)
     }
-  }, [slug, chapterId, paragraphs])
+  }, [slug, chapterId, paragraphs, chapterFormat])
 
   function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)
@@ -251,24 +296,33 @@ export default function Reader() {
             style={proseStyle}
             className="mt-6 leading-loose"
           >
-            {p.sentences.flatMap((s) =>
-              s.tokens.map((t, i) => (
-                <TappableToken
-                  key={`${s.id}-${i}`}
-                  token={t}
-                  vocab={vocab}
-                  kanjiMap={kanjiMap}
-                  onOpenKanjiTab={() => {
-                    if (kanjiRequested || !slug) return
-                    setKanjiRequested(true)
-                    fetchKanji(slug)
-                      .then(setKanjiMap)
-                      .catch(() => setKanjiMap(new Map()))
-                  }}
-                  showFurigana={showFurigana}
-                />
-              )),
-            )}
+            {p.sentences.map((s) => (
+              <span
+                key={s.id}
+                data-sentence-id={s.id}
+                ref={(el) => {
+                  if (el) sentenceRefs.current.set(s.id, { el, paragraphId: p.id })
+                  else sentenceRefs.current.delete(s.id)
+                }}
+              >
+                {s.tokens.map((t, i) => (
+                  <TappableToken
+                    key={`${s.id}-${i}`}
+                    token={t}
+                    vocab={vocab}
+                    kanjiMap={kanjiMap}
+                    onOpenKanjiTab={() => {
+                      if (kanjiRequested || !slug) return
+                      setKanjiRequested(true)
+                      fetchKanji(slug)
+                        .then(setKanjiMap)
+                        .catch(() => setKanjiMap(new Map()))
+                    }}
+                    showFurigana={showFurigana}
+                  />
+                ))}
+              </span>
+            ))}
             {p.grammar && p.grammar.length > 0 ? (
               <>
                 {' '}

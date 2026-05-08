@@ -1,6 +1,7 @@
 export interface Bookmark {
   chapterId: string
   paragraphId: string
+  sentenceId?: string
   offset?: number
 }
 

@@ -27,6 +27,25 @@ function setLayout(rects: RectStub[]) {
   }
 }
 
+function setSentenceLayout(rects: RectStub[]) {
+  for (const { id, top, height } of rects) {
+    const el = document.querySelector(`[data-sentence-id="${id}"]`)
+    if (!el) continue
+    ;(el as HTMLElement).getBoundingClientRect = () =>
+      ({
+        top,
+        bottom: top + height,
+        height,
+        left: 0,
+        right: 0,
+        width: 0,
+        x: 0,
+        y: top,
+        toJSON() {},
+      }) as DOMRect
+  }
+}
+
 async function fireScroll() {
   window.dispatchEvent(new Event('scroll'))
   // Flush rAF + microtasks.
@@ -41,8 +60,20 @@ const METADATA = {
   chapters: [
     { id: '00-test-chapter-1', title: '第一章: 始まり' },
     { id: '01-test-chapter-2', title: '第二章: 続き' },
+    { id: '99-test-chapter-migrated', title: '第三章: 移行' },
   ],
 }
+
+const CHAPTER_MIGRATED_JSONL =
+  '{"format":"v2"}\n' +
+  '{"id":"p0","sentences":[' +
+  '{"id":"p0-s0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}]},' +
+  '{"id":"p0-s1","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"日"},{"s":"です"},{"s":"。"}]}' +
+  ']}\n' +
+  '{"id":"p1","sentences":[' +
+  '{"id":"p1-s0","tokens":[{"s":"猫","r":"ねこ","v":"neko"},{"s":"が"},{"s":"好き","v":"suki"},{"s":"です"},{"s":"。"}]},' +
+  '{"id":"p1-s1","tokens":[{"s":"犬"},{"s":"も"},{"s":"好き"},{"s":"です"},{"s":"。"}]}' +
+  ']}\n'
 
 const CHAPTER_1_JSONL =
   '{"id":"p0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}],"grammar":["g-dakara"]}\n' +
@@ -94,6 +125,8 @@ beforeEach(() => {
     if (url.endsWith('/books/tsundoku-test/metadata.json')) return jsonResponse(METADATA)
     if (url.endsWith('/00-test-chapter-1.jsonl')) return chapterResponse(CHAPTER_1_JSONL)
     if (url.endsWith('/01-test-chapter-2.jsonl')) return chapterResponse(CHAPTER_2_JSONL)
+    if (url.endsWith('/99-test-chapter-migrated.jsonl'))
+      return chapterResponse(CHAPTER_MIGRATED_JSONL)
     if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
     if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
     if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
@@ -275,7 +308,7 @@ describe('Reader', () => {
   })
 
   it('disables Next on the last chapter', async () => {
-    gotoReader('/reader/tsundoku-test?chapter=01-test-chapter-2&paragraph=p0')
+    gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
     render(<App />)
     const next = await screen.findByRole('button', { name: /next/i })
     expect(next).toBeDisabled()
@@ -471,6 +504,23 @@ describe('Reader', () => {
       Element.prototype.getBoundingClientRect = origGetRect
     })
 
+    it('does not include a sentenceId when scrolling a legacy (v1) chapter', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await findParagraphByText('私は本を読みました。')
+      await findParagraphByText('猫が好きです。')
+
+      setLayout([
+        { id: 'p0', top: -500, height: 400 },
+        { id: 'p1', top: -100, height: 400 },
+      ])
+      await fireScroll()
+
+      const bm = getBookmark('tsundoku-test')
+      expect(bm?.paragraphId).toBe('p1')
+      expect(bm?.sentenceId).toBeUndefined()
+    })
+
     it("does not overwrite another book's bookmark", async () => {
       setBookmark('other-book', { chapterId: 'ch-x', paragraphId: 'p-x' })
 
@@ -486,6 +536,149 @@ describe('Reader', () => {
 
       expect(getBookmark('tsundoku-test')?.paragraphId).toBe('p1')
       expect(getBookmark('other-book')).toEqual({ chapterId: 'ch-x', paragraphId: 'p-x' })
+    })
+  })
+
+  describe('migrated (v2) chapters', () => {
+    it('wraps each sentence in a span with data-sentence-id while keeping tokens tappable', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+
+      // Tokens still render and remain tappable in v2 prose.
+      expect(await screen.findByRole('button', { name: '私' })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: '猫' })).toBeInTheDocument()
+
+      // Each authored sentence ID has a wrapping element exposing it for
+      // sentence-anchored Reading Position.
+      for (const id of ['p0-s0', 'p0-s1', 'p1-s0', 'p1-s1']) {
+        expect(document.querySelector(`[data-sentence-id="${id}"]`)).not.toBeNull()
+      }
+
+      // Sentence wrappers live inside their paragraph (preserving prose grouping).
+      const p0 = document.querySelector('[data-paragraph-id="p0"]') as HTMLElement
+      expect(p0.querySelector('[data-sentence-id="p0-s0"]')).not.toBeNull()
+      expect(p0.querySelector('[data-sentence-id="p0-s1"]')).not.toBeNull()
+    })
+
+    it('saves the sentence containing the viewport anchor on scroll', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '私' })
+
+      // Anchor (y=0) sits inside p1-s0: above is p0-s0/p0-s1, below is p1-s1.
+      setSentenceLayout([
+        { id: 'p0-s0', top: -800, height: 200 },
+        { id: 'p0-s1', top: -600, height: 200 },
+        { id: 'p1-s0', top: -50, height: 200 },
+        { id: 'p1-s1', top: 150, height: 200 },
+      ])
+      await fireScroll()
+
+      const bm = getBookmark('tsundoku-test')
+      expect(bm?.chapterId).toBe('99-test-chapter-migrated')
+      expect(bm?.sentenceId).toBe('p1-s0')
+      expect(bm?.paragraphId).toBe('p1')
+    })
+
+    it('saves the fractional offset within the sentence rect', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '私' })
+
+      // Anchor (y=0) sits 50px into a 200px-tall p1-s0: offset = 0.25.
+      setSentenceLayout([
+        { id: 'p0-s0', top: -800, height: 200 },
+        { id: 'p0-s1', top: -600, height: 200 },
+        { id: 'p1-s0', top: -50, height: 200 },
+        { id: 'p1-s1', top: 150, height: 200 },
+      ])
+      await fireScroll()
+
+      expect(getBookmark('tsundoku-test')?.offset).toBeCloseTo(0.25, 5)
+    })
+
+    it('restores a sentence-anchored bookmark to the saved sentence rect', async () => {
+      setBookmark('tsundoku-test', {
+        chapterId: '99-test-chapter-migrated',
+        paragraphId: 'p1',
+        sentenceId: 'p1-s0',
+        offset: 0.5,
+      })
+      Object.defineProperty(window, 'scrollY', { value: 0, configurable: true })
+      const origGetRect = Element.prototype.getBoundingClientRect
+      Element.prototype.getBoundingClientRect = function () {
+        const sid = (this as HTMLElement).dataset?.sentenceId
+        if (sid === 'p1-s0') {
+          return {
+            top: 1500,
+            bottom: 1700,
+            height: 200,
+            left: 0,
+            right: 0,
+            width: 0,
+            x: 0,
+            y: 1500,
+            toJSON() {},
+          } as DOMRect
+        }
+        return origGetRect.call(this)
+      }
+
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '猫' })
+
+      await waitFor(() => {
+        expect(window.scrollTo).toHaveBeenCalled()
+      })
+      // 1500 (sentence top) + 0.5 * 200 (offset) = 1600.
+      const calls = (window.scrollTo as unknown as ReturnType<typeof vi.fn>).mock.calls
+      const lastArg = calls[calls.length - 1][0] as { top: number }
+      expect(lastArg.top).toBeCloseTo(1600, 0)
+
+      Element.prototype.getBoundingClientRect = origGetRect
+    })
+
+    it('falls back to the paragraph rect when restoring a legacy bookmark on a v2 chapter', async () => {
+      // No sentenceId — pre-migration bookmark shape on a now-migrated chapter.
+      setBookmark('tsundoku-test', {
+        chapterId: '99-test-chapter-migrated',
+        paragraphId: 'p1',
+        offset: 0.25,
+      })
+      Object.defineProperty(window, 'scrollY', { value: 0, configurable: true })
+      const origGetRect = Element.prototype.getBoundingClientRect
+      Element.prototype.getBoundingClientRect = function () {
+        const pid = (this as HTMLElement).dataset?.paragraphId
+        if (pid === 'p1') {
+          return {
+            top: 2000,
+            bottom: 2400,
+            height: 400,
+            left: 0,
+            right: 0,
+            width: 0,
+            x: 0,
+            y: 2000,
+            toJSON() {},
+          } as DOMRect
+        }
+        return origGetRect.call(this)
+      }
+
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '猫' })
+
+      await waitFor(() => {
+        expect(window.scrollTo).toHaveBeenCalled()
+      })
+      // 2000 (paragraph top) + 0.25 * 400 = 2100.
+      const calls = (window.scrollTo as unknown as ReturnType<typeof vi.fn>).mock.calls
+      const lastArg = calls[calls.length - 1][0] as { top: number }
+      expect(lastArg.top).toBeCloseTo(2100, 0)
+
+      Element.prototype.getBoundingClientRect = origGetRect
     })
   })
 
