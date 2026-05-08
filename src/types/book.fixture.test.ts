@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
+import { decodeChapter } from '@/lib/chapter-decoder'
 import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/types/book'
 import { describe, expect, it } from 'vitest'
 
@@ -75,6 +76,30 @@ describe('tsundoku-test fixture', () => {
     for (const k of kanji) {
       for (const id of k.example_words_in_book) {
         expect(vocabIds.has(id)).toBe(true)
+      }
+    }
+  })
+
+  it('migrated v2 chapter fixture decodes through the decoder seam end-to-end', () => {
+    const chapterId = '99-test-chapter-migrated'
+    const text = readFileSync(join(FIXTURE, 'chapters', `${chapterId}.jsonl`), 'utf8')
+
+    const chapter = decodeChapter(text)
+
+    expect(chapter.format).toBe('v2')
+    expect(chapter.paragraphs.length).toBeGreaterThan(0)
+    const ids = new Set<string>()
+    for (const p of chapter.paragraphs) {
+      expect(p.sentences.length).toBeGreaterThan(0)
+      for (const s of p.sentences) {
+        expect(typeof s.id).toBe('string')
+        expect(s.id.length).toBeGreaterThan(0)
+        expect(ids.has(s.id)).toBe(false)
+        ids.add(s.id)
+        expect(Array.isArray(s.tokens)).toBe(true)
+        for (const t of s.tokens) {
+          if (t.v !== undefined) expect(vocabIds.has(t.v)).toBe(true)
+        }
       }
     }
   })

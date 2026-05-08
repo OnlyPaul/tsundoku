@@ -70,11 +70,13 @@ describe('book-store', () => {
     expect(fetchMock).toHaveBeenCalledTimes(1)
   })
 
-  it('fetchChapter parses JSONL line-by-line and caches', async () => {
-    const paragraphs = await fetchChapter('tsundoku-test', '00-test-chapter-1')
-    expect(paragraphs).toHaveLength(2)
-    expect(paragraphs[0].id).toBe('p0')
-    expect(paragraphs[0].tokens[0].r).toBe('わたし')
+  it('fetchChapter decodes chapter content via the chapter-decoder seam and caches', async () => {
+    const chapter = await fetchChapter('tsundoku-test', '00-test-chapter-1')
+    expect(chapter.format).toBe('v1')
+    expect(chapter.paragraphs).toHaveLength(2)
+    expect(chapter.paragraphs[0].id).toBe('p0')
+    expect(chapter.paragraphs[0].sentences).toHaveLength(1)
+    expect(chapter.paragraphs[0].sentences[0].tokens[0].r).toBe('わたし')
 
     await fetchChapter('tsundoku-test', '00-test-chapter-1')
     expect(fetchMock).toHaveBeenCalledTimes(1)
