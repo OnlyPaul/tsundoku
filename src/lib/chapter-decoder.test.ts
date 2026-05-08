@@ -107,4 +107,13 @@ describe('decodeChapter', () => {
 
     expect(() => decodeChapter(text)).toThrow(/duplicate/i)
   })
+
+  it('throws on duplicate paragraph IDs within a migrated chapter', () => {
+    const text =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[{"id":"ch01-p0-s0","tokens":[{"s":"a"}]}]}\n' +
+      '{"id":"p0","sentences":[{"id":"ch01-p0-s1","tokens":[{"s":"b"}]}]}\n'
+
+    expect(() => decodeChapter(text)).toThrow(/duplicate paragraph/i)
+  })
 })

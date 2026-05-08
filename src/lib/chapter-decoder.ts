@@ -95,6 +95,7 @@ function looksLikeMigratedParagraph(row: unknown): boolean {
 }
 
 function decodeMigrated(rows: unknown[]): ChapterContent {
+  const seenParagraphs = new Set<string>()
   const seen = new Set<string>()
   const paragraphs: NormalizedParagraph[] = rows.map((raw) => {
     if (typeof raw !== 'object' || raw === null || !('id' in raw)) {
@@ -104,6 +105,10 @@ function decodeMigrated(rows: unknown[]): ChapterContent {
       throw new Error('Migrated paragraph is missing sentences array')
     }
     const row = raw as MigratedParagraphRow
+    if (seenParagraphs.has(row.id)) {
+      throw new Error(`Duplicate paragraph id in migrated chapter: ${row.id}`)
+    }
+    seenParagraphs.add(row.id)
     const sentences: Sentence[] = row.sentences.map((s) => {
       if (typeof s !== 'object' || s === null || typeof (s as Sentence).id !== 'string') {
         throw new Error('Migrated sentence is missing id')
