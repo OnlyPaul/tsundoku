@@ -1,9 +1,10 @@
-import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from './types'
+import { type ChapterContent, decodeChapter } from './chapter-decoder'
+import type { BookMetadata, GrammarEntry, KanjiEntry, VocabEntry } from './types'
 
 const BOOKS_BASE = `${import.meta.env.BASE_URL}books`
 
 const metadataCache = new Map<string, Promise<BookMetadata>>()
-const chapterCache = new Map<string, Promise<Paragraph[]>>()
+const chapterCache = new Map<string, Promise<ChapterContent>>()
 const vocabCache = new Map<string, Promise<Map<string, VocabEntry>>>()
 const kanjiCache = new Map<string, Promise<Map<string, KanjiEntry>>>()
 const grammarCache = new Map<string, Promise<Map<string, GrammarEntry>>>()
@@ -48,13 +49,21 @@ export function fetchMetadata(slug: string): Promise<BookMetadata> {
   return promise
 }
 
-export function fetchChapter(slug: string, chapterId: string): Promise<Paragraph[]> {
+export function fetchChapter(slug: string, chapterId: string): Promise<ChapterContent> {
   const key = `${slug}::${chapterId}`
   const existing = chapterCache.get(key)
   if (existing) return existing
-  const promise = fetchJsonl<Paragraph>(`${BOOKS_BASE}/${slug}/chapters/${chapterId}.jsonl`)
+  const promise = fetchText(`${BOOKS_BASE}/${slug}/chapters/${chapterId}.jsonl`).then((text) =>
+    decodeChapter(text),
+  )
   chapterCache.set(key, promise)
   return promise
+}
+
+async function fetchText(url: string): Promise<string> {
+  const res = await fetch(url)
+  if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`)
+  return res.text()
 }
 
 function indexBy<T, K extends string>(items: T[], key: (item: T) => K): Map<K, T> {

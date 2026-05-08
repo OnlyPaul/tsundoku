@@ -16,6 +16,7 @@ import {
   fetchVocab,
 } from '@/lib/book-store'
 import { getBookmark, setBookmark } from '@/lib/bookmarks'
+import type { NormalizedParagraph } from '@/lib/chapter-decoder'
 import {
   type JpFont,
   getReaderPrefs,
@@ -23,7 +24,7 @@ import {
   setFurigana as persistFurigana,
   setJpFont as persistJpFont,
 } from '@/lib/reader-prefs'
-import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/lib/types'
+import type { BookMetadata, GrammarEntry, KanjiEntry, VocabEntry } from '@/lib/types'
 import { useMediaQuery } from '@/lib/use-media-query'
 import { ChevronLeft, Settings as SettingsIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
@@ -38,7 +39,7 @@ export default function Reader() {
   const [metadata, setMetadata] = useState<BookMetadata | null>(null)
   const chapterId =
     urlChapter ?? (slug ? getBookmark(slug)?.chapterId : null) ?? metadata?.chapters[0]?.id ?? null
-  const [paragraphs, setParagraphs] = useState<Paragraph[] | null>(null)
+  const [paragraphs, setParagraphs] = useState<NormalizedParagraph[] | null>(null)
   const [vocab, setVocab] = useState<Map<string, VocabEntry> | null>(null)
   const [kanjiMap, setKanjiMap] = useState<Map<string, KanjiEntry> | null>(null)
   const [kanjiRequested, setKanjiRequested] = useState(false)
@@ -49,7 +50,7 @@ export default function Reader() {
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [libraryBookCount, setLibraryBookCount] = useState<number | null>(null)
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
-  const [openGrammarFor, setOpenGrammarFor] = useState<Paragraph | null>(null)
+  const [openGrammarFor, setOpenGrammarFor] = useState<NormalizedParagraph | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
   const restoredForRef = useRef<string | null>(null)
 
@@ -109,8 +110,8 @@ export default function Reader() {
     if (!slug || !chapterId) return
     let cancelled = false
     setParagraphs(null)
-    fetchChapter(slug, chapterId).then((p) => {
-      if (!cancelled) setParagraphs(p)
+    fetchChapter(slug, chapterId).then((c) => {
+      if (!cancelled) setParagraphs(c.paragraphs)
     })
     return () => {
       cancelled = true
@@ -180,7 +181,7 @@ export default function Reader() {
     }
   }, [slug, chapterId, paragraphs])
 
-  function openGrammarSheet(paragraph: Paragraph) {
+  function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)
     if (!grammarMap && slug) {
       fetchGrammar(slug).then(setGrammarMap)
@@ -250,22 +251,24 @@ export default function Reader() {
             style={proseStyle}
             className="mt-6 leading-loose"
           >
-            {p.tokens.map((t, i) => (
-              <TappableToken
-                key={`${p.id}-${i}`}
-                token={t}
-                vocab={vocab}
-                kanjiMap={kanjiMap}
-                onOpenKanjiTab={() => {
-                  if (kanjiRequested || !slug) return
-                  setKanjiRequested(true)
-                  fetchKanji(slug)
-                    .then(setKanjiMap)
-                    .catch(() => setKanjiMap(new Map()))
-                }}
-                showFurigana={showFurigana}
-              />
-            ))}
+            {p.sentences.flatMap((s) =>
+              s.tokens.map((t, i) => (
+                <TappableToken
+                  key={`${s.id}-${i}`}
+                  token={t}
+                  vocab={vocab}
+                  kanjiMap={kanjiMap}
+                  onOpenKanjiTab={() => {
+                    if (kanjiRequested || !slug) return
+                    setKanjiRequested(true)
+                    fetchKanji(slug)
+                      .then(setKanjiMap)
+                      .catch(() => setKanjiMap(new Map()))
+                  }}
+                  showFurigana={showFurigana}
+                />
+              )),
+            )}
             {p.grammar && p.grammar.length > 0 ? (
               <>
                 {' '}
@@ -365,7 +368,10 @@ export default function Reader() {
                     <span className="font-mono text-[10px] uppercase tracking-wider">
                       In book:{' '}
                     </span>
-                    {openGrammarFor.tokens.map((t) => t.s).join('')}
+                    {openGrammarFor.sentences
+                      .flatMap((s) => s.tokens)
+                      .map((t) => t.s)
+                      .join('')}
                   </p>
                 ) : null}
               </section>
