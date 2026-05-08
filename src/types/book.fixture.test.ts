@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { decodeChapter } from '@/lib/chapter-decoder'
-import type { BookMetadata, GrammarEntry, KanjiEntry, Paragraph, VocabEntry } from '@/types/book'
+import type { BookMetadata, GrammarEntry, KanjiEntry, VocabEntry } from '@/types/book'
 import { describe, expect, it } from 'vitest'
 
 const ROOT = join(__dirname, '..', '..')
@@ -19,6 +19,10 @@ function readJsonl<T>(path: string): T[] {
     .map((line) => JSON.parse(line) as T)
 }
 
+function readChapter(chapterId: string) {
+  return decodeChapter(readFileSync(join(FIXTURE, 'chapters', `${chapterId}.jsonl`), 'utf8'))
+}
+
 describe('books/index.json', () => {
   it('lists nageki-no-bourei-1', () => {
     const index = readJson<string[]>(join(BOOKS, 'index.json'))
@@ -34,26 +38,28 @@ describe('tsundoku-test fixture', () => {
   const vocabIds = new Set(vocab.map((v) => v.id))
   const grammarIds = new Set(grammar.map((g) => g.id))
 
-  it('metadata lists 2 chapters whose files exist and parse', () => {
+  it('metadata lists chapters whose files exist and parse through the decoder seam', () => {
     expect(metadata.id).toBe('tsundoku-test')
-    expect(metadata.chapters).toHaveLength(2)
+    expect(metadata.chapters).toHaveLength(3)
     for (const ch of metadata.chapters) {
-      const paragraphs = readJsonl<Paragraph>(join(FIXTURE, 'chapters', `${ch.id}.jsonl`))
-      expect(paragraphs.length).toBeGreaterThan(0)
-      for (const p of paragraphs) {
+      const chapter = readChapter(ch.id)
+      expect(chapter.paragraphs.length).toBeGreaterThan(0)
+      for (const p of chapter.paragraphs) {
         expect(typeof p.id).toBe('string')
-        expect(Array.isArray(p.tokens)).toBe(true)
+        expect(p.sentences.length).toBeGreaterThan(0)
       }
     }
   })
 
   it('every token.v resolves to a vocab entry', () => {
     for (const ch of metadata.chapters) {
-      const paragraphs = readJsonl<Paragraph>(join(FIXTURE, 'chapters', `${ch.id}.jsonl`))
-      for (const p of paragraphs) {
-        for (const t of p.tokens) {
-          if (t.v !== undefined) {
-            expect(vocabIds.has(t.v)).toBe(true)
+      const chapter = readChapter(ch.id)
+      for (const p of chapter.paragraphs) {
+        for (const s of p.sentences) {
+          for (const t of s.tokens) {
+            if (t.v !== undefined) {
+              expect(vocabIds.has(t.v)).toBe(true)
+            }
           }
         }
       }
@@ -62,8 +68,8 @@ describe('tsundoku-test fixture', () => {
 
   it('every paragraph.grammar id resolves to a grammar entry', () => {
     for (const ch of metadata.chapters) {
-      const paragraphs = readJsonl<Paragraph>(join(FIXTURE, 'chapters', `${ch.id}.jsonl`))
-      for (const p of paragraphs) {
+      const chapter = readChapter(ch.id)
+      for (const p of chapter.paragraphs) {
         for (const g of p.grammar ?? []) {
           expect(grammarIds.has(g)).toBe(true)
         }
