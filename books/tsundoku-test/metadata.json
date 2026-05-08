@@ -5,6 +5,7 @@
   "cover": "cover.jpg",
   "chapters": [
     { "id": "00-test-chapter-1", "title": "Chapter 1" },
-    { "id": "01-test-chapter-2", "title": "Chapter 2" }
+    { "id": "01-test-chapter-2", "title": "Chapter 2" },
+    { "id": "99-test-chapter-migrated", "title": "Chapter 3" }
   ]
 }
