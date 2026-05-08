@@ -81,6 +81,7 @@ export default function Reader() {
   const [libraryBookCount, setLibraryBookCount] = useState<number | null>(null)
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<NormalizedParagraph | null>(null)
+  const [openSentenceHelpId, setOpenSentenceHelpId] = useState<string | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
   const sentenceRefs = useRef(new Map<string, { el: HTMLElement; paragraphId: string }>())
   const restoredForRef = useRef<string | null>(null)
@@ -142,6 +143,7 @@ export default function Reader() {
     let cancelled = false
     setParagraphs(null)
     setChapterFormat(null)
+    setOpenSentenceHelpId(null)
     fetchChapter(slug, chapterId).then((c) => {
       if (!cancelled) {
         setParagraphs(c.paragraphs)
@@ -321,6 +323,32 @@ export default function Reader() {
                     showFurigana={showFurigana}
                   />
                 ))}
+                {s.help ? (
+                  <>
+                    {' '}
+                    <button
+                      type="button"
+                      aria-label={`Sentence help for ${s.id}`}
+                      onClick={() => setOpenSentenceHelpId((cur) => (cur === s.id ? null : s.id))}
+                      className="ml-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-secondary-foreground align-middle shadow-sm hover:opacity-90"
+                      style={{ fontSize: '0.7rem' }}
+                    >
+                      <span aria-hidden className="font-jp leading-none">
+                        訳
+                      </span>
+                    </button>
+                    {openSentenceHelpId === s.id ? (
+                      // biome-ignore lint/a11y/useSemanticElements: panel is nested inside a <p>, where <section> would be invalid HTML.
+                      <span
+                        role="region"
+                        aria-label={`Sentence help for ${s.id}`}
+                        className="mt-2 block rounded border border-border bg-muted/40 p-3 text-sm leading-normal"
+                      >
+                        {s.help.translation}
+                      </span>
+                    ) : null}
+                  </>
+                ) : null}
               </span>
             ))}
             {p.grammar && p.grammar.length > 0 ? (
