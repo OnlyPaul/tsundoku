@@ -120,6 +120,22 @@ describe('decodeChapter', () => {
     expect(chapter.paragraphs[0].sentences[0].help).toEqual({ translation: 'I am.' })
   })
 
+  it('normalizes richer top-level sentence help fields into help metadata', () => {
+    const text =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"translation":"  I tried.  ","note":"  Nuanced phrasing.  ","grammar":["g-dakara"]}' +
+      ']}\n'
+
+    const chapter = decodeChapter(text)
+
+    expect(chapter.paragraphs[0].sentences[0].help).toEqual({
+      translation: 'I tried.',
+      note: 'Nuanced phrasing.',
+      grammar: ['g-dakara'],
+    })
+  })
+
   it('leaves help undefined on migrated sentences without authored help', () => {
     const text =
       '{"format":"v2"}\n' + '{"id":"p0","sentences":[{"id":"ch01-p0-s0","tokens":[{"s":"私"}]}]}\n'
@@ -143,6 +159,13 @@ describe('decodeChapter', () => {
       '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"help":{"translation":"  "}}' +
       ']}\n'
     expect(() => decodeChapter(empty)).toThrow(/translation/i)
+
+    const missingTopLevel =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"note":"missing translation"}' +
+      ']}\n'
+    expect(() => decodeChapter(missingTopLevel)).toThrow(/translation/i)
   })
 
   it('does not surface sentence help on legacy (v1) chapters', () => {

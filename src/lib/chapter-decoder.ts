@@ -2,6 +2,8 @@ import type { Token } from './types'
 
 export interface SentenceHelp {
   translation: string
+  note?: string
+  grammar?: string[]
 }
 
 export interface Sentence {
@@ -32,6 +34,9 @@ interface LegacyParagraphRow {
 interface MigratedSentenceRow {
   id: string
   tokens: Token[]
+  translation?: unknown
+  note?: unknown
+  grammar?: unknown
   help?: { translation?: unknown }
 }
 
@@ -139,15 +144,37 @@ function decodeMigrated(rows: unknown[]): ChapterContent {
 }
 
 function decodeSentenceHelp(sentence: MigratedSentenceRow): SentenceHelp | undefined {
-  if (!('help' in sentence) || sentence.help === undefined || sentence.help === null) {
+  const raw =
+    'help' in sentence && sentence.help !== undefined && sentence.help !== null
+      ? sentence.help
+      : sentence.translation !== undefined ||
+          sentence.note !== undefined ||
+          sentence.grammar !== undefined
+        ? sentence
+        : undefined
+  if (!raw) {
     return undefined
   }
-  const raw = sentence.help
   const translation = (raw as { translation?: unknown }).translation
   if (typeof translation !== 'string' || translation.trim() === '') {
     throw new Error(`Migrated sentence help is missing a translation: ${sentence.id}`)
   }
-  return { translation: translation.trim() }
+  const note = (raw as { note?: unknown }).note
+  if (note !== undefined && typeof note !== 'string') {
+    throw new Error(`Migrated sentence help note must be a string: ${sentence.id}`)
+  }
+  const grammar = (raw as { grammar?: unknown }).grammar
+  if (
+    grammar !== undefined &&
+    (!Array.isArray(grammar) || grammar.some((id) => typeof id !== 'string' || id.trim() === ''))
+  ) {
+    throw new Error(`Migrated sentence help grammar must be a string array: ${sentence.id}`)
+  }
+  return {
+    translation: translation.trim(),
+    ...(typeof note === 'string' && note.trim() !== '' ? { note: note.trim() } : {}),
+    ...(Array.isArray(grammar) && grammar.length > 0 ? { grammar } : {}),
+  }
 }
 
 function decodeLegacy(rows: LegacyParagraphRow[]): ChapterContent {
