@@ -252,16 +252,30 @@ export default function Reader() {
     const panel = panelRefs.current.get(openSentenceHelpFor)
     const sentence = sentenceRefs.current.get(openSentenceHelpFor)?.el
     if (!panel || !sentence) return
-    const delta = computeMinimalScrollDelta({
-      sentenceTop: sentence.getBoundingClientRect().top,
-      panelBottom: panel.getBoundingClientRect().bottom,
-      headerBottom: headerRef.current?.getBoundingClientRect().bottom ?? 0,
-      viewportBottom: window.innerHeight,
-      margin: 8,
+    const adjust = () => {
+      const delta = computeMinimalScrollDelta({
+        sentenceTop: sentence.getBoundingClientRect().top,
+        panelBottom: panel.getBoundingClientRect().bottom,
+        headerBottom: headerRef.current?.getBoundingClientRect().bottom ?? 0,
+        viewportBottom: window.innerHeight,
+        margin: 8,
+      })
+      if (delta === 0) return
+      window.scrollBy({ top: delta, behavior: 'smooth' })
+    }
+    adjust()
+    if (typeof ResizeObserver === 'undefined') return
+    let initial = true
+    const ro = new ResizeObserver(() => {
+      if (initial) {
+        initial = false
+        return
+      }
+      adjust()
     })
-    if (delta === 0) return
-    window.scrollBy({ top: delta, behavior: 'smooth' })
-  }, [openSentenceHelpFor, expandedSentenceGrammarFor])
+    ro.observe(panel)
+    return () => ro.disconnect()
+  }, [openSentenceHelpFor])
 
   function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)

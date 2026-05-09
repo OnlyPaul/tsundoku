@@ -76,6 +76,45 @@ function stubRects(matchers: RectMatcher[]) {
   }
 }
 
+const mockResizeObservers: Array<{
+  callback: ResizeObserverCallback
+  targets: Element[]
+  observer: ResizeObserver
+}> = []
+
+class MockResizeObserver {
+  private callback: ResizeObserverCallback
+  private targets: Element[] = []
+  constructor(callback: ResizeObserverCallback) {
+    this.callback = callback
+    mockResizeObservers.push({
+      callback,
+      targets: this.targets,
+      observer: this as unknown as ResizeObserver,
+    })
+  }
+  observe(target: Element) {
+    this.targets.push(target)
+    // Mirror the spec: fire once on observe with the initial size.
+    this.callback([] as unknown as ResizeObserverEntry[], this as unknown as ResizeObserver)
+  }
+  unobserve(target: Element) {
+    const i = this.targets.indexOf(target)
+    if (i >= 0) this.targets.splice(i, 1)
+  }
+  disconnect() {
+    this.targets.length = 0
+  }
+}
+
+function fireResize(target: Element) {
+  for (const ro of mockResizeObservers) {
+    if (ro.targets.includes(target)) {
+      ro.callback([] as unknown as ResizeObserverEntry[], ro.observer)
+    }
+  }
+}
+
 function setInnerHeight(value: number) {
   const orig = window.innerHeight
   Object.defineProperty(window, 'innerHeight', { configurable: true, value })
@@ -164,6 +203,8 @@ beforeEach(() => {
   vi.stubGlobal('cancelAnimationFrame', (id: number) => clearTimeout(id))
   window.scrollTo = vi.fn() as unknown as typeof window.scrollTo
   window.scrollBy = vi.fn() as unknown as typeof window.scrollBy
+  mockResizeObservers.length = 0
+  vi.stubGlobal('ResizeObserver', MockResizeObserver)
 
   fetchMock = vi.fn(async (input: RequestInfo | URL) => {
     const url = typeof input === 'string' ? input : input.toString()
@@ -1051,6 +1092,8 @@ describe('Reader', () => {
         // Expand grammar: panel grows to 640..960, overflowing the viewport.
         panelHeight = 320
         await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+        fireResize(panel)
 
         await waitFor(() => {
           expect(window.scrollBy).toHaveBeenCalled()
@@ -1105,11 +1148,14 @@ describe('Reader', () => {
 
         panelHeight = 300
         await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
         await screen.findByText('Because (casual reason)')
+        fireResize(panel)
 
         // Collapse — panel shrinks back; everything still fully visible.
         panelHeight = 80
         await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        fireResize(panel)
 
         await new Promise((r) => setTimeout(r, 10))
         expect(window.scrollBy).not.toHaveBeenCalled()
