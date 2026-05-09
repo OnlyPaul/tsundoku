@@ -1,8 +1,13 @@
 import type { Token } from './types'
 
+export interface SentenceHelp {
+  translation: string
+}
+
 export interface Sentence {
   id: string
   tokens: Token[]
+  help?: SentenceHelp
 }
 
 export interface NormalizedParagraph {
@@ -27,6 +32,7 @@ interface LegacyParagraphRow {
 interface MigratedSentenceRow {
   id: string
   tokens: Token[]
+  help?: { translation?: unknown }
 }
 
 interface MigratedParagraphRow {
@@ -120,7 +126,8 @@ function decodeMigrated(rows: unknown[]): ChapterContent {
         throw new Error(`Duplicate sentence id in migrated chapter: ${s.id}`)
       }
       seen.add(s.id)
-      return { id: s.id, tokens: s.tokens }
+      const help = decodeSentenceHelp(s)
+      return { id: s.id, tokens: s.tokens, ...(help ? { help } : {}) }
     })
     return {
       id: row.id,
@@ -129,6 +136,18 @@ function decodeMigrated(rows: unknown[]): ChapterContent {
     }
   })
   return { format: 'v2', paragraphs }
+}
+
+function decodeSentenceHelp(sentence: MigratedSentenceRow): SentenceHelp | undefined {
+  if (!('help' in sentence) || sentence.help === undefined || sentence.help === null) {
+    return undefined
+  }
+  const raw = sentence.help
+  const translation = (raw as { translation?: unknown }).translation
+  if (typeof translation !== 'string' || translation.trim() === '') {
+    throw new Error(`Migrated sentence help is missing a translation: ${sentence.id}`)
+  }
+  return { translation: translation.trim() }
 }
 
 function decodeLegacy(rows: LegacyParagraphRow[]): ChapterContent {
