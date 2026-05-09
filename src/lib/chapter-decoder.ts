@@ -3,6 +3,9 @@ import type { Token } from './types'
 export interface Sentence {
   id: string
   tokens: Token[]
+  translation?: string
+  note?: string
+  grammar?: string[]
 }
 
 export interface NormalizedParagraph {
@@ -27,6 +30,9 @@ interface LegacyParagraphRow {
 interface MigratedSentenceRow {
   id: string
   tokens: Token[]
+  translation?: string
+  note?: string
+  grammar?: string[]
 }
 
 interface MigratedParagraphRow {
@@ -120,7 +126,13 @@ function decodeMigrated(rows: unknown[]): ChapterContent {
         throw new Error(`Duplicate sentence id in migrated chapter: ${s.id}`)
       }
       seen.add(s.id)
-      return { id: s.id, tokens: s.tokens }
+      return {
+        id: s.id,
+        tokens: s.tokens,
+        ...(s.translation ? { translation: s.translation } : {}),
+        ...(s.note ? { note: s.note } : {}),
+        ...(s.grammar ? { grammar: s.grammar } : {}),
+      }
     })
     return {
       id: row.id,

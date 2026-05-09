@@ -75,6 +75,13 @@ const CHAPTER_MIGRATED_JSONL =
   '{"id":"p1-s1","tokens":[{"s":"犬"},{"s":"も"},{"s":"好き"},{"s":"です"},{"s":"。"}]}' +
   ']}\n'
 
+const CHAPTER_MIGRATED_WITH_HELP_JSONL =
+  '{"format":"v2"}\n' +
+  '{"id":"p0","sentences":[' +
+  '{"id":"p0-s0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}],"translation":"I tried reading a book.","note":"This reads like a personal trial or experiment, not a claim of finishing the whole book.","grammar":["g-dakara"]},' +
+  '{"id":"p0-s1","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"日"},{"s":"です"},{"s":"。"}],"translation":"Today is a good day."}' +
+  ']}\n'
+
 const CHAPTER_1_JSONL =
   '{"id":"p0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}],"grammar":["g-dakara"]}\n' +
   '{"id":"p1","tokens":[{"s":"猫","r":"ねこ","v":"neko"},{"s":"が"},{"s":"好き","v":"suki"},{"s":"です"},{"s":"。"}]}\n'
@@ -127,6 +134,8 @@ beforeEach(() => {
     if (url.endsWith('/01-test-chapter-2.jsonl')) return chapterResponse(CHAPTER_2_JSONL)
     if (url.endsWith('/99-test-chapter-migrated.jsonl'))
       return chapterResponse(CHAPTER_MIGRATED_JSONL)
+    if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+      return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
     if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
     if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
     if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
@@ -679,6 +688,158 @@ describe('Reader', () => {
       expect(lastArg.top).toBeCloseTo(2100, 0)
 
       Element.prototype.getBoundingClientRect = origGetRect
+    })
+  })
+
+  describe('sentence help', () => {
+    it('shows the sentence translation inline when the sentence-help affordance is activated', async () => {
+      const user = userEvent.setup()
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+      render(<App />)
+
+      const affordance = await screen.findByRole('button', {
+        name: /sentence help for p0-s0/i,
+      })
+      await user.click(affordance)
+
+      expect(await screen.findByText('I tried reading a book.')).toBeInTheDocument()
+    })
+
+    it('shows the sentence note when one is authored', async () => {
+      const user = userEvent.setup()
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+      render(<App />)
+
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+
+      expect(
+        await screen.findByText(
+          'This reads like a personal trial or experiment, not a claim of finishing the whole book.',
+        ),
+      ).toBeInTheDocument()
+    })
+
+    it('shows a grammar expansion control only for sentences with linked grammar', async () => {
+      const user = userEvent.setup()
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+      render(<App />)
+
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      expect(screen.getByRole('button', { name: /show linked grammar/i })).toBeInTheDocument()
+
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s1/i }))
+      expect(screen.queryByRole('button', { name: /show linked grammar/i })).not.toBeInTheDocument()
+    })
+
+    it('keeps linked grammar collapsed until the learner expands it', async () => {
+      const user = userEvent.setup()
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+      render(<App />)
+
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      expect(screen.queryByText('Because (casual reason)')).not.toBeInTheDocument()
+
+      await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+
+      expect(await screen.findByText('Because (casual reason)')).toBeInTheDocument()
+    })
+
+    it('does not show the legacy paragraph grammar badge for migrated sentence-help chapters', async () => {
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        if (url.endsWith('/kanji.jsonl')) return chapterResponse(KANJI_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+      render(<App />)
+
+      await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      expect(screen.queryByRole('button', { name: /grammar notes for paragraph p0/i })).toBeNull()
     })
   })
 
