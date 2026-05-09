@@ -1008,6 +1008,117 @@ describe('Reader', () => {
       expect(screen.getByRole('region', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
     })
 
+    it('scrolls minimally when expanding linked grammar pushes the panel off-screen', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      let panelHeight = 80
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 50) : null),
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(600, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(640, panelHeight)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+        render(<App />)
+
+        // Open the panel: 640..720 is fully visible in 0..800 viewport.
+        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+        await new Promise((r) => setTimeout(r, 10))
+        expect(window.scrollBy).not.toHaveBeenCalled()
+
+        // Expand grammar: panel grows to 640..960, overflowing the viewport.
+        panelHeight = 320
+        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+
+        await waitFor(() => {
+          expect(window.scrollBy).toHaveBeenCalled()
+        })
+        const arg = (window.scrollBy as unknown as ReturnType<typeof vi.fn>).mock
+          .calls[0][0] as ScrollToOptions
+        expect(arg.behavior).toBe('smooth')
+        expect(arg.top).toBeGreaterThan(0)
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
+    it('does not scroll when collapsing linked grammar with the panel still fully visible', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const metadataWithSentenceHelp = {
+        ...METADATA,
+        chapters: [{ id: '98-test-chapter-sentence-help', title: '第四章: 文の助け' }],
+      }
+      fetchMock.mockImplementation(async (input: RequestInfo | URL) => {
+        const url = typeof input === 'string' ? input : input.toString()
+        if (url.endsWith('/books/index.json')) return jsonResponse(['tsundoku-test'])
+        if (url.endsWith('/books/tsundoku-test/metadata.json'))
+          return jsonResponse(metadataWithSentenceHelp)
+        if (url.endsWith('/98-test-chapter-sentence-help.jsonl'))
+          return chapterResponse(CHAPTER_MIGRATED_WITH_HELP_JSONL)
+        if (url.endsWith('/grammar.jsonl')) return chapterResponse(GRAMMAR_JSONL)
+        if (url.endsWith('/vocabulary.jsonl')) return chapterResponse(VOCAB_JSONL)
+        return new Response('not found', { status: 404 })
+      })
+
+      // Both compact and expanded panel sizes fit comfortably in the viewport.
+      let panelHeight = 80
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 50) : null),
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(200, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(240, panelHeight)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
+        render(<App />)
+
+        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+        panelHeight = 300
+        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        await screen.findByText('Because (casual reason)')
+
+        // Collapse — panel shrinks back; everything still fully visible.
+        panelHeight = 80
+        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+
+        await new Promise((r) => setTimeout(r, 10))
+        expect(window.scrollBy).not.toHaveBeenCalled()
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
     it('renders the sentence-help affordance as a sibling of tokens, not as their ancestor', async () => {
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)

@@ -261,7 +261,7 @@ export default function Reader() {
     })
     if (delta === 0) return
     window.scrollBy({ top: delta, behavior: 'smooth' })
-  }, [openSentenceHelpFor])
+  }, [openSentenceHelpFor, expandedSentenceGrammarFor])
 
   function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)
