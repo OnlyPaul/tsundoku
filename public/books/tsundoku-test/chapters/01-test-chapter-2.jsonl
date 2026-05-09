@@ -1,2 +1,3 @@
-{"id":"p1","tokens":[{"s":"友達","r":"ともだち","v":"tomodachi"},{"s":"は"},{"s":"学生","r":"がくせい","v":"gakusei"},{"s":"です"},{"s":"。"}]}
-{"id":"p2","tokens":[{"s":"学校","r":"がっこう","v":"gakkou"},{"s":"で"},{"s":"勉強","r":"べんきょう","v":"benkyou"},{"s":"します","r":"します","v":"suru","lemma":"する"},{"s":"。"}]}
+{"format":"v2"}
+{"id":"p1","sentences":[{"id":"01-test-chapter-2-p1-s0","tokens":[{"s":"友達","r":"ともだち","v":"tomodachi"},{"s":"は"},{"s":"学生","r":"がくせい","v":"gakusei"},{"s":"です"},{"s":"。"}],"help":{"translation":"My friend is a student."}}]}
+{"id":"p2","sentences":[{"id":"01-test-chapter-2-p2-s0","tokens":[{"s":"学校","r":"がっこう","v":"gakkou"},{"s":"で"},{"s":"勉強","r":"べんきょう","v":"benkyou"},{"s":"します","r":"します","v":"suru","lemma":"する"},{"s":"。"}],"help":{"translation":"I study at school."}}]}
