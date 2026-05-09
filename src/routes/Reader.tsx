@@ -60,6 +60,21 @@ function fractionalOffset(rect: AnchoredRect, anchorY: number): number {
   return Math.min(1, Math.max(0, (anchorY - rect.top) / rect.height))
 }
 
+function computeMinimalScrollDelta(args: {
+  sentenceTop: number
+  panelBottom: number
+  headerBottom: number
+  viewportBottom: number
+  margin: number
+}): number {
+  const { sentenceTop, panelBottom, headerBottom, viewportBottom, margin } = args
+  if (panelBottom <= viewportBottom && sentenceTop >= headerBottom) return 0
+  if (sentenceTop < headerBottom) return sentenceTop - headerBottom - margin
+  const need = panelBottom - viewportBottom + margin
+  const maxDownward = sentenceTop - headerBottom
+  return Math.min(need, Math.max(0, maxDownward))
+}
+
 export default function Reader() {
   const { slug } = useParams<{ slug: string }>()
   const [params, setParams] = useSearchParams()
@@ -85,6 +100,8 @@ export default function Reader() {
   const [expandedSentenceGrammarFor, setExpandedSentenceGrammarFor] = useState<string | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
   const sentenceRefs = useRef(new Map<string, { el: HTMLElement; paragraphId: string }>())
+  const panelRefs = useRef(new Map<string, HTMLElement>())
+  const headerRef = useRef<HTMLElement | null>(null)
   const restoredForRef = useRef<string | null>(null)
 
   useEffect(() => {
@@ -230,6 +247,36 @@ export default function Reader() {
     }
   }, [slug, chapterId, paragraphs, chapterFormat])
 
+  useEffect(() => {
+    if (!openSentenceHelpFor) return
+    const panel = panelRefs.current.get(openSentenceHelpFor)
+    const sentence = sentenceRefs.current.get(openSentenceHelpFor)?.el
+    if (!panel || !sentence) return
+    const adjust = () => {
+      const delta = computeMinimalScrollDelta({
+        sentenceTop: sentence.getBoundingClientRect().top,
+        panelBottom: panel.getBoundingClientRect().bottom,
+        headerBottom: headerRef.current?.getBoundingClientRect().bottom ?? 0,
+        viewportBottom: window.innerHeight,
+        margin: 8,
+      })
+      if (delta === 0) return
+      window.scrollBy({ top: delta, behavior: 'smooth' })
+    }
+    adjust()
+    if (typeof ResizeObserver === 'undefined') return
+    let initial = true
+    const ro = new ResizeObserver(() => {
+      if (initial) {
+        initial = false
+        return
+      }
+      adjust()
+    })
+    ro.observe(panel)
+    return () => ro.disconnect()
+  }, [openSentenceHelpFor])
+
   function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)
     if (!grammarMap && slug) {
@@ -248,7 +295,10 @@ export default function Reader() {
 
   return (
     <main className="min-h-screen bg-background">
-      <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-border bg-background/90 px-4 py-3 backdrop-blur md:px-8">
+      <header
+        ref={headerRef}
+        className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-border bg-background/90 px-4 py-3 backdrop-blur md:px-8"
+      >
         <Link
           to="/"
           aria-label="Back to library"
@@ -355,6 +405,10 @@ export default function Reader() {
                   <span
                     role="region"
                     aria-label={`Sentence help for ${s.id}`}
+                    ref={(el) => {
+                      if (el) panelRefs.current.set(s.id, el)
+                      else panelRefs.current.delete(s.id)
+                    }}
                     className="mt-2 block rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground shadow-sm"
                   >
                     <span className="block">{s.help.translation}</span>
