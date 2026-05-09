@@ -1,21 +1,24 @@
 import { expect, test } from '@playwright/test'
 
-test.describe('grammar badge', () => {
-  test('paragraph with grammar reference opens explanation sheet', async ({ page }) => {
+test.describe('sentence-help grammar link', () => {
+  test('sentence with linked grammar reveals explanation inline', async ({ page }) => {
     await page.goto('/reader/tsundoku-test')
 
     await expect(page.getByText('学生').first()).toBeVisible()
 
-    const badge = page.getByRole('button', { name: /grammar/i })
-    await expect(badge).toBeVisible()
-    await badge.click()
+    const helpButton = page.getByRole('button', {
+      name: /sentence help for 00-test-chapter-1-p3-s0/i,
+    })
+    await expect(helpButton).toBeVisible()
+    await helpButton.click()
 
-    const sheet = page.getByRole('dialog')
-    await expect(sheet).toBeVisible()
-    await expect(sheet.getByRole('heading', { name: /because/i })).toBeVisible()
-    await expect(sheet.getByText(/reason or cause/i)).toBeVisible()
+    await expect(page.getByText(/because i'?m a student/i)).toBeVisible()
 
-    await page.keyboard.press('Escape')
-    await expect(sheet).toBeHidden()
+    const grammarButton = page.getByRole('button', { name: /show linked grammar/i })
+    await expect(grammarButton).toBeVisible()
+    await grammarButton.click()
+
+    await expect(page.getByText(/because \(casual reason\)/i)).toBeVisible()
+    await expect(page.getByText(/reason or cause/i)).toBeVisible()
   })
 })
