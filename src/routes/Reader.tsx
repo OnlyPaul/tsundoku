@@ -144,12 +144,12 @@ export default function Reader() {
     let cancelled = false
     setParagraphs(null)
     setChapterFormat(null)
+    setOpenSentenceHelpFor(null)
+    setExpandedSentenceGrammarFor(null)
     fetchChapter(slug, chapterId).then((c) => {
       if (!cancelled) {
         setParagraphs(c.paragraphs)
         setChapterFormat(c.format)
-        setOpenSentenceHelpFor(null)
-        setExpandedSentenceGrammarFor(null)
       }
     })
     return () => {
@@ -325,7 +325,7 @@ export default function Reader() {
                     showFurigana={showFurigana}
                   />
                 ))}
-                {chapterFormat === 'v2' && s.translation ? (
+                {chapterFormat === 'v2' && s.help?.translation ? (
                   <>
                     {' '}
                     <button
@@ -350,13 +350,18 @@ export default function Reader() {
                     </button>
                   </>
                 ) : null}
-                {openSentenceHelpFor === s.id && s.translation ? (
-                  <span className="mt-2 block rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground shadow-sm">
-                    <span className="block">{s.translation}</span>
-                    {s.note ? (
-                      <span className="mt-2 block text-muted-foreground">{s.note}</span>
+                {openSentenceHelpFor === s.id && s.help?.translation ? (
+                  // biome-ignore lint/a11y/useSemanticElements: panel is nested inside a <p>, where <section> would be invalid HTML.
+                  <span
+                    role="region"
+                    aria-label={`Sentence help for ${s.id}`}
+                    className="mt-2 block rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground shadow-sm"
+                  >
+                    <span className="block">{s.help.translation}</span>
+                    {s.help.note ? (
+                      <span className="mt-2 block text-muted-foreground">{s.help.note}</span>
                     ) : null}
-                    {s.grammar && s.grammar.length > 0 ? (
+                    {s.help.grammar && s.help.grammar.length > 0 ? (
                       <span className="mt-3 block">
                         <button
                           type="button"
@@ -375,7 +380,7 @@ export default function Reader() {
                         </button>
                         {expandedSentenceGrammarFor === s.id && grammarMap ? (
                           <span className="mt-3 block space-y-3">
-                            {s.grammar
+                            {s.help.grammar
                               .map((id) => grammarMap.get(id))
                               .filter((entry): entry is GrammarEntry => Boolean(entry))
                               .map((entry) => (

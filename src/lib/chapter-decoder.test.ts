@@ -108,6 +108,72 @@ describe('decodeChapter', () => {
     expect(() => decodeChapter(text)).toThrow(/duplicate/i)
   })
 
+  it('exposes sentence help.translation when the migrated sentence carries help', () => {
+    const text =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"help":{"translation":"  I am.  "}}' +
+      ']}\n'
+
+    const chapter = decodeChapter(text)
+
+    expect(chapter.paragraphs[0].sentences[0].help).toEqual({ translation: 'I am.' })
+  })
+
+  it('normalizes richer top-level sentence help fields into help metadata', () => {
+    const text =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"translation":"  I tried.  ","note":"  Nuanced phrasing.  ","grammar":["g-dakara"]}' +
+      ']}\n'
+
+    const chapter = decodeChapter(text)
+
+    expect(chapter.paragraphs[0].sentences[0].help).toEqual({
+      translation: 'I tried.',
+      note: 'Nuanced phrasing.',
+      grammar: ['g-dakara'],
+    })
+  })
+
+  it('leaves help undefined on migrated sentences without authored help', () => {
+    const text =
+      '{"format":"v2"}\n' + '{"id":"p0","sentences":[{"id":"ch01-p0-s0","tokens":[{"s":"私"}]}]}\n'
+
+    const chapter = decodeChapter(text)
+
+    expect(chapter.paragraphs[0].sentences[0].help).toBeUndefined()
+  })
+
+  it('throws when migrated sentence help is present but translation is missing or empty', () => {
+    const missing =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"help":{}}' +
+      ']}\n'
+    expect(() => decodeChapter(missing)).toThrow(/translation/i)
+
+    const empty =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"help":{"translation":"  "}}' +
+      ']}\n'
+    expect(() => decodeChapter(empty)).toThrow(/translation/i)
+
+    const missingTopLevel =
+      '{"format":"v2"}\n' +
+      '{"id":"p0","sentences":[' +
+      '{"id":"ch01-p0-s0","tokens":[{"s":"私"}],"note":"missing translation"}' +
+      ']}\n'
+    expect(() => decodeChapter(missingTopLevel)).toThrow(/translation/i)
+  })
+
+  it('does not surface sentence help on legacy (v1) chapters', () => {
+    const text = '{"id":"p0","tokens":[{"s":"私"}]}\n'
+    const chapter = decodeChapter(text)
+    expect(chapter.paragraphs[0].sentences[0].help).toBeUndefined()
+  })
+
   it('throws on duplicate paragraph IDs within a migrated chapter', () => {
     const text =
       '{"format":"v2"}\n' +

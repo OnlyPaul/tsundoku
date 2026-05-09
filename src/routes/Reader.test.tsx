@@ -67,11 +67,11 @@ const METADATA = {
 const CHAPTER_MIGRATED_JSONL =
   '{"format":"v2"}\n' +
   '{"id":"p0","sentences":[' +
-  '{"id":"p0-s0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}]},' +
+  '{"id":"p0-s0","tokens":[{"s":"私","r":"わたし","v":"watashi"},{"s":"は"},{"s":"本","r":"ほん","v":"hon"},{"s":"を"},{"s":"読","r":"よ","v":"yomu","lemma":"読む"},{"s":"みました"},{"s":"。"}],"help":{"translation":"I read a book."}},' +
   '{"id":"p0-s1","tokens":[{"s":"今日"},{"s":"は"},{"s":"いい"},{"s":"日"},{"s":"です"},{"s":"。"}]}' +
   ']}\n' +
   '{"id":"p1","sentences":[' +
-  '{"id":"p1-s0","tokens":[{"s":"猫","r":"ねこ","v":"neko"},{"s":"が"},{"s":"好き","v":"suki"},{"s":"です"},{"s":"。"}]},' +
+  '{"id":"p1-s0","tokens":[{"s":"猫","r":"ねこ","v":"neko"},{"s":"が"},{"s":"好き","v":"suki"},{"s":"です"},{"s":"。"}],"help":{"translation":"I like cats."}},' +
   '{"id":"p1-s1","tokens":[{"s":"犬"},{"s":"も"},{"s":"好き"},{"s":"です"},{"s":"。"}]}' +
   ']}\n'
 
@@ -840,6 +840,97 @@ describe('Reader', () => {
 
       await screen.findByRole('button', { name: /sentence help for p0-s0/i })
       expect(screen.queryByRole('button', { name: /grammar notes for paragraph p0/i })).toBeNull()
+    })
+
+    it('renders a sentence-help affordance only on migrated sentences with a translation', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await screen.findByRole('button', { name: '私' })
+
+      expect(screen.getByRole('button', { name: /sentence help for p0-s0/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
+      // Sentences without authored help do not get the affordance.
+      expect(
+        screen.queryByRole('button', { name: /sentence help for p0-s1/i }),
+      ).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole('button', { name: /sentence help for p1-s1/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    it('does not render any sentence-help affordance on legacy (v1) chapters', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
+      render(<App />)
+      await findParagraphByText('私は本を読みました。')
+      expect(screen.queryByRole('button', { name: /sentence help/i })).not.toBeInTheDocument()
+    })
+
+    it('opens an inline panel beneath the sentence with the translation when activated', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+
+      const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+      expect(panel).toHaveTextContent('I read a book.')
+      // Panel sits inside the same paragraph as the sentence (rendered beneath it).
+      const paragraph = document.querySelector('[data-paragraph-id="p0"]') as HTMLElement
+      expect(paragraph.contains(panel)).toBe(true)
+    })
+
+    it('toggles the panel closed when the same affordance is activated again', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      await user.click(button)
+      expect(
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i }),
+      ).toBeInTheDocument()
+
+      await user.click(button)
+
+      await waitFor(() => {
+        expect(
+          screen.queryByRole('region', { name: /sentence help for p0-s0/i }),
+        ).not.toBeInTheDocument()
+      })
+    })
+
+    it('closes any open sentence-help panel when navigating to another chapter', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+      await user.click(screen.getByRole('button', { name: /previous/i }))
+      await findParagraphByText('今日はいい天気です。')
+
+      await user.click(screen.getByRole('button', { name: /next/i }))
+      await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      expect(
+        screen.queryByRole('region', { name: /sentence help for p0-s0/i }),
+      ).not.toBeInTheDocument()
+    })
+
+    it('closes the previously open panel when another sentence-help affordance is activated', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      expect(
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i }),
+      ).toBeInTheDocument()
+
+      await user.click(screen.getByRole('button', { name: /sentence help for p1-s0/i }))
+
+      await waitFor(() => {
+        expect(
+          screen.queryByRole('region', { name: /sentence help for p0-s0/i }),
+        ).not.toBeInTheDocument()
+      })
+      expect(screen.getByRole('region', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
     })
   })
 
