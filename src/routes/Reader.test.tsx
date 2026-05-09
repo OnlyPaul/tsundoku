@@ -46,6 +46,44 @@ function setSentenceLayout(rects: RectStub[]) {
   }
 }
 
+function makeRect(top: number, height: number): DOMRect {
+  return {
+    top,
+    bottom: top + height,
+    height,
+    left: 0,
+    right: 0,
+    width: 0,
+    x: 0,
+    y: top,
+    toJSON() {},
+  } as DOMRect
+}
+
+type RectMatcher = (el: Element) => DOMRect | null
+
+function stubRects(matchers: RectMatcher[]) {
+  const orig = Element.prototype.getBoundingClientRect
+  Element.prototype.getBoundingClientRect = function () {
+    for (const m of matchers) {
+      const r = m(this)
+      if (r) return r
+    }
+    return orig.call(this)
+  }
+  return () => {
+    Element.prototype.getBoundingClientRect = orig
+  }
+}
+
+function setInnerHeight(value: number) {
+  const orig = window.innerHeight
+  Object.defineProperty(window, 'innerHeight', { configurable: true, value })
+  return () => {
+    Object.defineProperty(window, 'innerHeight', { configurable: true, value: orig })
+  }
+}
+
 async function fireScroll() {
   window.dispatchEvent(new Event('scroll'))
   // Flush rAF + microtasks.
@@ -125,6 +163,7 @@ beforeEach(() => {
   })
   vi.stubGlobal('cancelAnimationFrame', (id: number) => clearTimeout(id))
   window.scrollTo = vi.fn() as unknown as typeof window.scrollTo
+  window.scrollBy = vi.fn() as unknown as typeof window.scrollBy
 
   fetchMock = vi.fn(async (input: RequestInfo | URL) => {
     const url = typeof input === 'string' ? input : input.toString()
@@ -931,6 +970,237 @@ describe('Reader', () => {
         ).not.toBeInTheDocument()
       })
       expect(screen.getByRole('region', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
+    })
+
+    it('opens the vocabulary popup on a migrated-sentence token with no panel open', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      const watashi = await screen.findByRole('button', { name: '私' })
+      await user.click(watashi)
+      expect(await screen.findByText('I')).toBeInTheDocument()
+    })
+
+    it('opens the vocabulary popup on a token while the same sentence has its panel open', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+      await user.click(screen.getByRole('button', { name: '私' }))
+
+      expect(await screen.findByText('I')).toBeInTheDocument()
+      // Sentence-help panel is unaffected.
+      expect(screen.getByRole('region', { name: /sentence help for p0-s0/i })).toBeInTheDocument()
+    })
+
+    it('opens the vocabulary popup on a token while a different sentence has its panel open', async () => {
+      const user = userEvent.setup()
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      await user.click(await screen.findByRole('button', { name: /sentence help for p1-s0/i }))
+      await screen.findByRole('region', { name: /sentence help for p1-s0/i })
+
+      await user.click(screen.getByRole('button', { name: '私' }))
+
+      expect(await screen.findByText('I')).toBeInTheDocument()
+      expect(screen.getByRole('region', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
+    })
+
+    it('renders the sentence-help affordance as a sibling of tokens, not as their ancestor', async () => {
+      gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+      render(<App />)
+      const affordance = await screen.findByRole('button', {
+        name: /sentence help for p0-s0/i,
+      })
+      const tokens = ['私', '本', '読']
+      for (const label of tokens) {
+        const token = screen.getByRole('button', { name: label })
+        expect(affordance.contains(token)).toBe(false)
+      }
+    })
+
+    it('scrolls up to reveal the sentence when both sentence and panel are clipped', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 60) : null),
+        // Sentence top (20) is under the header (bottom 60), AND panel bottom
+        // (900) overflows the viewport (800). Pair can't both fit; algorithm
+        // must still scroll, prioritising sentence visibility.
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(20, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(60, 840)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+        render(<App />)
+        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+        await waitFor(() => {
+          expect(window.scrollBy).toHaveBeenCalled()
+        })
+        const arg = (window.scrollBy as unknown as ReturnType<typeof vi.fn>).mock
+          .calls[0][0] as ScrollToOptions
+        expect(arg.behavior).toBe('smooth')
+        // Anchor sentenceTop (20) below header (60) with margin 8 → delta -48.
+        expect(arg.top).toBeLessThan(0)
+        expect(arg.top).toBeGreaterThanOrEqual(-60)
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
+    it('scrolls up when the opened sentence is hidden under the sticky header', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 60) : null),
+        // Sentence top (20) is under the header (bottom 60).
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(20, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(60, 80)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+        render(<App />)
+        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+        await waitFor(() => {
+          expect(window.scrollBy).toHaveBeenCalled()
+        })
+        const arg = (window.scrollBy as unknown as ReturnType<typeof vi.fn>).mock
+          .calls[0][0] as ScrollToOptions
+        expect(arg.behavior).toBe('smooth')
+        // Sentence top 20 - headerBottom 60 - margin 8 = -48
+        expect(arg.top).toBeLessThan(0)
+        expect(arg.top).toBeGreaterThanOrEqual(-60)
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
+    it('re-evaluates and minimally scrolls when switching to another sentence-help panel', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 50) : null),
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(200, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(240, 80)
+            : null,
+        (el) => (el.getAttribute('data-sentence-id') === 'p1-s0' ? makeRect(700, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p1-s0'
+            ? makeRect(740, 120)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+        render(<App />)
+        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+        await new Promise((r) => setTimeout(r, 10))
+        expect(window.scrollBy).not.toHaveBeenCalled()
+
+        await user.click(screen.getByRole('button', { name: /sentence help for p1-s0/i }))
+        await screen.findByRole('region', { name: /sentence help for p1-s0/i })
+
+        await waitFor(() => {
+          expect(window.scrollBy).toHaveBeenCalledTimes(1)
+        })
+        const arg = (window.scrollBy as unknown as ReturnType<typeof vi.fn>).mock
+          .calls[0][0] as ScrollToOptions
+        expect(arg.behavior).toBe('smooth')
+        expect(arg.top).toBeGreaterThanOrEqual(60)
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
+    it('does not scroll when an opened panel is already fully visible', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 50) : null),
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(200, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(240, 80)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+        render(<App />)
+        const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+        await user.click(button)
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+        // Give any latent effect a chance to fire.
+        await new Promise((r) => setTimeout(r, 10))
+        expect(window.scrollBy).not.toHaveBeenCalled()
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
+    })
+
+    it('scrolls minimally to bring an opened panel into view when clipped at the bottom', async () => {
+      const user = userEvent.setup()
+      const restoreVh = setInnerHeight(800)
+      const restoreRects = stubRects([
+        (el) => (el.tagName === 'HEADER' ? makeRect(0, 50) : null),
+        (el) => (el.getAttribute('data-sentence-id') === 'p0-s0' ? makeRect(700, 30) : null),
+        (el) =>
+          el.getAttribute('role') === 'region' &&
+          el.getAttribute('aria-label') === 'Sentence help for p0-s0'
+            ? makeRect(740, 120)
+            : null,
+      ])
+
+      try {
+        gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
+        render(<App />)
+        const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+        await user.click(button)
+        await screen.findByRole('region', { name: /sentence help for p0-s0/i })
+
+        await waitFor(() => {
+          expect(window.scrollBy).toHaveBeenCalled()
+        })
+        const calls = (window.scrollBy as unknown as ReturnType<typeof vi.fn>).mock.calls
+        expect(calls).toHaveLength(1)
+        const arg = calls[0][0] as ScrollToOptions
+        expect(arg.behavior).toBe('smooth')
+        // Panel bottom (740 + 120 = 860) overflows viewport (800) by 60.
+        expect(arg.top).toBeGreaterThanOrEqual(60)
+        // Sentence top (700) minus delta must remain >= header bottom (50);
+        // so delta must be <= 650.
+        expect(arg.top).toBeLessThanOrEqual(650)
+      } finally {
+        restoreRects()
+        restoreVh()
+      }
     })
   })
 
