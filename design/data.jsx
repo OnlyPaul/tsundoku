@@ -137,6 +137,7 @@ const CHAPTER_1 = {
   paragraphs: [
     {
       id: 'p001',
+      english: 'The classroom after school was bathed in evening light streaming in through the window.',
       tokens: [
         T('放課後', 'ほうかご', 'v0001'),
         T('の'),
@@ -156,6 +157,7 @@ const CHAPTER_1 = {
     },
     {
       id: 'p002',
+      english: 'The desks, the floor — everything was dyed orange.',
       tokens: [
         T('机', 'つくえ', 'v0006'),
         T('も'),
@@ -175,7 +177,9 @@ const CHAPTER_1 = {
     },
     {
       id: 'p003',
+      english: 'She was reading a book, alone.',
       grammar: ['g001'],
+      note: 'The 〜ていた form here paints an ongoing, habitual scene — she had been at it for some time, not just at this instant.',
       tokens: [
         T('彼女', 'かのじょ', 'v0009'),
         T('は'),
@@ -192,7 +196,9 @@ const CHAPTER_1 = {
     },
     {
       id: 'p004',
+      english: 'I tried to call out, but the courage didn’t come.',
       grammar: ['g002'],
+      note: '〜ようとした describes an attempt that didn’t complete — the speaker started toward the action but stopped short.',
       tokens: [
         T('声', 'こえ', 'v0013'),
         T('を'),
@@ -212,6 +218,7 @@ const CHAPTER_1 = {
     },
     {
       id: 'p005',
+      english: 'Even so, I sat down next to her and asked, “What story is it?”',
       tokens: [
         T('それ'),
         T('でも'),
@@ -239,7 +246,9 @@ const CHAPTER_1 = {
     },
     {
       id: 'p006',
+      english: 'She lifted her face — a little startled — and then she smiled at me.',
       grammar: ['g003'],
+      note: '〜てくれた marks her smile as a kindness directed at the speaker. The English “at me” carries that warmth.',
       tokens: [
         T('彼女', 'かのじょ', 'v0009'),
         T('は'),

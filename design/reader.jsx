@@ -105,44 +105,252 @@ function GrammarBadge({ count, onClick }) {
 }
 
 // ─────────────────────────────────────────────────────────────
-// Paragraph — renders all tokens, optional grammar badge.
+// Sentence translation affordance — tiny inline button at end of sentence.
+// Quiet by default. When the sentence has been "translated", a soft dot
+// remains so the user can re-find translated lines.
 // ─────────────────────────────────────────────────────────────
-function Paragraph({ para, furigana, onTokenTap, activeTokenIdx, onGrammar, fontSize, lineHeight, jpFont, isCurrent }) {
-  const hasGrammar = para.grammar && para.grammar.length > 0;
+function TranslateBtn({ open, hasNote, onClick }) {
   return (
-    <p
+    <button
+      onClick={(e) => { e.stopPropagation(); onClick(); }}
+      aria-label={open ? 'Hide translation' : 'Show translation'}
+      style={{
+        // Stays in the text flow — does not push line height.
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        verticalAlign: 'middle',
+        marginLeft: 4,
+        marginRight: 2,
+        width: 22,
+        height: 22,
+        borderRadius: 4,
+        border: '1px solid rgba(31,27,22,0.16)',
+        background: open ? '#4A59A8' : 'rgba(31,27,22,0.04)',
+        color: open ? '#FBF7EE' : 'rgba(31,27,22,0.55)',
+        cursor: 'pointer',
+        padding: 0,
+        transition: 'background 0.15s, color 0.15s, transform 0.15s',
+        position: 'relative',
+        flexShrink: 0,
+      }}
+      title={open ? 'Hide translation' : 'Show translation'}
+    >
+      <svg width="11" height="11" viewBox="0 0 12 12" style={{ display: 'block', transform: open ? 'rotate(90deg)' : 'rotate(0deg)', transition: 'transform 0.18s' }}>
+        <path d="M3 2.5L9 6L3 9.5Z" fill="currentColor" />
+      </svg>
+      {hasNote && !open && (
+        <span style={{
+          position: 'absolute',
+          top: -2, right: -2,
+          width: 5, height: 5, borderRadius: '50%',
+          background: 'oklch(0.55 0.12 30)',
+        }} />
+      )}
+    </button>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Inline translation panel — appears beneath the sentence when expanded
+// ─────────────────────────────────────────────────────────────
+function TranslationPanel({ english, note, grammarIds, grammarMap, fontSize }) {
+  const grammar = (grammarIds || []).map((id) => grammarMap[id]).filter(Boolean);
+  const [expanded, setExpanded] = React.useState(null); // pattern id
+  return (
+    <div
+      style={{
+        marginTop: 8,
+        marginBottom: 4,
+        padding: '12px 14px 12px 16px',
+        background: '#FBF7EE',
+        borderLeft: '2px solid #4A59A8',
+        borderRadius: '0 4px 4px 0',
+        fontFamily: 'Source Serif 4, Georgia, serif',
+        animation: 'tsx-tr-in 0.18s ease-out',
+      }}
+    >
+      <div style={{
+        fontFamily: 'JetBrains Mono, monospace',
+        fontSize: 9.5,
+        textTransform: 'uppercase',
+        letterSpacing: 0.8,
+        color: 'rgba(31,27,22,0.4)',
+        marginBottom: 4,
+      }}>Translation</div>
+      <div style={{
+        fontSize: Math.max(13, fontSize - 3),
+        lineHeight: 1.45,
+        color: '#1F1B16',
+        fontStyle: 'italic',
+      }}>{english}</div>
+
+      {note && (
+        <div style={{
+          marginTop: 12,
+          paddingTop: 10,
+          borderTop: '1px dashed rgba(31,27,22,0.15)',
+        }}>
+          <div style={{
+            fontFamily: 'JetBrains Mono, monospace',
+            fontSize: 9.5,
+            textTransform: 'uppercase',
+            letterSpacing: 0.8,
+            color: 'oklch(0.55 0.12 30)',
+            marginBottom: 4,
+          }}>Note</div>
+          <div style={{
+            fontSize: Math.max(12, fontSize - 4),
+            lineHeight: 1.5,
+            color: 'rgba(31,27,22,0.78)',
+          }}>{note}</div>
+        </div>
+      )}
+
+      {grammar.length > 0 && (
+        <div style={{
+          marginTop: 12,
+          paddingTop: 10,
+          borderTop: '1px dashed rgba(31,27,22,0.15)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          flexWrap: 'wrap',
+        }}>
+          <span style={{
+            fontFamily: 'JetBrains Mono, monospace',
+            fontSize: 9.5,
+            textTransform: 'uppercase',
+            letterSpacing: 0.8,
+            color: 'rgba(31,27,22,0.4)',
+          }}>Grammar</span>
+          {grammar.map((g) => {
+            const isOpen = expanded === g.pattern;
+            return (
+              <button
+                key={g.pattern}
+                onClick={(e) => { e.stopPropagation(); setExpanded(isOpen ? null : g.pattern); }}
+                style={{
+                  fontFamily: 'Noto Serif JP, serif',
+                  fontSize: 13,
+                  background: isOpen ? '#4A59A8' : 'rgba(74,89,168,0.08)',
+                  border: '1px solid rgba(74,89,168,0.25)',
+                  color: isOpen ? '#FBF7EE' : '#2E3A78',
+                  borderRadius: 4,
+                  padding: '2px 8px',
+                  cursor: 'pointer',
+                  transition: 'background 0.15s, color 0.15s',
+                }}
+              >{g.pattern}</button>
+            );
+          })}
+        </div>
+      )}
+      {expanded && grammarMap[expanded] && (() => {
+        const g = grammarMap[expanded];
+        return (
+          <div style={{
+            marginTop: 10,
+            padding: '10px 12px',
+            background: 'rgba(74,89,168,0.05)',
+            borderRadius: 4,
+            fontFamily: 'Source Serif 4, Georgia, serif',
+            animation: 'tsx-tr-in 0.18s ease-out',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 4 }}>
+              <span style={{
+                fontFamily: 'Noto Serif JP, serif',
+                fontSize: 15, fontWeight: 500,
+              }}>{g.pattern}</span>
+              <JlptBadge level={g.jlpt} />
+              <span style={{
+                fontSize: 11.5,
+                color: 'rgba(31,27,22,0.55)',
+                fontStyle: 'italic',
+              }}>{g.title}</span>
+            </div>
+            <div style={{
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: 11,
+              color: 'rgba(31,27,22,0.6)',
+              marginBottom: 6,
+            }}>{g.formation}</div>
+            <div style={{
+              fontSize: Math.max(12, fontSize - 4),
+              lineHeight: 1.5,
+              color: '#1F1B16',
+            }}>{g.explanation}</div>
+          </div>
+        );
+      })()}
+    </div>
+  );
+}
+
+// One-time CSS injection for translation panel animation
+if (typeof document !== 'undefined' && !document.getElementById('tsx-anim-styles')) {
+  const _s = document.createElement('style');
+  _s.id = 'tsx-anim-styles';
+  _s.textContent = '@keyframes tsx-tr-in { from { opacity: 0; transform: translateY(-2px); } to { opacity: 1; transform: translateY(0); } }';
+  document.head.appendChild(_s);
+}
+
+// ─────────────────────────────────────────────────────────────
+// Paragraph — renders all tokens, with inline translation toggle.
+// ─────────────────────────────────────────────────────────────
+function Paragraph({ para, furigana, onTokenTap, activeTokenIdx, fontSize, lineHeight, jpFont, isCurrent, translationOpen, onToggleTranslation, grammarMap, autoTranslated }) {
+  const hasGrammar = para.grammar && para.grammar.length > 0;
+  const hasNote = !!(para.note || hasGrammar);
+  return (
+    <div
       data-pid={para.id}
       style={{
         position: 'relative',
         margin: '0 0 1.25em 0',
         padding: 0,
-        fontFamily: `${jpFont}, "Noto Serif JP", serif`,
-        fontSize,
-        lineHeight,
-        color: '#1F1B16',
-        fontFeatureSettings: '"palt"',
-        // Bookmark indicator on current paragraph
         boxShadow: isCurrent ? 'inset 3px 0 0 oklch(0.55 0.12 30)' : 'none',
         paddingLeft: isCurrent ? 12 : 0,
         transition: 'padding-left 0.2s',
       }}
     >
-      {hasGrammar && (
-        <GrammarBadge
-          count={para.grammar.length}
-          onClick={() => onGrammar(para.grammar)}
+      <p
+        style={{
+          margin: 0,
+          padding: 0,
+          fontFamily: `${jpFont}, "Noto Serif JP", serif`,
+          fontSize,
+          lineHeight,
+          color: '#1F1B16',
+          fontFeatureSettings: '"palt"',
+        }}
+      >
+        {para.tokens.map((t, i) => (
+          <Token
+            key={i}
+            token={t}
+            furigana={furigana}
+            active={activeTokenIdx === i}
+            onTap={(tok, el) => onTokenTap(tok, el, i)}
+          />
+        ))}
+        {para.english && (
+          <TranslateBtn
+            open={translationOpen}
+            hasNote={hasNote}
+            onClick={() => onToggleTranslation(para.id)}
+          />
+        )}
+      </p>
+      {translationOpen && para.english && (
+        <TranslationPanel
+          english={para.english}
+          note={para.note}
+          grammarIds={para.grammar}
+          grammarMap={grammarMap}
+          fontSize={fontSize}
         />
       )}
-      {para.tokens.map((t, i) => (
-        <Token
-          key={i}
-          token={t}
-          furigana={furigana}
-          active={activeTokenIdx === i}
-          onTap={(tok, el) => onTokenTap(tok, el, i)}
-        />
-      ))}
-    </p>
+    </div>
   );
 }
 

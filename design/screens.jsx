@@ -263,20 +263,37 @@ function ReaderScreen({
   vocabMap, kanjiMap, grammarMap,
   mode = 'phone',
   initialBookmark,
+  autoTranslate = false,
 }) {
   const isPhone = mode === 'phone';
-  const [popup, setPopup] = useS(null); // { token, anchorRect } or null
-  const [grammarOpen, setGrammarOpen] = useS(null); // patternIds[] or null
+  const [popup, setPopup] = useS(null);
   const [activeTokenIdx, setActiveTokenIdx] = useS({ pid: null, idx: null });
+  const [openTranslations, setOpenTranslations] = useS(() => new Set());
   const containerRef = useR(null);
   const scrollRef = useR(null);
 
   const currentParagraph = (initialBookmark && initialBookmark.paragraph) || 'p003';
 
+  const toggleTranslation = (pid) => {
+    setOpenTranslations((prev) => {
+      const next = new Set(prev);
+      if (next.has(pid)) next.delete(pid); else next.add(pid);
+      return next;
+    });
+  };
+
   const handleTap = (token, el, idx) => {
     if (!token.v) return;
     const pid = el.closest('[data-pid]')?.dataset.pid;
     setActiveTokenIdx({ pid, idx });
+    if (autoTranslate && pid) {
+      setOpenTranslations((prev) => {
+        if (prev.has(pid)) return prev;
+        const next = new Set(prev);
+        next.add(pid);
+        return next;
+      });
+    }
     if (isPhone) {
       setPopup({ token });
     } else {
@@ -344,16 +361,42 @@ function ReaderScreen({
             marginTop: 1,
           }}>Ch. 1 ・ p. 3 of 18</div>
         </div>
-        <button onClick={onSettings} style={{
-          background: 'transparent', border: 'none', cursor: 'pointer',
-          padding: 6, marginRight: -6,
-          color: 'rgba(31,27,22,0.7)',
-        }}>
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <circle cx="9" cy="9" r="2.2" stroke="currentColor" strokeWidth="1.4"/>
-            <path d="M9 1.5v2M9 14.5v2M16.5 9h-2M3.5 9h-2M14.3 14.3l-1.4-1.4M5.1 5.1L3.7 3.7M14.3 3.7l-1.4 1.4M5.1 12.9l-1.4 1.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-          </svg>
-        </button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 4, marginRight: -6 }}>
+          <button
+            onClick={() => {
+              const allOpen = openTranslations.size === chapter.paragraphs.filter(p => p.english).length;
+              if (allOpen) {
+                setOpenTranslations(new Set());
+              } else {
+                setOpenTranslations(new Set(chapter.paragraphs.filter(p => p.english).map(p => p.id)));
+              }
+            }}
+            title="Toggle all translations"
+            style={{
+              background: 'transparent',
+              border: '1px solid rgba(31,27,22,0.18)',
+              borderRadius: 4,
+              padding: '3px 7px',
+              fontFamily: 'JetBrains Mono, monospace',
+              fontSize: 9.5,
+              fontWeight: 500,
+              letterSpacing: 0.4,
+              color: 'rgba(31,27,22,0.65)',
+              cursor: 'pointer',
+              textTransform: 'uppercase',
+            }}
+          >EN</button>
+          <button onClick={onSettings} style={{
+            background: 'transparent', border: 'none', cursor: 'pointer',
+            padding: 6,
+            color: 'rgba(31,27,22,0.7)',
+          }}>
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="2.2" stroke="currentColor" strokeWidth="1.4"/>
+              <path d="M9 1.5v2M9 14.5v2M16.5 9h-2M3.5 9h-2M14.3 14.3l-1.4-1.4M5.1 5.1L3.7 3.7M14.3 3.7l-1.4 1.4M5.1 12.9l-1.4 1.4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       {/* Reader scroll area */}
@@ -398,7 +441,9 @@ function ReaderScreen({
               isCurrent={p.id === currentParagraph}
               activeTokenIdx={activeTokenIdx.pid === p.id ? activeTokenIdx.idx : null}
               onTokenTap={handleTap}
-              onGrammar={(ids) => setGrammarOpen(ids)}
+              translationOpen={openTranslations.has(p.id)}
+              onToggleTranslation={toggleTranslation}
+              grammarMap={grammarMap}
             />
           ))}
         </div>
@@ -445,10 +490,7 @@ function ReaderScreen({
         </AnchoredPopover>
       )}
 
-      {/* Grammar sheet */}
-      <BottomSheet open={!!grammarOpen} onClose={() => setGrammarOpen(null)}>
-        {grammarOpen && <GrammarSheetContent patternIds={grammarOpen} grammarMap={grammarMap} />}
-      </BottomSheet>
+      {/* Grammar sheet removed — grammar is now inline in the sentence translation panel */}
     </div>
   );
 }

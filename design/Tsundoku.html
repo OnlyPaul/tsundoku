@@ -63,13 +63,11 @@ function TabletFrame({ width = 1024, height = 720, children }) {
 // ─────────────────────────────────────────────────────────────
 // Phone screen wrapper — uses IOSDevice + handles screen routing
 // ─────────────────────────────────────────────────────────────
-function PhoneApp({ initialScreen = 'home', tweaks, setTweak, openPopupOnLoad = false, openGrammarOnLoad = false }) {
+function PhoneApp({ initialScreen = 'home', tweaks, setTweak, openPopupOnLoad = false, openTranslationOnLoad = false }) {
   const [screen, setScreen] = useState(initialScreen);
   const [book, setBook] = useState(BOOKS[0]);
   const rootRef = useRef(null);
 
-  // Demo: auto-open popup or grammar after mount for the showcase artboards.
-  // Scope queries to this instance's own DOM so each artboard acts independently.
   useEffect(() => {
     if (screen !== 'reader') return;
     const root = rootRef.current;
@@ -84,14 +82,18 @@ function PhoneApp({ initialScreen = 'home', tweaks, setTweak, openPopupOnLoad = 
       }, 350);
       return () => clearTimeout(t);
     }
-    if (openGrammarOnLoad) {
+    if (openTranslationOnLoad) {
       const t = setTimeout(() => {
-        const btn = root.querySelector('[data-pid="p004"] button');
-        if (btn) btn.click();
+        ['p003', 'p004', 'p006'].forEach((pid) => {
+          const p = root.querySelector(`[data-pid="${pid}"]`);
+          if (!p) return;
+          const btn = p.querySelector('button[aria-label="Show translation"]');
+          if (btn) btn.click();
+        });
       }, 350);
       return () => clearTimeout(t);
     }
-  }, [screen, openPopupOnLoad, openGrammarOnLoad]);
+  }, [screen, openPopupOnLoad, openTranslationOnLoad]);
 
   return (
     <div ref={rootRef} style={{ display: 'inline-block' }}>
@@ -113,6 +115,7 @@ function PhoneApp({ initialScreen = 'home', tweaks, setTweak, openPopupOnLoad = 
             fontSize={tweaks.fontSize}
             lineHeight={1.95}
             jpFont={tweaks.jpFont}
+            autoTranslate={tweaks.autoTranslate}
             vocabMap={VOCAB}
             kanjiMap={KANJI}
             grammarMap={GRAMMAR}
@@ -174,6 +177,7 @@ function TabletApp({ initialScreen = 'reader', tweaks, setTweak, openPopupOnLoad
             fontSize={tweaks.fontSize + 2}
             lineHeight={2.0}
             jpFont={tweaks.jpFont}
+            autoTranslate={tweaks.autoTranslate}
             vocabMap={VOCAB}
             kanjiMap={KANJI}
             grammarMap={GRAMMAR}
@@ -192,8 +196,9 @@ function TabletApp({ initialScreen = 'reader', tweaks, setTweak, openPopupOnLoad
 // ─────────────────────────────────────────────────────────────
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "furigana": true,
-  "fontSize": 15,
-  "jpFont": "Noto Serif JP"
+  "fontSize": 17,
+  "jpFont": "Noto Serif JP",
+  "autoTranslate": false
 }/*EDITMODE-END*/;
 
 function App() {
@@ -213,11 +218,11 @@ function App() {
           <DCArtboard id="p-reader" label="02 · Reader" width={420} height={874}>
             <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} />
           </DCArtboard>
-          <DCArtboard id="p-vocab" label="03 · Vocab popup (sheet)" width={420} height={874}>
-            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openPopupOnLoad />
+          <DCArtboard id="p-translate" label="03 · Sentence translation" width={420} height={874}>
+            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openTranslationOnLoad />
           </DCArtboard>
-          <DCArtboard id="p-grammar" label="04 · Grammar sheet" width={420} height={874}>
-            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openGrammarOnLoad />
+          <DCArtboard id="p-vocab" label="04 · Vocab popup (sheet)" width={420} height={874}>
+            <PhoneApp initialScreen="reader" tweaks={tweaks} setTweak={setTweak} openPopupOnLoad />
           </DCArtboard>
           <DCArtboard id="p-settings" label="05 · Settings" width={420} height={874}>
             <PhoneApp initialScreen="settings" tweaks={tweaks} setTweak={setTweak} />
@@ -261,6 +266,9 @@ function App() {
               { value: 'Noto Sans JP', label: 'Noto Sans JP' },
             ]}
             onChange={(v) => setTweak('jpFont', v)} />
+          <TweakToggle label="Auto-translate on tap"
+            value={tweaks.autoTranslate}
+            onChange={(v) => setTweak('autoTranslate', v)} />
         </TweakSection>
       </TweaksPanel>
     </>
