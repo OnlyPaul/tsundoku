@@ -45,6 +45,10 @@ const config: Config = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        translation: {
+          DEFAULT: 'hsl(var(--translation))',
+          foreground: 'hsl(var(--translation-foreground))',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -65,10 +69,15 @@ const config: Config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        'translation-in': {
+          from: { opacity: '0', transform: 'translateY(-2px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'translation-in': 'translation-in 0.18s ease-out',
       },
     },
   },
