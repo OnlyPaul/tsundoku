@@ -1,3 +1,7 @@
+import {
+  SentenceTranslateButton,
+  SentenceTranslationPanel,
+} from '@/components/SentenceTranslationPanel'
 import { SettingsSheet } from '@/components/SettingsSheet'
 import { TappableToken } from '@/components/TappableToken'
 import {
@@ -97,7 +101,6 @@ export default function Reader() {
   const [grammarMap, setGrammarMap] = useState<Map<string, GrammarEntry> | null>(null)
   const [openGrammarFor, setOpenGrammarFor] = useState<NormalizedParagraph | null>(null)
   const [openSentenceHelpFor, setOpenSentenceHelpFor] = useState<string | null>(null)
-  const [expandedSentenceGrammarFor, setExpandedSentenceGrammarFor] = useState<string | null>(null)
   const paragraphRefs = useRef(new Map<string, HTMLElement>())
   const sentenceRefs = useRef(new Map<string, { el: HTMLElement; paragraphId: string }>())
   const panelRefs = useRef(new Map<string, HTMLElement>())
@@ -162,7 +165,6 @@ export default function Reader() {
     setParagraphs(null)
     setChapterFormat(null)
     setOpenSentenceHelpFor(null)
-    setExpandedSentenceGrammarFor(null)
     fetchChapter(slug, chapterId).then((c) => {
       if (!cancelled) {
         setParagraphs(c.paragraphs)
@@ -280,7 +282,9 @@ export default function Reader() {
   function openGrammarSheet(paragraph: NormalizedParagraph) {
     setOpenGrammarFor(paragraph)
     if (!grammarMap && slug) {
-      fetchGrammar(slug).then(setGrammarMap)
+      fetchGrammar(slug)
+        .then(setGrammarMap)
+        .catch(() => setGrammarMap(new Map()))
     }
   }
 
@@ -378,83 +382,36 @@ export default function Reader() {
                 {chapterFormat === 'v2' && s.help?.translation ? (
                   <>
                     {' '}
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setOpenSentenceHelpFor((current) => {
-                          if (current === s.id) {
-                            setExpandedSentenceGrammarFor(null)
-                            return null
-                          }
-                          setExpandedSentenceGrammarFor(null)
-                          return s.id
-                        })
-                      }
-                      aria-label={`Sentence help for ${s.id}`}
-                      className="ml-1 inline-flex h-5 w-5 items-center justify-center rounded-full border border-border bg-card text-muted-foreground align-middle shadow-sm hover:text-primary"
-                      style={{ fontSize: '0.7rem' }}
-                    >
-                      <span aria-hidden className="font-jp leading-none">
-                        訳
-                      </span>
-                    </button>
+                    <SentenceTranslateButton
+                      open={openSentenceHelpFor === s.id}
+                      hasNote={Boolean(
+                        s.help.note || (s.help.grammar && s.help.grammar.length > 0),
+                      )}
+                      ariaLabelSuffix={s.id}
+                      onClick={() => {
+                        setOpenSentenceHelpFor((current) => (current === s.id ? null : s.id))
+                        if (s.help?.grammar?.length && !grammarMap && slug) {
+                          fetchGrammar(slug)
+                            .then(setGrammarMap)
+                            .catch(() => setGrammarMap(new Map()))
+                        }
+                      }}
+                    />
                   </>
                 ) : null}
                 {openSentenceHelpFor === s.id && s.help?.translation ? (
-                  // biome-ignore lint/a11y/useSemanticElements: panel is nested inside a <p>, where <section> would be invalid HTML.
-                  <span
-                    role="region"
-                    aria-label={`Sentence help for ${s.id}`}
-                    ref={(el) => {
+                  <SentenceTranslationPanel
+                    english={s.help.translation}
+                    note={s.help.note}
+                    grammarIds={s.help.grammar}
+                    grammarMap={grammarMap}
+                    showFurigana={showFurigana}
+                    ariaLabel={`Sentence help for ${s.id}`}
+                    panelRef={(el) => {
                       if (el) panelRefs.current.set(s.id, el)
                       else panelRefs.current.delete(s.id)
                     }}
-                    className="mt-2 block rounded-lg border border-border bg-card px-3 py-2 text-sm text-foreground shadow-sm"
-                  >
-                    <span className="block">{s.help.translation}</span>
-                    {s.help.note ? (
-                      <span className="mt-2 block text-muted-foreground">{s.help.note}</span>
-                    ) : null}
-                    {s.help.grammar && s.help.grammar.length > 0 ? (
-                      <span className="mt-3 block">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setExpandedSentenceGrammarFor((current) =>
-                              current === s.id ? null : s.id,
-                            )
-                            if (!grammarMap && slug) {
-                              fetchGrammar(slug).then(setGrammarMap)
-                            }
-                          }}
-                          aria-label="Show linked grammar"
-                          className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-xs text-muted-foreground hover:text-primary"
-                        >
-                          Show linked grammar
-                        </button>
-                        {expandedSentenceGrammarFor === s.id && grammarMap ? (
-                          <span className="mt-3 block space-y-3">
-                            {s.help.grammar
-                              .map((id) => grammarMap.get(id))
-                              .filter((entry): entry is GrammarEntry => Boolean(entry))
-                              .map((entry) => (
-                                <span
-                                  key={entry.id}
-                                  className="block rounded-md border border-border bg-background px-3 py-2"
-                                >
-                                  <span className="block font-medium text-foreground">
-                                    {entry.title}
-                                  </span>
-                                  <span className="mt-1 block text-muted-foreground">
-                                    {entry.explanation}
-                                  </span>
-                                </span>
-                              ))}
-                          </span>
-                        ) : null}
-                      </span>
-                    ) : null}
-                  </span>
+                  />
                 ) : null}
               </span>
             ))}

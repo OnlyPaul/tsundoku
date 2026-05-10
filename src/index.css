@@ -24,6 +24,8 @@
     --input: 39 20% 84%;
     --ring: 18 59% 46%;
     --radius: 0.5rem;
+    --translation: 230 39% 47%;
+    --translation-foreground: 38 46% 96%;
   }
 
   .dark {
@@ -46,6 +48,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 239 84% 67%;
+    --translation: 230 50% 65%;
+    --translation-foreground: 222 84% 5%;
   }
 }
 

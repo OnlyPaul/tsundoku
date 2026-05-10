@@ -796,7 +796,7 @@ describe('Reader', () => {
       render(<App />)
 
       const affordance = await screen.findByRole('button', {
-        name: /sentence help for p0-s0/i,
+        name: /translation for p0-s0/i,
       })
       await user.click(affordance)
 
@@ -826,7 +826,7 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
       render(<App />)
 
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
 
       expect(
         await screen.findByText(
@@ -858,11 +858,15 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
       render(<App />)
 
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
-      expect(screen.getByRole('button', { name: /show linked grammar/i })).toBeInTheDocument()
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
+      expect(
+        await screen.findByRole('button', { name: /grammar pattern 〜だから/i }),
+      ).toBeInTheDocument()
 
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s1/i }))
-      expect(screen.queryByRole('button', { name: /show linked grammar/i })).not.toBeInTheDocument()
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s1/i }))
+      expect(
+        screen.queryByRole('button', { name: /grammar pattern 〜だから/i }),
+      ).not.toBeInTheDocument()
     })
 
     it('keeps linked grammar collapsed until the learner expands it', async () => {
@@ -888,10 +892,10 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
       render(<App />)
 
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
       expect(screen.queryByText('Because (casual reason)')).not.toBeInTheDocument()
 
-      await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+      await user.click(await screen.findByRole('button', { name: /grammar pattern 〜だから/i }))
 
       expect(await screen.findByText('Because (casual reason)')).toBeInTheDocument()
     })
@@ -918,7 +922,7 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
       render(<App />)
 
-      await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      await screen.findByRole('button', { name: /translation for p0-s0/i })
       expect(screen.queryByRole('button', { name: /grammar notes for paragraph p0/i })).toBeNull()
     })
 
@@ -927,14 +931,14 @@ describe('Reader', () => {
       render(<App />)
       await screen.findByRole('button', { name: '私' })
 
-      expect(screen.getByRole('button', { name: /sentence help for p0-s0/i })).toBeInTheDocument()
-      expect(screen.getByRole('button', { name: /sentence help for p1-s0/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /translation for p0-s0/i })).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /translation for p1-s0/i })).toBeInTheDocument()
       // Sentences without authored help do not get the affordance.
       expect(
-        screen.queryByRole('button', { name: /sentence help for p0-s1/i }),
+        screen.queryByRole('button', { name: /translation for p0-s1/i }),
       ).not.toBeInTheDocument()
       expect(
-        screen.queryByRole('button', { name: /sentence help for p1-s1/i }),
+        screen.queryByRole('button', { name: /translation for p1-s1/i }),
       ).not.toBeInTheDocument()
     })
 
@@ -942,14 +946,16 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=00-test-chapter-1&paragraph=p0')
       render(<App />)
       await findParagraphByText('私は本を読みました。')
-      expect(screen.queryByRole('button', { name: /sentence help/i })).not.toBeInTheDocument()
+      expect(
+        screen.queryByRole('button', { name: /(show|hide) translation/i }),
+      ).not.toBeInTheDocument()
     })
 
     it('opens an inline panel beneath the sentence with the translation when activated', async () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
 
       const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
       expect(panel).toHaveTextContent('I read a book.')
@@ -962,7 +968,7 @@ describe('Reader', () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      const button = await screen.findByRole('button', { name: /translation for p0-s0/i })
       await user.click(button)
       expect(
         await screen.findByRole('region', { name: /sentence help for p0-s0/i }),
@@ -981,14 +987,14 @@ describe('Reader', () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
       await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
       await user.click(screen.getByRole('button', { name: /previous/i }))
       await findParagraphByText('今日はいい天気です。')
 
       await user.click(screen.getByRole('button', { name: /next/i }))
-      await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+      await screen.findByRole('button', { name: /translation for p0-s0/i })
       expect(
         screen.queryByRole('region', { name: /sentence help for p0-s0/i }),
       ).not.toBeInTheDocument()
@@ -998,12 +1004,12 @@ describe('Reader', () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
       expect(
         await screen.findByRole('region', { name: /sentence help for p0-s0/i }),
       ).toBeInTheDocument()
 
-      await user.click(screen.getByRole('button', { name: /sentence help for p1-s0/i }))
+      await user.click(screen.getByRole('button', { name: /translation for p1-s0/i }))
 
       await waitFor(() => {
         expect(
@@ -1026,7 +1032,7 @@ describe('Reader', () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
       await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
       await user.click(screen.getByRole('button', { name: '私' }))
@@ -1040,7 +1046,7 @@ describe('Reader', () => {
       const user = userEvent.setup()
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
-      await user.click(await screen.findByRole('button', { name: /sentence help for p1-s0/i }))
+      await user.click(await screen.findByRole('button', { name: /translation for p1-s0/i }))
       await screen.findByRole('region', { name: /sentence help for p1-s0/i })
 
       await user.click(screen.getByRole('button', { name: '私' }))
@@ -1084,14 +1090,14 @@ describe('Reader', () => {
         render(<App />)
 
         // Open the panel: 640..720 is fully visible in 0..800 viewport.
-        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
         await new Promise((r) => setTimeout(r, 10))
         expect(window.scrollBy).not.toHaveBeenCalled()
 
         // Expand grammar: panel grows to 640..960, overflowing the viewport.
         panelHeight = 320
-        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        await user.click(await screen.findByRole('button', { name: /grammar pattern 〜だから/i }))
         const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
         fireResize(panel)
 
@@ -1143,18 +1149,18 @@ describe('Reader', () => {
         gotoReader('/reader/tsundoku-test?chapter=98-test-chapter-sentence-help&paragraph=p0')
         render(<App />)
 
-        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
         panelHeight = 300
-        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        await user.click(await screen.findByRole('button', { name: /grammar pattern 〜だから/i }))
         const panel = await screen.findByRole('region', { name: /sentence help for p0-s0/i })
         await screen.findByText('Because (casual reason)')
         fireResize(panel)
 
         // Collapse — panel shrinks back; everything still fully visible.
         panelHeight = 80
-        await user.click(screen.getByRole('button', { name: /show linked grammar/i }))
+        await user.click(await screen.findByRole('button', { name: /grammar pattern 〜だから/i }))
         fireResize(panel)
 
         await new Promise((r) => setTimeout(r, 10))
@@ -1169,7 +1175,7 @@ describe('Reader', () => {
       gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
       render(<App />)
       const affordance = await screen.findByRole('button', {
-        name: /sentence help for p0-s0/i,
+        name: /translation for p0-s0/i,
       })
       const tokens = ['私', '本', '読']
       for (const label of tokens) {
@@ -1197,7 +1203,7 @@ describe('Reader', () => {
       try {
         gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
         render(<App />)
-        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
         await waitFor(() => {
@@ -1232,7 +1238,7 @@ describe('Reader', () => {
       try {
         gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
         render(<App />)
-        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
         await waitFor(() => {
@@ -1272,12 +1278,12 @@ describe('Reader', () => {
       try {
         gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
         render(<App />)
-        await user.click(await screen.findByRole('button', { name: /sentence help for p0-s0/i }))
+        await user.click(await screen.findByRole('button', { name: /translation for p0-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
         await new Promise((r) => setTimeout(r, 10))
         expect(window.scrollBy).not.toHaveBeenCalled()
 
-        await user.click(screen.getByRole('button', { name: /sentence help for p1-s0/i }))
+        await user.click(screen.getByRole('button', { name: /translation for p1-s0/i }))
         await screen.findByRole('region', { name: /sentence help for p1-s0/i })
 
         await waitFor(() => {
@@ -1309,7 +1315,7 @@ describe('Reader', () => {
       try {
         gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
         render(<App />)
-        const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+        const button = await screen.findByRole('button', { name: /translation for p0-s0/i })
         await user.click(button)
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
@@ -1338,7 +1344,7 @@ describe('Reader', () => {
       try {
         gotoReader('/reader/tsundoku-test?chapter=99-test-chapter-migrated&paragraph=p0')
         render(<App />)
-        const button = await screen.findByRole('button', { name: /sentence help for p0-s0/i })
+        const button = await screen.findByRole('button', { name: /translation for p0-s0/i })
         await user.click(button)
         await screen.findByRole('region', { name: /sentence help for p0-s0/i })
 
