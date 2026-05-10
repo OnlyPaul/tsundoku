@@ -30,7 +30,6 @@ domain expert (i.e. distinguishing it from a synonym matters).
   and may carry `help`.
 - **Migration** — the process of converting a legacy chapter to v2,
   including segmentation, id assignment, and authoring of sentence-help.
-  See `docs/agents/migrate-chapter.md`.
 
 ## Sentence-help
 
