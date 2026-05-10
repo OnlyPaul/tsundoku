@@ -36,6 +36,9 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Validate book corpus
+        run: npm run validate:books
+
       - name: Unit tests
         run: npm run test
 
