@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Spacing & radius</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:20px;background:var(--paper);display:flex;gap:24px;}
+  .col{display:flex;flex-direction:column;gap:10px;flex:1;}
+  .h{font-family:var(--font-mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;}
+  .row{display:flex;align-items:center;gap:8px;}
+  .bar{height:14px;background:#1F1B16;border-radius:2px;}
+  .lbl{font-family:var(--font-mono);font-size:10px;color:var(--ink);width:64px;}
+  .corners{display:flex;gap:10px;}
+  .corner{width:54px;height:54px;background:#FBF7EE;border:1px solid var(--rule);display:flex;align-items:flex-end;justify-content:center;padding:4px;font-family:var(--font-mono);font-size:9px;color:var(--ink-soft);}
+</style>
+</head>
+<body>
+  <div class="col">
+    <div class="h">SPACING — 4PX BASE</div>
+    <div class="row"><span class="lbl">4 · 1</span><div class="bar" style="width:4px;"></div></div>
+    <div class="row"><span class="lbl">8 · 2</span><div class="bar" style="width:8px;"></div></div>
+    <div class="row"><span class="lbl">12 · 3</span><div class="bar" style="width:12px;"></div></div>
+    <div class="row"><span class="lbl">16 · 4</span><div class="bar" style="width:16px;"></div></div>
+    <div class="row"><span class="lbl">24 · 6</span><div class="bar" style="width:24px;"></div></div>
+    <div class="row"><span class="lbl">40 · 10</span><div class="bar" style="width:40px;"></div></div>
+    <div class="row"><span class="lbl">64 · 16</span><div class="bar" style="width:64px;"></div></div>
+  </div>
+  <div class="col">
+    <div class="h">RADIUS</div>
+    <div class="corners">
+      <div class="corner" style="border-radius:2px;">2</div>
+      <div class="corner" style="border-radius:4px;">4</div>
+      <div class="corner" style="border-radius:6px;">6</div>
+      <div class="corner" style="border-radius:8px;">8</div>
+      <div class="corner" style="border-radius:999px;">PILL</div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Type families</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:20px;background:var(--paper);}
+  .row{display:flex;flex-direction:column;gap:14px;}
+  .item{display:grid;grid-template-columns:140px 1fr;align-items:baseline;gap:18px;border-bottom:1px solid var(--rule);padding-bottom:10px;}
+  .item:last-child{border-bottom:none;padding-bottom:0;}
+  .lbl{font-family:var(--font-mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;}
+  .name{display:block;color:var(--ink);font-size:11px;text-transform:none;letter-spacing:0;font-family:var(--font-prose);font-style:italic;margin-top:2px;}
+  .demo{font-size:22px;line-height:1.25;color:var(--ink);}
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><span class="lbl">PROSE<span class="name">Source Serif 4</span></span><span class="demo" style="font-family:var(--font-prose);">It all began with one line I'll never forget.</span></div>
+    <div class="item"><span class="lbl">JP DEFAULT<span class="name">Noto Serif JP</span></span><span class="demo" style="font-family:'Noto Serif JP',serif;">全ての始まりは忘れもしないあの一言。</span></div>
+    <div class="item"><span class="lbl">JP ALT<span class="name">Shippori Mincho</span></span><span class="demo" style="font-family:'Shippori Mincho',serif;">トレジャーハンターになろうぜ。</span></div>
+    <div class="item"><span class="lbl">JP HAND<span class="name">Klee One</span></span><span class="demo" style="font-family:'Klee One',serif;">本を読むのが大好きな友人。</span></div>
+    <div class="item"><span class="lbl">MONO<span class="name">JetBrains Mono</span></span><span class="demo" style="font-family:var(--font-mono);font-size:18px;">CH. 04 / 28 ・ N3 ・ TRANSLATION</span></div>
+  </div>
+</body>
+</html>

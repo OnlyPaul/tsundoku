@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Brand colors</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:20px;background:var(--paper);}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .pair{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--rule);border-radius:8px;padding:14px;}
+  .big{width:64px;height:64px;border-radius:8px;flex-shrink:0;}
+  .meta-row{display:flex;flex-direction:column;gap:2px;}
+  .name{font-family:var(--font-prose);font-size:14px;color:var(--ink);font-weight:600;}
+  .role{font-family:var(--font-mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;}
+  .hex{font-family:var(--font-mono);font-size:11px;color:var(--ink);}
+  .uses{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap;}
+  .pill{font-family:var(--font-mono);font-size:9px;padding:2px 6px;border-radius:999px;border:1px solid currentColor;text-transform:uppercase;letter-spacing:0.1em;}
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="pair">
+      <div class="big" style="background:#BC5A2C;"></div>
+      <div>
+        <div class="meta-row">
+          <span class="name">vermillion</span>
+          <span class="role">primary · accent · ring</span>
+          <span class="hex">#BC5A2C — hsl(18 59% 46%)</span>
+        </div>
+        <div class="uses" style="color:#BC5A2C;"><span class="pill">CTA</span><span class="pill">FOCUS</span><span class="pill">文 SEAL</span></div>
+      </div>
+    </div>
+    <div class="pair">
+      <div class="big" style="background:#4A59A8;"></div>
+      <div>
+        <div class="meta-row">
+          <span class="name">indigo</span>
+          <span class="role">translation only</span>
+          <span class="hex">#4A59A8 — hsl(230 39% 47%)</span>
+        </div>
+        <div class="uses" style="color:#4A59A8;"><span class="pill">TRANSLATE</span><span class="pill">SENTENCE-HELP</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
