@@ -18,6 +18,16 @@ export interface NormalizedParagraph {
   grammar?: string[]
 }
 
+/**
+ * Chapter format tag.
+ *
+ * - `v2` — current format. Paragraph→sentences shape with stable sentence ids
+ *   and inline sentence-help. New content must be authored as v2.
+ * - `v1` — **deprecated**. Legacy paragraph→tokens shape with no sentence
+ *   boundaries and no sentence-help. Decoding remains supported so any old
+ *   content still renders, but `npm run validate:books` warns on v1 and no new
+ *   content should be authored as v1.
+ */
 export type ChapterFormat = 'v1' | 'v2'
 
 export interface ChapterContent {
