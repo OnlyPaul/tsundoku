@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Buttons</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:24px;background:var(--paper);}
+  .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:16px;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:6px;font-family:var(--font-prose);font-size:14px;font-weight:500;height:40px;padding:0 16px;cursor:pointer;border:none;transition:background 150ms;}
+  .btn-primary{background:var(--vermillion);color:var(--paper);}
+  .btn-primary:hover{background:#A94E25;}
+  .btn-outline{border:1px solid var(--rule);background:transparent;color:var(--ink);}
+  .btn-outline:hover{background:rgba(188,90,44,0.08);color:var(--vermillion);}
+  .btn-ghost{background:transparent;color:var(--ink-soft);}
+  .btn-ghost:hover{color:var(--vermillion);}
+  .btn-pill{height:32px;padding:0 12px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);}
+  .lbl{font-family:var(--font-mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;width:90px;}
+</style>
+</head>
+<body>
+  <div class="row"><span class="lbl">PRIMARY</span><button class="btn btn-primary">Open book</button><button class="btn btn-primary" disabled style="opacity:0.4">Disabled</button></div>
+  <div class="row"><span class="lbl">OUTLINE</span><button class="btn btn-outline">Settings</button></div>
+  <div class="row"><span class="lbl">GHOST</span><button class="btn btn-ghost">← Library</button><button class="btn btn-ghost">Next →</button></div>
+  <div class="row"><span class="lbl">PILL META</span><button class="btn-pill">+ Import</button><button class="btn-pill" style="color:var(--ink);">On</button></div>
+</body>
+</html>

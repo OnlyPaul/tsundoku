@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Paper & Ink</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:20px;background:#fff;}
+  .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .sw{border-radius:6px;border:1px solid var(--rule);overflow:hidden;background:#fff;}
+  .chip{height:78px;display:block;}
+  .lbl{padding:8px 10px;display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .name{font-family:var(--font-prose);font-size:13px;color:var(--ink);font-weight:500;}
+  .hex{font-family:var(--font-mono);font-size:10px;color:var(--ink-soft);text-transform:uppercase;}
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="sw"><div class="chip" style="background:#F5EFE4;border-bottom:1px solid var(--rule);"></div><div class="lbl"><span class="name">paper</span><span class="hex">F5EFE4</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FBF7EE;border-bottom:1px solid var(--rule);"></div><div class="lbl"><span class="name">paper-card</span><span class="hex">FBF7EE</span></div></div>
+    <div class="sw"><div class="chip" style="background:#1F1B16;"></div><div class="lbl"><span class="name">ink</span><span class="hex">1F1B16</span></div></div>
+    <div class="sw"><div class="chip" style="background:#736D66;"></div><div class="lbl"><span class="name">ink-soft</span><span class="hex">736D66</span></div></div>
+    <div class="sw"><div class="chip" style="background:#DDD3C2;border-bottom:1px solid var(--rule);"></div><div class="lbl"><span class="name">rule</span><span class="hex">DDD3C2</span></div></div>
+  </div>
+</body>
+</html>

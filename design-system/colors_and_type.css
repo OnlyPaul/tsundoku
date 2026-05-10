@@ -1,0 +1,209 @@
+/* Tsundoku Design System — colors_and_type.css
+ *
+ * Single source of truth for color + type tokens. Drop this into any HTML
+ * artifact along with the Google Fonts <link> in the README to get the
+ * full Tsundoku visual identity for free.
+ *
+ * Tokens here mirror the production app's tailwind/CSS-var setup
+ * (src/index.css, tailwind.config.ts) but expressed as hex so anything
+ * that doesn't go through Tailwind can read them directly.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&family=Shippori+Mincho:wght@400;500;600&family=Klee+One:wght@400;600&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap");
+
+:root {
+  /* ─── Paper & Ink ─────────────────────────────────────────────
+   * Tsundoku's surfaces feel like a warm aged page. Bg is the page,
+   * card is a slightly lifted leaf, ink is body type. */
+  --paper:        #F5EFE4;   /* hsl(38 46% 93%)  bg / page */
+  --paper-card:   #FBF7EE;   /* hsl(42 62% 96%)  card / popover */
+  --ink:          #1F1B16;   /* hsl(33 17% 10%)  primary text */
+  --ink-soft:     #736D66;   /* hsl(36 6% 43%)   muted-foreground */
+  --rule:         #DDD3C2;   /* hsl(39 20% 84%)  border / hairline */
+
+  /* ─── Brand: Vermillion seal ───────────────────────────────── */
+  --vermillion:        #BC5A2C; /* hsl(18 59% 46%) primary / accent */
+  --vermillion-press:  #A94E25;
+  --vermillion-soft:   rgba(188, 90, 44, 0.10);
+  --on-vermillion:     #F5EFE4;
+
+  /* ─── Translation indigo (sentence-help only) ────────────────
+   * Reserved exclusively for English translation affordances —
+   * never use as a generic accent. */
+  --indigo:         #4A59A8; /* hsl(230 39% 47%) translation */
+  --indigo-soft:    rgba(74, 89, 168, 0.10);
+  --on-indigo:      #F8F4EA;
+
+  /* ─── Status ─────────────────────────────────────────────── */
+  --danger:         #EF4444; /* hsl(0 84% 60%) destructive */
+  --on-danger:      #F8FAFC;
+
+  /* ─── JLPT level chips (reference-only — they're shown literally
+   *    as N5/N4/N3/N2/N1 in monospace, the colour is decorative) */
+  --jlpt-bg:        rgba(31, 27, 22, 0.04);
+  --jlpt-border:    rgba(31, 27, 22, 0.18);
+
+  /* ─── Semantic aliases (tailwind-shaped) ─────────────────── */
+  --background:           var(--paper);
+  --foreground:           var(--ink);
+  --card:                 var(--paper-card);
+  --card-foreground:      var(--ink);
+  --popover:              var(--paper-card);
+  --popover-foreground:   var(--ink);
+  --muted:                var(--paper-card);
+  --muted-foreground:     var(--ink-soft);
+  --primary:              var(--vermillion);
+  --primary-foreground:   var(--on-vermillion);
+  --accent:               var(--vermillion);
+  --accent-foreground:    var(--on-vermillion);
+  --border:               var(--rule);
+  --input:                var(--rule);
+  --ring:                 var(--vermillion);
+  --translation:          var(--indigo);
+  --translation-foreground: var(--on-indigo);
+
+  /* ─── Type families ──────────────────────────────────────── */
+  --font-prose: "Source Serif 4", Georgia, "Hiragino Mincho ProN", serif;
+  --font-jp:    "Noto Serif JP", "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --font-jp-alt: "Shippori Mincho", "Noto Serif JP", serif;
+  --font-jp-hand: "Klee One", "Noto Serif JP", serif;   /* hand-written variant */
+  --font-jp-sans: "Noto Sans JP", system-ui, sans-serif;
+  --font-mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* ─── Type scale (tied to the reader, NOT a generic web scale) */
+  --text-meta:        11px;   /* mono uppercase tracking labels */
+  --text-meta-tight:  10px;
+  --text-xs:          12px;
+  --text-sm:          14px;
+  --text-base:        16px;   /* default reader size; user adjusts 14–26 */
+  --text-lg:          18px;
+  --text-xl:          20px;
+  --text-2xl:         24px;
+  --text-3xl:         30px;   /* chapter title (mobile) */
+  --text-4xl:         36px;   /* chapter title (md+) */
+  --text-5xl:         48px;   /* library 本棚 (mobile) */
+  --text-6xl:         60px;   /* library 本棚 (md+) */
+
+  /* ─── Layout & motion ────────────────────────────────────── */
+  --radius:        8px;       /* 0.5rem; tailwind --radius */
+  --radius-sm:     4px;
+  --radius-md:     6px;
+  --radius-lg:     8px;
+  --radius-pill:   999px;
+  --shadow-cover:  0 1px 2px rgba(0,0,0,0.12), 0 4px 14px rgba(31,27,22,0.18), inset -2px 0 4px rgba(0,0,0,0.15);
+  --shadow-soft:   0 1px 2px rgba(31, 27, 22, 0.06);
+  --shadow-card:   0 1px 3px rgba(31, 27, 22, 0.08);
+  --easing:        cubic-bezier(0.2, 0, 0, 1);
+  --dur-quick:     150ms;
+  --dur-base:      180ms;     /* matches translation-in keyframe */
+
+  /* ─── Tracking presets ───────────────────────────────────── */
+  --track-meta:    0.12em;    /* mono labels */
+  --track-meta-x:  0.20em;    /* "つんどく ・ tsundoku" pre-title */
+}
+
+/* ─── Semantic element styles ──────────────────────────────── */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-prose);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* H1 — library hero "本棚". Always Japanese serif, medium weight. */
+.h1, h1 {
+  font-family: var(--font-jp);
+  font-weight: 500;
+  font-size: var(--text-5xl);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+@media (min-width: 768px) {
+  .h1, h1 { font-size: var(--text-6xl); }
+}
+
+/* H2 — chapter title in reader. */
+.h2, h2 {
+  font-family: var(--font-jp);
+  font-weight: 500;
+  font-size: var(--text-3xl);
+  line-height: 1.15;
+  color: var(--ink);
+}
+@media (min-width: 768px) {
+  .h2, h2 { font-size: var(--text-4xl); }
+}
+
+/* H3 — vocab popup head word, sheet titles. */
+.h3, h3 {
+  font-family: var(--font-jp);
+  font-weight: 500;
+  font-size: var(--text-2xl);
+  line-height: 1.2;
+}
+
+/* Body prose — reader text. Always JP serif + loose leading. */
+.prose, p {
+  font-family: var(--font-prose);
+  font-size: var(--text-base);
+  line-height: 1.6;
+}
+.prose-jp {
+  font-family: var(--font-jp);
+  font-size: var(--text-base);
+  line-height: 1.95;     /* loose for kanji + ruby breathing room */
+}
+
+/* Mono meta label — used CONSTANTLY across the app. Pre-titles,
+ * eyebrow labels, footer counts, "Translation"/"Note"/"Grammar"
+ * panel labels. ALWAYS uppercase, tracked, muted. */
+.meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--track-meta);
+  color: var(--ink-soft);
+}
+.meta-tight {
+  font-family: var(--font-mono);
+  font-size: var(--text-meta-tight);
+  text-transform: uppercase;
+  letter-spacing: var(--track-meta);
+  color: var(--ink-soft);
+}
+
+/* Inline code / monospace */
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+/* Author byline / chapter sub — italic Source Serif. */
+.byline {
+  font-family: var(--font-prose);
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+
+/* Ruby (furigana) — small, dim, never selectable. */
+ruby { ruby-position: over; }
+rt {
+  font-family: var(--font-jp);
+  font-size: 0.5em;
+  font-weight: 400;
+  color: rgba(31, 27, 22, 0.55);
+  user-select: none;
+}
+
+/* Translation panel motion */
+@keyframes translation-in {
+  from { opacity: 0; transform: translateY(-2px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-translation-in { animation: translation-in 180ms var(--easing); }

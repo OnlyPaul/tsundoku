@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Book cover</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:22px;background:var(--paper);display:flex;gap:18px;align-items:flex-end;}
+  .stack{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+  .cover{position:relative;width:100px;aspect-ratio:2/3;border-radius:2px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.12),0 4px 14px rgba(31,27,22,0.18),inset -2px 0 4px rgba(0,0,0,0.15);}
+  .cover .glyph{position:absolute;top:14%;left:0;right:0;text-align:center;font-family:'Noto Serif JP',serif;font-size:48px;line-height:1;font-weight:500;}
+  .cover .title{position:absolute;bottom:8px;left:8px;right:8px;font-family:'Noto Serif JP',serif;font-size:9px;line-height:1.25;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,0.4);}
+  .cover .spine{position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(90deg,rgba(0,0,0,0.25),transparent);}
+  .lbl{font-family:var(--font-mono);font-size:9px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;}
+  .real{width:100px;aspect-ratio:2/3;border-radius:2px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.12),0 4px 14px rgba(31,27,22,0.18);}
+  .real img{width:100%;height:100%;object-fit:cover;display:block;}
+</style>
+</head>
+<body>
+  <div class="stack">
+    <div class="real"><img src="../assets/sample-cover-nageki.jpg" alt=""/></div>
+    <div class="lbl">image cover</div>
+  </div>
+  <div class="stack">
+    <div class="cover" style="background:linear-gradient(165deg,#E8C9A1 0%,#B96B4B 55%,#3F2A1E 100%);">
+      <div class="glyph" style="color:#3F2A1E;opacity:0.75;">嘆</div>
+      <div class="title" style="color:#FBF7EE;">嘆きの亡霊は引退したい</div>
+      <div class="spine"></div>
+    </div>
+    <div class="lbl">fallback · palette 0</div>
+  </div>
+  <div class="stack">
+    <div class="cover" style="background:linear-gradient(165deg,#1F2742 0%,#3D5388 55%,#D4D2C8 100%);">
+      <div class="glyph" style="color:#D4D2C8;opacity:0.75;">本</div>
+      <div class="title" style="color:#FBF7EE;">桜の森の満開の下</div>
+      <div class="spine"></div>
+    </div>
+    <div class="lbl">fallback · palette 1</div>
+  </div>
+  <div class="stack">
+    <div class="cover" style="background:linear-gradient(165deg,#E5D6B5 0%,#7A8C5C 55%,#2F3A22 100%);">
+      <div class="glyph" style="color:#2F3A22;opacity:0.75;">山</div>
+      <div class="title" style="color:#FBF7EE;">山月記</div>
+      <div class="spine"></div>
+    </div>
+    <div class="lbl">fallback · palette 3</div>
+  </div>
+</body>
+</html>
