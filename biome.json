@@ -34,7 +34,8 @@
       "coverage",
       "public/icons",
       "scripts",
-      "design"
+      "design",
+      "design-system"
     ]
   }
 }
