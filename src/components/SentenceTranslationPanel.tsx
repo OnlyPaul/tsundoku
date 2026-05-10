@@ -38,20 +38,22 @@ export function SentenceTranslateButton({
       aria-label={ariaLabelSuffix ? `${label} for ${ariaLabelSuffix}` : label}
       title={label}
       aria-pressed={open}
-      className={
-        'relative ml-1 mr-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-sm border border-border align-middle transition-colors ' +
-        (open
+      className={`relative ml-1 mr-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-sm border border-border align-middle transition-colors ${
+        open
           ? 'bg-translation text-translation-foreground'
-          : 'bg-muted/40 text-muted-foreground hover:text-translation')
-      }
+          : 'bg-muted/40 text-muted-foreground hover:text-translation'
+      }`}
     >
       <svg
         width="11"
         height="11"
         viewBox="0 0 12 12"
-        aria-hidden
-        className={'block transition-transform duration-200 ' + (open ? 'rotate-90' : 'rotate-0')}
+        aria-hidden="true"
+        focusable="false"
+        role="presentation"
+        className={`block transition-transform duration-200 ${open ? 'rotate-90' : 'rotate-0'}`}
       >
+        <title>{label}</title>
         <path d="M3 2.5L9 6L3 9.5Z" fill="currentColor" />
       </svg>
       {hasNote && !open ? (
@@ -93,10 +95,9 @@ export function SentenceTranslationPanel({
       role="region"
       aria-label={ariaLabel}
       ref={(el) => panelRef?.(el)}
-      className={
-        'mt-2 block animate-translation-in rounded-r-sm border-l-2 border-translation bg-card px-4 py-3 font-prose ' +
-        (showFurigana ? 'mb-[0.65em]' : 'mb-1')
-      }
+      className={`mt-2 block animate-translation-in rounded-r-sm border-l-2 border-translation bg-card px-4 py-3 font-prose ${
+        showFurigana ? 'mb-[0.65em]' : 'mb-1'
+      }`}
     >
       <span className="mb-1 block font-mono text-[9.5px] uppercase tracking-wider text-muted-foreground/80">
         Translation
@@ -134,15 +135,14 @@ export function SentenceTranslationPanel({
                 }}
                 aria-pressed={isOpen}
                 aria-busy={!ready}
-                aria-label={ready ? `Grammar pattern ${label}` : `Grammar pattern (loading)`}
-                className={
-                  'rounded-sm border px-2 py-px font-jp text-[13px] transition-colors ' +
-                  (isOpen
+                aria-label={ready ? `Grammar pattern ${label}` : 'Grammar pattern (loading)'}
+                className={`rounded-sm border px-2 py-px font-jp text-[13px] transition-colors ${
+                  isOpen
                     ? 'border-translation bg-translation text-translation-foreground'
                     : ready
                       ? 'border-translation/30 bg-translation/10 text-translation hover:bg-translation/20'
-                      : 'cursor-progress border-border bg-muted/40 text-muted-foreground opacity-70')
-                }
+                      : 'cursor-progress border-border bg-muted/40 text-muted-foreground opacity-70'
+                }`}
               >
                 {label}
               </button>
