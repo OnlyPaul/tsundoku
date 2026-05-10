@@ -23,13 +23,19 @@ domain expert (i.e. distinguishing it from a synonym matters).
 
 ## Chapter format
 
-- **Legacy chapter format** — flat `paragraph → tokens` records. No format
-  header, no sentence boundaries, no sentence-help.
-- **v2 chapter format** — first line is `{"format":"v2"}`. Each remaining line
-  is a paragraph wrapping a `sentences[]` array. Sentences carry stable ids
-  and may carry `help`.
-- **Migration** — the process of converting a legacy chapter to v2,
-  including segmentation, id assignment, and authoring of sentence-help.
+- **Legacy chapter format** — *deprecated*. Flat `paragraph → tokens` records
+  with no format header, no sentence boundaries, no sentence-help. The reader
+  still decodes legacy chapters so historical content keeps working, but no
+  new content should be authored as v1. `npm run validate:books` emits a
+  warning when it encounters one.
+- **v2 chapter format** — current format. First line is `{"format":"v2"}`.
+  Each remaining line is a paragraph wrapping a `sentences[]` array. Every
+  sentence carries a stable id and authored `help` (see Sentence-help).
+- **Migration** — the historical process of converting a legacy chapter to
+  v2: segmentation, id assignment, and authoring of sentence-help. The
+  corpus is fully migrated; new books are authored directly as v2 by the
+  `process-epub` skill, and `npm run validate:books` enforces the contract
+  in CI.
 
 ## Sentence-help
 
@@ -37,8 +43,9 @@ domain expert (i.e. distinguishing it from a synonym matters).
   Shape: `{ translation, note?, grammar? }`. The reader exposes it via the
   inline sentence-help affordance and panel.
 - **Translation** — the literal-or-natural English rendering of a sentence.
-  Required on every sentence with help. After full migration, every sentence
-  in a v2 chapter carries a translation.
+  **Mandatory** on every sentence in a v2 chapter, enforced by
+  `npm run validate:books` in CI. A v2 sentence with a missing or empty
+  translation fails validation.
 - **Note** — optional freeform teaching commentary that goes beyond a literal
   translation (nuance, register, untranslatable particles).
 - **Grammar link** — optional reference (by id) to an entry in the book's

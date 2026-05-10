@@ -111,17 +111,39 @@ For each token that gets a `v`:
 
 Set the token's `v` field to the resolved id.
 
-### 4e. Build paragraphs and write the chapter
+### 4e. Split each paragraph's tokens into sentences
 
-Each paragraph becomes a `Paragraph` object:
+Walk the paragraph's token list and break it into one or more sentences. The sentence boundary is the **token immediately after** any token whose surface is a Japanese sentence-ending mark: `。`, `？`, `！`, `…`. The terminating punctuation token stays attached to the **preceding** sentence — never starts a new one.
 
-- `id`: `p` + 3-digit zero-padded, reset per chapter (`p001`, `p002`, …)
-- `tokens`: the token list from 4c (with `v` filled in from 4d)
-- `grammar`: omit for now (this command does not tag grammar)
+Quote / dialogue brackets (`「」`, `『』`, `（）`) are sentence-internal: do **not** split inside them and do **not** split on a `。` that sits inside a bracket pair. A line of pure dialogue like `「行こう。」` is a single sentence whose final token is `」`.
 
-Write `books/$SLUG/chapters/{nn}-{SLUG}.jsonl` — one `Paragraph` JSON object per line, no trailing comma, UTF-8.
+If the paragraph contains no sentence-ending mark at all (rare — usually a chapter heading or a single-fragment paragraph), the whole paragraph is one sentence.
 
-### 4f. Persist updated frequencies
+For each sentence in document order, mint a `SentenceId` of the form `{chapter-id}-{paragraph-id}-s{NN}` where `NN` is a 1-based, 2-digit zero-padded counter that resets at every paragraph (`s01`, `s02`, … `s99`; expand to 3 digits at `s100`). Example for chapter `00-mybook`, paragraph `p001`: `00-mybook-p001-s01`.
+
+### 4f. Author sentence-help
+
+For every sentence in the chapter, author its `help` object:
+
+- `translation` — **mandatory, non-empty string**. A faithful English rendering of the sentence. Aim for natural English that preserves nuance; you may flow with the surrounding paragraph for context. A sentence consisting only of punctuation or filler (`「」`, `——`, `…`) does **not** appear as its own sentence — segmentation in 4e ensures a content sentence absorbs trailing punctuation, so every emitted sentence has translatable content.
+- `note` — optional. Only include when the sentence carries genuine teaching nuance worth recording (untranslatable particle force, register choice, idiom, cultural reference, deliberate ambiguity). Skip the field entirely when there is nothing to add — empty or filler notes are worse than no note.
+- `grammar` — optional array of grammar-entry ids. Only include when a relevant entry is being or will be authored in `books/$SLUG/grammar.jsonl`. This command does not currently mint grammar entries (5b leaves the file empty), so in practice **omit `grammar` for fresh imports**. A separate grammar-tagging pass populates it later.
+
+If you find yourself unable to translate a sentence, do **not** emit a placeholder, an empty string, or a `TODO`. Stop the run and report the offending sentence — `npm run validate:books` will reject placeholders anyway and the corpus must remain valid.
+
+### 4g. Build paragraphs and write the chapter
+
+The chapter file uses the v2 format:
+
+- The **first line** of every chapter file is the literal `{"format":"v2"}` header.
+- Each subsequent line is a paragraph object:
+  - `id`: `p` + 3-digit zero-padded, reset per chapter (`p001`, `p002`, …).
+  - `sentences`: the sentence list built in 4e–4f, each as `{ id, tokens, help: { translation, note?, grammar? } }`. Tokens carry `v` ids resolved in 4d. `help.translation` is always present and non-empty; `note` and `grammar` appear only when they have content.
+  - `grammar`: omit (paragraph-level grammar refs are deprecated; sentence-level help is the surface).
+
+Write `books/$SLUG/chapters/{nn}-{SLUG}.jsonl` — header line first, then one paragraph JSON object per line, no trailing comma, UTF-8.
+
+### 4h. Persist updated frequencies
 
 After all paragraphs in the chapter are written, rewrite `books/$SLUG/vocabulary.jsonl` with the updated `frequency` values from `freq_by_id` (preserving line order — existing entries keep their order, newly-minted ones are appended at the end). This is the only time you rewrite the file in bulk; mints during the chapter were appended directly.
 
@@ -196,13 +218,17 @@ Run the project's formatter so generated files match repo style and don't fail C
 Run a final verification block. For each check, print PASS/FAIL with a brief detail:
 
 1. `books/$SLUG/metadata.json` parses as JSON; `chapters.length` matches the number of files in `books/$SLUG/chapters/`.
-2. Every `v` id referenced in any chapter JSONL line exists in `vocabulary.jsonl`.
-3. `vocabulary.jsonl` ids are unique, sequential, no gaps, `v0001`-style.
-4. No token with `r` is pure kana; no token with `v` is a particle/inflectional ending/punctuation; no conjugated token is missing `lemma`.
-5. Every kanji in any `example_words_in_book` is present in some vocab `lemma`.
-6. `books/index.json` contains `SLUG`.
+2. Every chapter file's **first line** is exactly `{"format":"v2"}`.
+3. Every sentence in every chapter has an `id`, a non-empty `tokens` array, and a `help.translation` that is a non-empty string. `note`, when present, is a non-empty string; `grammar`, when present, is a non-empty string array.
+4. Every sentence id matches the shape `{chapter-id}-{paragraph-id}-s{NN}` and is unique within its chapter.
+5. Every `v` id referenced in any sentence's tokens exists in `vocabulary.jsonl`.
+6. `vocabulary.jsonl` ids are unique, sequential, no gaps, `v0001`-style.
+7. No token with `r` is pure kana; no token with `v` is a particle/inflectional ending/punctuation; no conjugated token is missing `lemma`.
+8. Every kanji in any `example_words_in_book` is present in some vocab `lemma`.
+9. `books/index.json` contains `SLUG`.
+10. `npm run validate:books` exits zero (it covers checks 2–5 and the cross-validation rules; running it here is the canonical contract gate before declaring the import complete).
 
-Print a final summary: chapter count, paragraph count, vocab count, kanji count.
+Print a final summary: chapter count, paragraph count, sentence count, vocab count, kanji count.
 
 If any check fails, leave the files in place but flag the failures clearly — do not delete partial output.
 
@@ -211,8 +237,15 @@ If any check fails, leave the files in place but flag the failures clearly — d
 ## Output schema reference (authoritative)
 
 ```
-Token       = { s: string, r?: string, v?: string, lemma?: string }
-Paragraph   = { id: string, tokens: Token[], grammar?: string[] }
+Token         = { s: string, r?: string, v?: string, lemma?: string }
+SentenceHelp  = { translation: string,    // mandatory, non-empty
+                  note?: string,
+                  grammar?: string[] }    // grammar entry ids
+Sentence      = { id: string,             // "{chapter-id}-{paragraph-id}-sNN"
+                  tokens: Token[],
+                  help: SentenceHelp }
+Paragraph     = { id: string, sentences: Sentence[] }
+ChapterHeader = { format: "v2" }          // first line of every chapter file
 VocabEntry  = { id: string,            // "v0001"
                 lemma: string,
                 reading: string,        // hiragana
@@ -257,7 +290,8 @@ BookMeta    = { id: string, title: string, author: string,
 
 - Vocab id: `v` + 4-digit zero-padded sequential, scoped per book. Expand to 5 digits beyond `v9999`.
 - Paragraph id: `p` + 3-digit zero-padded, reset per chapter.
-- Chapter file: `{nn}-{slug}.jsonl` with `nn` 2-digit zero-padded starting at `00`.
+- Sentence id: `{chapter-id}-{paragraph-id}-s{NN}` where `NN` is 1-based, 2-digit zero-padded, reset per paragraph (`s01`, `s02`, … `s99`; expand to 3 digits at `s100`).
+- Chapter file: `{nn}-{slug}.jsonl` with `nn` 2-digit zero-padded starting at `00`. The first line is the literal `{"format":"v2"}` header.
 - Chapter id (in metadata): the chapter file basename without `.jsonl` (e.g. `"00-mybook"`).
 
 ---
