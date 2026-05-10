@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 96" width="320" height="96">
+  <rect x="8" y="8" width="80" height="80" rx="6" fill="#BC5A2C"></rect>
+  <text x="48" y="68" text-anchor="middle" font-family="Noto Serif JP, Hiragino Mincho ProN, serif" font-weight="600" font-size="50" fill="#F5EFE4">積</text>
+  <text x="104" y="54" font-family="Source Serif 4, Georgia, serif" font-weight="500" font-size="32" fill="#1F1B16" letter-spacing="-0.01em">tsundoku</text>
+  <text x="106" y="76" font-family="JetBrains Mono, ui-monospace, monospace" font-weight="500" font-size="10" fill="#736D66" letter-spacing="2.4">JAPANESE READER</text>
+</svg>

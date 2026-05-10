@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Tsundoku — Vocab popup</title>
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body{margin:0;padding:22px;background:var(--paper);display:flex;gap:22px;}
+  .pop{width:280px;background:#FBF7EE;border:1px solid var(--rule);border-radius:8px;padding:14px;box-shadow:0 4px 14px rgba(31,27,22,0.08);}
+  .head{display:flex;justify-content:space-between;align-items:baseline;}
+  .head h3{font-family:'Noto Serif JP',serif;font-size:24px;font-weight:500;margin:0;color:var(--ink);}
+  .jlpt{font-family:var(--font-mono);font-size:10px;padding:2px 6px;border-radius:999px;border:1px solid rgba(31,27,22,0.18);background:rgba(31,27,22,0.04);color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.12em;}
+  .reading{font-family:'Noto Serif JP',serif;color:var(--ink-soft);margin-top:4px;font-size:14px;}
+  .pos{font-family:var(--font-mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink-soft);margin-top:4px;}
+  ul{margin:8px 0 0 0;padding-left:0;list-style:none;font-family:var(--font-prose);font-size:14px;color:var(--ink);}
+  ul li{margin:2px 0;}
+  .tabs{display:flex;gap:10px;border-bottom:1px solid var(--rule);margin:10px 0 8px;}
+  .tab{font-family:var(--font-prose);font-size:12px;padding:4px 6px;color:var(--ink-soft);border-bottom:2px solid transparent;}
+  .tab.active{color:var(--ink);font-weight:500;border-bottom-color:#BC5A2C;}
+</style>
+</head>
+<body>
+  <div class="pop">
+    <div class="head"><h3>始まり</h3><span class="jlpt">N4</span></div>
+    <div class="reading">はじまり</div>
+    <div class="pos">NOUN</div>
+    <div class="tabs"><span class="tab active">Meanings</span><span class="tab">Kanji</span></div>
+    <ul><li>beginning</li><li>start</li><li>origin</li></ul>
+  </div>
+</body>
+</html>
